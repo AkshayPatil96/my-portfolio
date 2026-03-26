@@ -5,6 +5,8 @@ import LenisProvider from "@/components/LenisProvider";
 import Cursor from "@/components/Cursor";
 import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/sections/FooterSection";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/next";
 
 const notoSerif = Noto_Serif({
   subsets: ["latin"],
@@ -50,6 +52,8 @@ export default function RootLayout({
         />
       </head>
       <body className="selection:bg-[#c8a97e]/20">
+        <SpeedInsights />
+        <Analytics />
         <LenisProvider>
           <Cursor />
           <Navbar />

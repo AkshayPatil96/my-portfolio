@@ -64,7 +64,7 @@ export default function HeroSection() {
 
         <h1
           id="hero-title"
-          className="font-headline text-[clamp(3.5rem,10vw,9.5rem)] leading-[1.2] md:leading-[0.9] tracking-tighter mb-6 md:mb-12"
+          className="font-headline text-[clamp(3.5rem,10vw,9.5rem)] leading-[1] md:leading-[0.9] tracking-tighter mb-6 md:mb-12"
           style={{ opacity: 0 }}
         >
           <span className="block">Building products</span>

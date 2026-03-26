@@ -15,8 +15,8 @@ const LINES = [
   { prefix: "> ", text: "status: building scalable production systems ✓" },
 ];
 
-const TYPE_SPEED = 32; // ms per character
-const LINE_PAUSE = 200; // ms pause between lines
+const TYPE_SPEED = 16; // ms per character
+const LINE_PAUSE = 160; // ms pause between lines
 
 export default function TerminalBlock() {
   const [displayed, setDisplayed] = useState<string[]>([]);

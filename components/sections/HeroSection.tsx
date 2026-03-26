@@ -56,7 +56,7 @@ export default function HeroSection() {
       <div className="relative z-10 text-center flex flex-col items-center">
         <span
           id="hero-overline"
-          className="font-label text-xs md:text-sm uppercase tracking-[0.08em] text-primary mb-10 block"
+          className="font-label text-xs md:text-sm uppercase tracking-[0.08em] text-primary mb-5 md:mb-10 block"
           style={{ opacity: 0 }}
         >
           Product-focused Full Stack Developer
@@ -64,7 +64,7 @@ export default function HeroSection() {
 
         <h1
           id="hero-title"
-          className="font-headline text-[clamp(3.5rem,10vw,9.5rem)] leading-[0.9] tracking-tighter mb-12"
+          className="font-headline text-[clamp(3.5rem,10vw,9.5rem)] leading-[0.9] tracking-tighter mb-6 md:mb-12"
           style={{ opacity: 0 }}
         >
           <span className="block">Building products</span>

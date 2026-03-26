@@ -154,7 +154,7 @@ export default function AboutSectionAlt() {
                   Node.js &middot; Next.js &middot; AWS
                 </p>
                 <p className="text-sm text-neutral-400 mt-1">
-                  Based in India &middot; Open to relocate
+                  Based in Pune, India &middot; Open to relocate
                 </p>
 
                 {/* Social links */}

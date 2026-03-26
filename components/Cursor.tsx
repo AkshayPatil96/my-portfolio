@@ -30,49 +30,47 @@ export default function Cursor() {
     };
     gsap.ticker.add(tickFn);
 
-    const interactables = document.querySelectorAll(
-      "a, button, .mag-btn, .fs-dot"
-    );
-    const addHover = (el: Element) => {
-      el.addEventListener("mouseenter", () =>
-        document.body.classList.add("cursor-hover")
-      );
-      el.addEventListener("mouseleave", () =>
-        document.body.classList.remove("cursor-hover")
-      );
+    // Delegated cursor-hover state — works for any elements added after navigation
+    const INTERACTIVE = "a, button, .mag-btn, .fs-dot";
+    const onDocOver = (e: MouseEvent) => {
+      if ((e.target as Element).closest(INTERACTIVE))
+        document.body.classList.add("cursor-hover");
     };
-    interactables.forEach(addHover);
+    const onDocOut = (e: MouseEvent) => {
+      if (!(e.target as Element).closest(INTERACTIVE)) return;
+      const related = e.relatedTarget as Element | null;
+      if (!related || !related.closest(INTERACTIVE))
+        document.body.classList.remove("cursor-hover");
+    };
+    document.addEventListener("mouseover", onDocOver);
+    document.addEventListener("mouseout", onDocOut);
 
-    // Magnetic buttons
-    const magBtns = document.querySelectorAll<HTMLElement>(".mag-btn");
-    const magHandlers: Array<{
-      el: HTMLElement;
-      move: (e: Event) => void;
-      leave: () => void;
-    }> = [];
-
-    magBtns.forEach((btn) => {
-      const move = (e: Event) => {
-        const me = e as MouseEvent;
-        const r = btn.getBoundingClientRect();
-        const dx = (me.clientX - r.left - r.width / 2) * 0.28;
-        const dy = (me.clientY - r.top - r.height / 2) * 0.28;
-        gsap.to(btn, { x: dx, y: dy, duration: 0.4, ease: "power2.out" });
-      };
-      const leave = () =>
+    // Delegated magnetic effect — picks up .mag-btn elements on every page
+    const onMagMove = (e: MouseEvent) => {
+      const btn = (e.target as Element).closest<HTMLElement>(".mag-btn");
+      if (!btn) return;
+      const r = btn.getBoundingClientRect();
+      const dx = (e.clientX - r.left - r.width / 2) * 0.28;
+      const dy = (e.clientY - r.top - r.height / 2) * 0.28;
+      gsap.to(btn, { x: dx, y: dy, duration: 0.4, ease: "power2.out" });
+    };
+    const onMagOut = (e: MouseEvent) => {
+      const btn = (e.target as Element).closest<HTMLElement>(".mag-btn");
+      if (!btn) return;
+      const related = e.relatedTarget as Element | null;
+      if (!related || !btn.contains(related))
         gsap.to(btn, { x: 0, y: 0, duration: 0.7, ease: "elastic.out(1,0.5)" });
-      btn.addEventListener("mousemove", move);
-      btn.addEventListener("mouseleave", leave);
-      magHandlers.push({ el: btn, move, leave });
-    });
+    };
+    document.addEventListener("mousemove", onMagMove);
+    document.addEventListener("mouseout", onMagOut);
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       gsap.ticker.remove(tickFn);
-      magHandlers.forEach(({ el, move, leave }) => {
-        el.removeEventListener("mousemove", move);
-        el.removeEventListener("mouseleave", leave);
-      });
+      document.removeEventListener("mouseover", onDocOver);
+      document.removeEventListener("mouseout", onDocOut);
+      document.removeEventListener("mousemove", onMagMove);
+      document.removeEventListener("mouseout", onMagOut);
     };
   }, []);
 

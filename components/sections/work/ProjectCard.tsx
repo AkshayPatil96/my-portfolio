@@ -9,7 +9,11 @@ interface ProjectCardProps {
   total: number;
 }
 
-export default function ProjectCard({ project, index, total }: ProjectCardProps) {
+export default function ProjectCard({
+  project,
+  index,
+  total,
+}: ProjectCardProps) {
   const router = useRouter();
 
   const label = `${String(index + 1).padStart(2, "0")} / ${String(total).padStart(2, "0")}`;
@@ -23,6 +27,7 @@ export default function ProjectCard({ project, index, total }: ProjectCardProps)
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
           router.push(`/projects/${project.slug}`);
+          window.scrollTo({ top: 0, behavior: "smooth" });
         }
       }}
       className="group relative rounded-xl overflow-hidden bg-[#111111] border border-[#1f1f1f] cursor-pointer transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_16px_48px_rgba(0,0,0,0.5),0_0_0_1px_rgba(229,196,151,0.15)]"

@@ -1,0 +1,306 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background: #131313;
+  color: #e5e2e1;
+  font-family: var(--font-manrope), sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+}
+
+@media (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+/* ── Custom Cursor ── */
+#cursor-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(229, 196, 151, 0.5);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.3s,
+    height 0.3s,
+    border-color 0.3s,
+    background 0.3s;
+}
+
+#cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #e5c497;
+  transform: translate(-50%, -50%);
+}
+
+body.cursor-hover #cursor-outer {
+  width: 54px;
+  height: 54px;
+  background: rgba(229, 196, 151, 0.07);
+  border-color: rgba(229, 196, 151, 0.9);
+}
+
+@media (pointer: coarse) {
+  #cursor-outer,
+  #cursor-dot {
+    display: none;
+  }
+}
+
+/* ── Intro Overlay ── */
+#intro-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  background: #0e0e0e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#intro-counter {
+  font-family: var(--font-space-grotesk), monospace;
+  font-size: clamp(3rem, 10vw, 8rem);
+  font-weight: 300;
+  color: #e5c497;
+  letter-spacing: -0.04em;
+  opacity: 0;
+}
+
+/* ── Shared Utilities ── */
+.ghost-border {
+  border: 0.5px solid rgba(78, 69, 59, 0.25);
+}
+
+.glass-header {
+  background: rgba(19, 19, 19, 0.85);
+  backdrop-filter: blur(20px);
+}
+
+.glass-card {
+  background: rgba(32, 31, 31, 0.6);
+  backdrop-filter: blur(20px);
+}
+
+.grid-overlay {
+  background-image: radial-gradient(circle, #4e453b 0.5px, transparent 0.5px);
+  background-size: 24px 24px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── Film Strip Dots ── */
+.fs-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  border: 1px solid rgba(78, 69, 59, 0.6);
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background 0.35s,
+    box-shadow 0.35s,
+    transform 0.35s;
+}
+
+.fs-dot.active {
+  background: #e5c497;
+  box-shadow: 0 0 10px rgba(229, 196, 151, 0.6);
+  transform: scale(1.5);
+}
+
+/* ── Nav Active State ── */
+nav a.nav-active {
+  color: #c8a97e !important;
+}
+
+/* ── Section Counter ── */
+#section-num {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 2rem;
+  font-family: var(--font-space-grotesk), monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: rgba(229, 196, 151, 0.3);
+  writing-mode: vertical-rl;
+  pointer-events: none;
+  z-index: 40;
+}
+
+/* ── Work Horizontal Track ── */
+#work-track {
+  display: flex;
+  gap: 2rem;
+  will-change: transform;
+}
+
+.proj-card-wrap {
+  flex: none;
+  width: min(88vw, 640px);
+}
+
+/* ── Skill Bars ── */
+.skill-fill {
+  width: 0;
+}
+
+/* ── Contact Clip ── */
+#contact-inner {
+  clip-path: inset(100% 0 0 0);
+}
+
+/* ── Glitch Animation ── */
+@keyframes glitch-1 {
+  0%,
+  100% {
+    clip-path: inset(0 0 100% 0);
+    transform: translate(0);
+  }
+  20% {
+    clip-path: inset(10% 0 60% 0);
+    transform: translate(-4px, 2px);
+  }
+  40% {
+    clip-path: inset(45% 0 30% 0);
+    transform: translate(4px, -2px);
+  }
+  60% {
+    clip-path: inset(80% 0 5% 0);
+    transform: translate(-2px, 1px);
+  }
+  80% {
+    clip-path: inset(30% 0 50% 0);
+    transform: translate(2px, -1px);
+  }
+}
+
+@keyframes glitch-2 {
+  0%,
+  100% {
+    clip-path: inset(0 0 100% 0);
+    transform: translate(0);
+  }
+  20% {
+    clip-path: inset(60% 0 10% 0);
+    transform: translate(4px, -2px);
+  }
+  40% {
+    clip-path: inset(20% 0 65% 0);
+    transform: translate(-4px, 2px);
+  }
+  60% {
+    clip-path: inset(5% 0 80% 0);
+    transform: translate(2px, -1px);
+  }
+  80% {
+    clip-path: inset(50% 0 25% 0);
+    transform: translate(-2px, 1px);
+  }
+}
+
+.glitch-active .glitch-layer-1 {
+  animation: glitch-1 0.35s steps(1) infinite;
+  color: #ff4d8d;
+  opacity: 0.75;
+}
+
+.glitch-active .glitch-layer-2 {
+  animation: glitch-2 0.35s steps(1) infinite;
+  color: #4df7ff;
+  opacity: 0.75;
+}
+
+/* ── Spotlight Card (Neon variant) ── */
+.spotlight-card {
+  transition: box-shadow 0.4s ease;
+}
+
+.spotlight-card:hover {
+  box-shadow:
+    0 0 40px rgba(229, 196, 151, 0.15),
+    0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ── Terminal Block ── */
+.terminal-window {
+  border: 1px solid #2a2a2a;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.terminal-line {
+  white-space: pre-wrap;
+  min-height: 1.6em;
+  opacity: 0;
+  transform: translateY(4px);
+  animation: fadeInUp 0.25s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.15em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: #e5c497;
+  opacity: 0.6;
+  animation: blink 1.2s step-end infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0;
+  }
+}

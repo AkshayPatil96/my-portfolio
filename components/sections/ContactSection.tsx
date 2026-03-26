@@ -82,55 +82,6 @@ export default function ContactSection() {
                 Open to Full-Time Roles
               </span>
             </div>
-
-            <div className="space-y-4 pt-2">
-              {[
-                {
-                  icon: "mail",
-                  label: "Email",
-                  value: "aksh.patil2706@gmail.com",
-                },
-                {
-                  icon: "share",
-                  label: "LinkedIn",
-                  value: "linkedin.com/in/aksh2706",
-                  href: "https://www.linkedin.com/in/aksh2706/",
-                },
-                {
-                  icon: "code",
-                  label: "GitHub",
-                  value: "github.com/AkshayPatil96",
-                  href: "https://github.com/AkshayPatil96",
-                },
-              ].map(({ icon, label, value, href }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-5 group cursor-pointer w-fit p-1"
-                  onClick={() => {
-                    href && window.open(href, "_blank");
-                    if (!href) {
-                      navigator.clipboard.writeText(value);
-                      toast.success("Copied to clipboard!");
-                    }
-                  }}
-                >
-                  <div
-                    className="rounded-full bg-surface-container-low ghost-border flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-all duration-500 shrink-0"
-                    style={{ width: 52, height: 52 }}
-                  >
-                    <span className="material-symbols-outlined">{icon}</span>
-                  </div>
-                  <div>
-                    <p className="font-label text-[12px] uppercase tracking-[0.2em] text-on-surface-variant/50">
-                      {label}
-                    </p>
-                    <p className="text-on-surface font-label text-base md:text-lg">
-                      {value}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
           </div>
 
           {/* Right — form */}

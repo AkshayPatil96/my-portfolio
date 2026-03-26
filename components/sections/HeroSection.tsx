@@ -37,7 +37,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6"
+      className="relative min-h-[calc(100vh-75px)] md:min-h-screen flex flex-col items-center justify-center overflow-hidden px-6"
     >
       {/* Glow */}
       <div
@@ -127,7 +127,7 @@ export default function HeroSection() {
         <div className="w-[0.5px] h-20 bg-outline-variant/30" />
       </div>
 
-      <div className="absolute inset-0 pointer-events-none opacity-[0.18] bg-[url('/assets/hero-bg/bg12.jpg')] bg-cover bg-no-repeat" />
+      <div className="absolute inset-0 pointer-events-none opacity-[0.15] bg-[url('/assets/hero-bg/bg12.jpg')] bg-cover bg-no-repeat" />
     </section>
   );
 }

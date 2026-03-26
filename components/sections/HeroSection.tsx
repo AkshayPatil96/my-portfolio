@@ -75,7 +75,7 @@ export default function HeroSection() {
 
         <p
           id="hero-sub"
-          className="text-on-surface-variant max-w-2xl text-lg md:text-xl font-light leading-relaxed mb-12"
+          className="text-on-surface-variant max-w-2xl text-lg md:text-xl font-light leading-relaxed mb-6 md:mb-12"
           style={{ opacity: 0 }}
         >
           {calculateExperience()} years experience • Built production-grade
@@ -126,6 +126,8 @@ export default function HeroSection() {
         </span>
         <div className="w-[0.5px] h-20 bg-outline-variant/30" />
       </div>
+
+      <div className="absolute inset-0 pointer-events-none opacity-[0.18] bg-[url('/assets/hero-bg/bg12.jpg')] bg-cover bg-no-repeat" />
     </section>
   );
 }

@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import FooterSection from "@/components/sections/FooterSection";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/next";
+import { Toaster } from "sonner";
 
 const notoSerif = Noto_Serif({
   subsets: ["latin"],
@@ -31,7 +32,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Akshay — Full Stack Developer",
+  title: "Akshay | Full Stack Developer",
   description: "Full Stack Developer · MERN · Next.js · AWS",
 };
 
@@ -60,6 +61,18 @@ export default function RootLayout({
           {children}
           <FooterSection />
         </LenisProvider>
+        <Toaster
+          duration={2000}
+          toastOptions={{
+            style: {
+              background: "#212121",
+              color: "#c8a97e",
+              fontFamily: "var(--font-manrope)",
+              borderRadius: 8,
+              border: "none",
+            },
+          }}
+        />
       </body>
     </html>
   );

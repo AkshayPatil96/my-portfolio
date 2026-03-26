@@ -10,17 +10,20 @@ export default function FooterSection() {
     >
       <div className="max-w-[1920px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Social links */}
-        <div className="flex gap-6 md:gap-8 order-2 md:order-1">
+        <div className="flex gap-4 md:gap-6 order-2 md:order-1">
           {[
-            { label: "LinkedIn", href: "#" },
-            { label: "GitHub", href: "#" },
-            { label: "ReadCV", href: "#" },
-            { label: "Email", href: "#" },
+            {
+              label: "LinkedIn",
+              href: "https://www.linkedin.com/in/aksh2706/",
+            },
+            { label: "GitHub", href: "https://github.com/AkshayPatil96" },
+            { label: "Resume", href: "https://read.cv/AkshayPatil96" },
+            { label: "Email", href: "mailto:aksh.patil2706@gmail.com" },
           ].map(({ label, href }) => (
             <a
               key={label}
               href={href}
-              className="font-label uppercase tracking-[0.2em] text-[10px] text-on-surface-variant hover:text-primary transition-colors duration-300"
+              className="font-label tracking-[0.2em] text-[12px] text-on-surface-variant hover:text-primary hover:scale-105 transition-all duration-300"
             >
               {label}
             </a>

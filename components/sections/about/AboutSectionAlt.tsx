@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import SplitType from "split-type";
 
 const CORE_STACK = [
@@ -45,7 +44,7 @@ export default function AboutSectionAlt() {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+
 
     const ctx = gsap.context(() => {
       // Title reveal

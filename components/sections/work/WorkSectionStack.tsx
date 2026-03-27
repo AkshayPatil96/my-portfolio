@@ -9,8 +9,7 @@
  */
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { projects } from "@/lib/data";
 
 export default function WorkSectionStack() {
@@ -18,7 +17,7 @@ export default function WorkSectionStack() {
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+
 
     const cards = cardRefs.current.filter(Boolean) as HTMLDivElement[];
     const total = cards.length;

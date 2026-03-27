@@ -1,15 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import Image from "next/image";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { scrollTo } from "@/lib/lenisStore";
 import { calculateExperience } from "@/lib/utils";
 
 export default function HeroSection() {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const ctx = gsap.context(() => {
       // Hero glow parallax
       gsap.to("#hero-glow", {
@@ -37,7 +35,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-[calc(100vh-75px)] md:min-h-screen flex flex-col items-center justify-center overflow-hidden px-6"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6"
     >
       {/* Glow */}
       <div
@@ -65,7 +63,6 @@ export default function HeroSection() {
         <h1
           id="hero-title"
           className="font-headline text-[clamp(3.5rem,10vw,9.5rem)] leading-[0.9] tracking-tighter mb-6 md:mb-12"
-          style={{ opacity: 0 }}
         >
           <span className="block">Building products</span>
           <span className="block text-on-surface-variant/40 italic">
@@ -127,7 +124,19 @@ export default function HeroSection() {
         <div className="w-[0.5px] h-20 bg-outline-variant/30" />
       </div>
 
-      <div className="absolute inset-0 pointer-events-none opacity-[0.15] bg-[url('/assets/hero-bg/bg12.jpg')] bg-cover bg-no-repeat" />
+      {/* Hero background image — Next.js Image with priority so the browser
+          preloads it with fetchpriority="high" and it becomes a fast LCP element */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.15] overflow-hidden z-0">
+        <Image
+          src="/assets/hero-bg/bg12.jpg"
+          alt=""
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
     </section>
   );
 }

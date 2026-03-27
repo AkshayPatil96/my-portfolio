@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Serif, Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import Script from "next/script";
 import LenisProvider from "@/components/LenisProvider";
 import Cursor from "@/components/Cursor";
 import Navbar from "@/components/Navbar";
@@ -33,7 +34,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Akshay | Full Stack Developer",
-  description: "Full Stack Developer · MERN · Next.js · AWS",
+  description: "Full Stack Developer · MERN · Next.js · Vue.js · AWS",
 };
 
 export default function RootLayout({
@@ -47,10 +48,6 @@ export default function RootLayout({
       className={`dark ${notoSerif.variable} ${manrope.variable} ${spaceGrotesk.variable}`}
     >
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
-        />
       </head>
       <body className="selection:bg-[#c8a97e]/20">
         <SpeedInsights />
@@ -61,6 +58,10 @@ export default function RootLayout({
           {children}
           <FooterSection />
         </LenisProvider>
+        {/* Load Material Symbols asynchronously — prevents render-blocking */}
+        <Script id="material-symbols" strategy="afterInteractive">
+          {`(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap';document.head.appendChild(l);})()`}
+        </Script>
         <Toaster
           duration={2000}
           toastOptions={{

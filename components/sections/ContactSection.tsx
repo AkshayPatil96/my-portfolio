@@ -1,15 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { toast } from "sonner";
 
 export default function ContactSection() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+
 
     const ctx = gsap.context(() => {
       gsap.to("#contact-inner", {

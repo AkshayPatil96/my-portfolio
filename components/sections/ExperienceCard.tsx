@@ -163,7 +163,7 @@ export default function ExperienceCard({
                         className="flex gap-5"
                       >
                         {/* Timeline dot */}
-                        <div className="flex-shrink-0 mt-1.5">
+                        <div className="hidden md:flex flex-shrink-0 mt-1.5">
                           <div
                             className="w-3.5 h-3.5 rounded-full border-2 z-10 relative"
                             style={{

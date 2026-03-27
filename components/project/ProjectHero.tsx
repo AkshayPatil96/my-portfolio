@@ -18,22 +18,49 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      tl.from("[data-hero-label]", { y: 20, opacity: 0, duration: 0.6, delay: 1.8 })
-        .from("[data-hero-title]", { y: 40, opacity: 0, duration: 0.8 }, "-=0.3")
+      tl.from("[data-hero-label]", {
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        delay: 1.8,
+      })
+        .from(
+          "[data-hero-title]",
+          { y: 40, opacity: 0, duration: 0.8 },
+          "-=0.3",
+        )
         .from("[data-hero-desc]", { y: 20, opacity: 0, duration: 0.6 }, "-=0.4")
-        .from("[data-hero-tags] span", { y: 10, opacity: 0, duration: 0.4, stagger: 0.06 }, "-=0.3")
-        .from("[data-hero-ctas] a", { y: 10, opacity: 0, duration: 0.4, stagger: 0.1 }, "-=0.2")
-        .from("[data-hero-screenshot]", { y: 30, opacity: 0, duration: 0.7, stagger: 0.15 }, "-=0.3");
+        .from(
+          "[data-hero-tags] span",
+          { y: 10, opacity: 0, duration: 0.4, stagger: 0.06 },
+          "-=0.3",
+        )
+        .from(
+          "[data-hero-ctas] a",
+          { y: 10, opacity: 0, duration: 0.4, stagger: 0.1 },
+          "-=0.2",
+        )
+        .from(
+          "[data-hero-screenshot]",
+          { y: 30, opacity: 0, duration: 0.7, stagger: 0.15 },
+          "-=0.3",
+        );
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative pt-32 pb-20 px-6 md:px-12 lg:px-24 bg-[#0B0B0B]">
+    <section
+      ref={sectionRef}
+      className="relative pt-32 pb-20 px-6 md:px-12 lg:px-24 bg-[#0B0B0B]"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Label */}
-        <p data-hero-label className="font-label text-xs uppercase tracking-[0.3em] text-primary/50 mb-6">
+        <p
+          data-hero-label
+          className="font-label text-xs uppercase tracking-[0.3em] text-primary/50 mb-6"
+        >
           CASE STUDY // {cs.number}
         </p>
 
@@ -46,12 +73,18 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
         </h1>
 
         {/* Description */}
-        <p data-hero-desc className="font-body text-on-surface-variant/70 text-base md:text-lg max-w-2xl mt-6 leading-relaxed">
+        <p
+          data-hero-desc
+          className="font-body text-on-surface-variant/70 text-base md:text-lg max-w-2xl mt-6 leading-relaxed"
+        >
           {cs.heroDescription}
         </p>
 
         {/* Tags */}
-        <div data-hero-tags className="flex flex-wrap gap-2 mt-8">
+        <div
+          data-hero-tags
+          className="flex flex-wrap gap-2 mt-8"
+        >
           {project.tags.map((tag) => (
             <span
               key={tag}
@@ -63,7 +96,10 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
         </div>
 
         {/* CTAs */}
-        <div data-hero-ctas className="flex items-center gap-8 mt-8">
+        <div
+          data-hero-ctas
+          className="flex items-center gap-4 md:gap-6 mt-8"
+        >
           {cs.liveUrl && (
             <Link
               href={cs.liveUrl}
@@ -71,8 +107,10 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
               rel="noopener noreferrer"
               className="mag-btn inline-flex items-center gap-2 font-label text-sm uppercase tracking-wider px-6 py-3 bg-primary text-background rounded-full hover:bg-primary-container transition-colors"
             >
-              View Live
-              <span className="material-symbols-outlined text-base">arrow_outward</span>
+              Live
+              <span className="material-symbols-outlined text-base">
+                arrow_outward
+              </span>
             </Link>
           )}
           {cs.githubUrl && (

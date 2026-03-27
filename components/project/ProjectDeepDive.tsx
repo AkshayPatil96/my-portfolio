@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import type { CaseStudy } from "@/lib/data";
 
 interface ProjectDeepDiveProps {
@@ -13,7 +12,7 @@ export default function ProjectDeepDive({ caseStudy }: ProjectDeepDiveProps) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+
 
     const ctx = gsap.context(() => {
       gsap.from("[data-dive-card]", {

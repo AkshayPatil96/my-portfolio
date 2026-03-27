@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { SECTIONS } from "@/lib/data";
 import { scrollTo } from "@/lib/lenisStore";
 
@@ -10,7 +9,7 @@ const NAV_SECTIONS = ["hero", "expertise", "about", "work", "experience", "conta
 
 export default function sFilmStrip() {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+
 
     const fsDots = document.querySelectorAll<HTMLButtonElement>(".fs-dot");
     const secNum = document.getElementById("section-num");

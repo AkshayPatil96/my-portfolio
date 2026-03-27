@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 /**
  * AboutImage — portrait photo panel with:
@@ -12,7 +11,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
  */
 export default function AboutImage() {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+
 
     gsap.to("#about-img", {
       scrollTrigger: {

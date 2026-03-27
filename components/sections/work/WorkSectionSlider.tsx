@@ -1,45 +1,65 @@
 "use client";
 
 /**
- * WorkSectionSlider — Fixed-size card carousel, horizontal scroll on scrub.
+ * WorkSectionSlider — One card per scroll step.
  *
- * The section pins while GSAP scrubs the card track sideways.
- * Cards stay the same width (like normal project cards) — they don't go full-screen.
+ * The section is pinned for (n × 100vh) of scroll. Each scroll
+ * "page" transitions to the next card: outgoing card exits up,
+ * incoming card enters from below.
  */
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { projects } from "@/lib/data";
 import ProjectCard from "./ProjectCard";
 
 export default function WorkSectionSlider() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const trackRef = useRef<HTMLDivElement>(null);
+  const counterRef = useRef<HTMLSpanElement>(null);
+  const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    const n = projects.length;
+    const cardEls = gsap.utils.toArray<HTMLElement>(".wss-card");
 
-    const container = containerRef.current;
-    const track = trackRef.current;
-    if (!container || !track) return;
+    // First card visible; rest hidden below
+    gsap.set(cardEls, { autoAlpha: 0, y: 60 });
+    gsap.set(cardEls[0], { autoAlpha: 1, y: 0 });
+
+    // Build a scrubbed timeline: each pair is exit → enter
+    const tl = gsap.timeline({ paused: true });
+    for (let i = 0; i < n - 1; i++) {
+      tl.to(cardEls[i], { autoAlpha: 0, y: -60, duration: 0.4, ease: "power2.in" })
+        .fromTo(
+          cardEls[i + 1],
+          { autoAlpha: 0, y: 60 },
+          { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }
+        );
+    }
+
+    const updateUI = (idx: number) => {
+      if (counterRef.current) {
+        counterRef.current.textContent = String(idx + 1).padStart(2, "0");
+      }
+      dotsRef.current.forEach((dot, i) => {
+        if (!dot) return;
+        dot.style.opacity = i === idx ? "1" : "0.25";
+        dot.style.transform = i === idx ? "scaleY(2.5)" : "scaleY(1)";
+      });
+    };
 
     const ctx = gsap.context(() => {
-      // Scroll distance = total track width minus the visible viewport width
-      const getScrollAmt = () => -(track.scrollWidth - container.offsetWidth);
-
-      gsap.to(track, {
-        x: getScrollAmt,
-        ease: "none",
-        scrollTrigger: {
-          trigger: container,
-          start: "top top",
-          // Give ~100px of scroll per 100px of overflow track
-          end: () => `+=${track.scrollWidth - container.offsetWidth + window.innerHeight * 0.5}`,
-          pin: true,
-          scrub: 1.2,
-          anticipatePin: 1,
-          invalidateOnRefresh: true,
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: "top top",
+        end: () => `+=${window.innerHeight * n}`,
+        pin: true,
+        anticipatePin: 1,
+        scrub: 1,
+        animation: tl,
+        invalidateOnRefresh: true,
+        onUpdate(self) {
+          updateUI(Math.min(Math.floor(self.progress * n), n - 1));
         },
       });
     }, containerRef);
@@ -51,7 +71,7 @@ export default function WorkSectionSlider() {
     <section
       ref={containerRef}
       id="work"
-      className="relative w-full h-screen overflow-hidden bg-surface-container-lowest flex flex-col justify-center"
+      className="relative w-full h-screen overflow-hidden bg-surface-container-lowest flex flex-col"
     >
       {/* Header */}
       <div className="flex-shrink-0 px-10 md:px-20 pt-16 pb-8 flex items-end justify-between">
@@ -63,33 +83,45 @@ export default function WorkSectionSlider() {
             Projects
           </h2>
         </div>
-        <p className="hidden md:block font-label text-[10px] uppercase tracking-widest text-on-surface-variant/30">
-          Scroll to browse →
-        </p>
+        <div className="hidden md:flex flex-col items-end gap-1">
+          <div className="flex items-baseline gap-1 font-label font-light tracking-tighter opacity-20">
+            <span ref={counterRef} className="text-4xl">01</span>
+            <span className="text-2xl opacity-60">/</span>
+            <span className="text-4xl">{String(projects.length).padStart(2, "0")}</span>
+          </div>
+          <p className="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">
+            Project / Total
+          </p>
+        </div>
       </div>
 
-      {/* Card track */}
-      <div
-        ref={trackRef}
-        className="flex items-center gap-6 px-10 md:px-20 pb-16 will-change-transform"
-        style={{ width: "max-content" }}
-      >
-        {projects.map((project, i) => (
-          <div
-            key={project.id}
-            className="flex-shrink-0"
-            style={{ width: "clamp(300px, 38vw, 520px)" }}
-          >
-            <ProjectCard
-              project={project}
-              index={i}
-              total={projects.length}
+      {/* Card stage */}
+      <div className="flex-1 relative overflow-hidden px-10 md:px-20 pb-12">
+        {/* Side progress dots */}
+        <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-[6px] z-10">
+          {projects.map((_, i) => (
+            <div
+              key={i}
+              ref={(el) => { dotsRef.current[i] = el; }}
+              className="w-[3px] h-[14px] rounded-full bg-primary transition-all duration-300 origin-center"
+              style={{ opacity: i === 0 ? 1 : 0.25, transform: i === 0 ? "scaleY(2.5)" : "scaleY(1)" }}
             />
-          </div>
-        ))}
+          ))}
+        </div>
 
-        {/* End spacer so last card can fully slide into view */}
-        <div className="flex-shrink-0 w-10 md:w-20" aria-hidden />
+        {/* Stacked cards — all absolute, centred */}
+        <div className="relative h-full max-w-2xl mx-auto">
+          {projects.map((project, i) => (
+            <div
+              key={project.id}
+              className="wss-card absolute inset-0 flex items-center"
+            >
+              <div className="w-full">
+                <ProjectCard project={project} index={i} total={projects.length} />
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* Progress bar at very bottom */}

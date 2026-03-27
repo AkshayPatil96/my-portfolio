@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { projects } from "@/lib/data";
 import ProjectCardClip from "./ProjectCardClip";
 import ProjectCardTilt from "./ProjectCardTilt";
@@ -21,60 +20,65 @@ const CARD_MAP: Record<string, ComponentType<{ project: Project }>> = {
 };
 
 export default function WorkSection() {
-  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const counterRef = useRef<HTMLSpanElement>(null);
+  const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const track = document.getElementById("work-track");
-    if (!track) return;
+    const n = projects.length;
+    const cardEls = gsap.utils.toArray<HTMLElement>(".work-card-item");
 
-    const cards = Array.from(
-      track.querySelectorAll<HTMLDivElement>(".proj-card-wrap")
-    );
-    const GAP = 32;
+    // Initial state: first card visible, rest hidden below
+    gsap.set(cardEls, { autoAlpha: 0, y: 50 });
+    gsap.set(cardEls[0], { autoAlpha: 1, y: 0 });
 
-    // Start all cards clipped
-    gsap.set(cards, { clipPath: "inset(0 100% 0 0)" });
+    // Build transition timeline: exit → enter for each pair
+    const tl = gsap.timeline({ paused: true });
+    for (let i = 0; i < n - 1; i++) {
+      tl.to(cardEls[i], {
+        autoAlpha: 0,
+        y: -50,
+        duration: 0.4,
+        ease: "power2.in",
+      }).fromTo(
+        cardEls[i + 1],
+        { autoAlpha: 0, y: 50 },
+        { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }
+      );
+    }
 
-    const totalScroll = () => {
-      let w = 0;
-      cards.forEach((c) => {
-        w += c.offsetWidth + GAP;
+    const updateIndicators = (idx: number) => {
+      if (counterRef.current) {
+        counterRef.current.textContent = String(idx + 1).padStart(2, "0");
+      }
+      dotsRef.current.forEach((dot, i) => {
+        if (!dot) return;
+        dot.style.opacity = i === idx ? "1" : "0.25";
+        dot.style.transform = i === idx ? "scaleY(2.5)" : "scaleY(1)";
       });
-      return w - window.innerWidth + 96;
     };
 
     const st = ScrollTrigger.create({
       trigger: "#work",
       start: "top top",
-      end: () => "+=" + (totalScroll() + window.innerHeight * 0.6),
+      end: () => `+=${window.innerHeight * n}`,
       pin: true,
       anticipatePin: 1,
-      scrub: 1.2,
+      scrub: 1,
+      animation: tl,
       invalidateOnRefresh: true,
       onUpdate(self) {
-        gsap.set(track, { x: -totalScroll() * self.progress });
-
-        const step = 1 / (cards.length + 1);
-        cards.forEach((card, i) => {
-          const start = i * step * 0.8;
-          const end = start + step * 1.4;
-          const t = Math.max(
-            0,
-            Math.min(1, (self.progress - start) / (end - start))
-          );
-          const pct = Math.round((1 - t) * 100);
-          card.style.clipPath = `inset(0 ${pct}% 0 0)`;
-        });
+        const idx = Math.min(Math.floor(self.progress * n), n - 1);
+        updateIndicators(idx);
       },
     });
 
-    // Generic fade-up for section header
+    // Fade-up for section header
     document.querySelectorAll<HTMLElement>("#work .gsap-fade").forEach((el) => {
       gsap.from(el, {
         scrollTrigger: {
-          trigger: el,
+          trigger: "#work",
           start: "top 88%",
           toggleActions: "play none none none",
         },
@@ -92,9 +96,9 @@ export default function WorkSection() {
   }, []);
 
   return (
-    <section id="work">
+    <section id="work" className="h-screen flex flex-col overflow-hidden">
       {/* Section header */}
-      <div className="px-8 md:px-12 pt-24 pb-12 flex justify-between items-end max-w-[1920px] mx-auto">
+      <div className="px-8 md:px-12 pt-16 pb-6 flex justify-between items-end max-w-[1920px] mx-auto w-full flex-shrink-0">
         <div className="gsap-fade">
           <span className="font-label text-xs uppercase tracking-[0.3em] text-primary block mb-2">
             02 / selected work
@@ -104,32 +108,50 @@ export default function WorkSection() {
           </h2>
         </div>
         <div className="hidden md:block text-right gsap-fade" data-delay="0.15">
-          <span className="font-label text-4xl font-light tracking-tighter opacity-20">
-            04
-          </span>
+          <div className="flex items-baseline gap-1">
+            <span ref={counterRef} className="font-label text-4xl font-light tracking-tighter opacity-20">
+              01
+            </span>
+            <span className="font-label text-4xl font-light tracking-tighter opacity-10">/</span>
+            <span className="font-label text-4xl font-light tracking-tighter opacity-20">
+              {String(projects.length).padStart(2, "0")}
+            </span>
+          </div>
           <p className="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant mt-1">
-            Projects / Total
+            Project / Total
           </p>
         </div>
       </div>
 
-      {/* Horizontal scroll track */}
-      <div id="work-pin-wrap" style={{ overflow: "hidden" }}>
-        <div id="work-sticky" className="px-8 md:px-12 pb-20 overflow-hidden">
-          <div id="work-track">
-            {projects.map((project, i) => {
-              const CardComponent = CARD_MAP[project.variant];
-              return (
-                <div
-                  key={project.id}
-                  className="proj-card-wrap"
-                  ref={(el) => { cardRefs.current[i] = el; }}
-                >
+      {/* Cards stage */}
+      <div className="flex-1 relative overflow-hidden px-8 md:px-12 pb-10">
+        {/* Progress dots */}
+        <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 flex flex-col gap-[6px] z-10">
+          {projects.map((_, i) => (
+            <div
+              key={i}
+              ref={(el) => { dotsRef.current[i] = el; }}
+              className="w-[3px] h-[14px] rounded-full bg-primary transition-all duration-300 origin-center"
+              style={{ opacity: i === 0 ? 1 : 0.25, transform: i === 0 ? "scaleY(2.5)" : "scaleY(1)" }}
+            />
+          ))}
+        </div>
+
+        {/* Stacked cards */}
+        <div className="relative h-full max-w-5xl mx-auto">
+          {projects.map((project, i) => {
+            const CardComponent = CARD_MAP[project.variant];
+            return (
+              <div
+                key={project.id}
+                className="work-card-item absolute inset-0 flex items-center"
+              >
+                <div className="w-full">
                   <CardComponent project={project} />
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

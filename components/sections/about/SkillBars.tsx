@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { skills } from "@/lib/data";
 
 /**
@@ -12,7 +11,7 @@ import { skills } from "@/lib/data";
  */
 export default function SkillBars() {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+
 
     ScrollTrigger.create({
       trigger: "#skill-bars",

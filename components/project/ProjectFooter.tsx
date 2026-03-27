@@ -8,8 +8,13 @@ interface ProjectFooterProps {
   allProjects: Project[];
 }
 
-export default function ProjectFooter({ currentProject, allProjects }: ProjectFooterProps) {
-  const currentIndex = allProjects.findIndex((p) => p.slug === currentProject.slug);
+export default function ProjectFooter({
+  currentProject,
+  allProjects,
+}: ProjectFooterProps) {
+  const currentIndex = allProjects.findIndex(
+    (p) => p.slug === currentProject.slug,
+  );
   const nextProject = allProjects[(currentIndex + 1) % allProjects.length];
 
   return (
@@ -37,23 +42,6 @@ export default function ProjectFooter({ currentProject, allProjects }: ProjectFo
           >
             View All Projects
           </Link>
-        </div>
-
-        {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-outline-variant/10">
-          <p className="font-label text-xs text-on-surface-variant/30">
-            &copy; {new Date().getFullYear()} AKSHAY. BUILT WITH PRECISION.
-          </p>
-          <div className="flex items-center gap-6">
-            {["Twitter", "LinkedIn", "GitHub", "Email"].map((link) => (
-              <span
-                key={link}
-                className="font-label text-xs uppercase tracking-wider text-on-surface-variant/30 hover:text-primary/60 transition-colors cursor-pointer"
-              >
-                {link}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </footer>

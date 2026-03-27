@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { experiences } from "@/lib/data";
 import ExperienceCard from "./ExperienceCard";
 
@@ -10,8 +9,6 @@ export default function ExperienceSection() {
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const ctx = gsap.context(() => {
       // Timeline SVG line draw via scrub
       const tlLine = document.getElementById("tl-line");

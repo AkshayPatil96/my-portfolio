@@ -10,8 +10,7 @@
  */
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import SplitType from "split-type";
 import { coreStack } from "@/lib/data";
 import { calculateExperience } from "@/lib/utils";
@@ -34,8 +33,6 @@ export default function AboutSectionAlt() {
   const counterRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
     const ctx = gsap.context(() => {
       // Portrait parallax
       gsap.to("#alt-about-img", {

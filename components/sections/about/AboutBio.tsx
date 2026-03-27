@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/lib/gsap";
 import SplitType from "split-type";
 import { coreStack } from "@/lib/data";
 import SkillBars from "./SkillBars";
@@ -15,7 +14,7 @@ import SkillBars from "./SkillBars";
  */
 export default function AboutBio() {
   useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+
 
     // Title word reveal
     ScrollTrigger.create({

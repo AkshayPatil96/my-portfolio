@@ -40,6 +40,7 @@ export interface CaseStudy {
   };
   architectureImage?: string;
   architectureCaption?: string;
+  architectureNote?: string;
   deepDive: {
     eyebrow: string;
     cards: DeepDiveCard[];
@@ -49,6 +50,10 @@ export interface CaseStudy {
     title: string;
     items: HardPartItem[];
     stats: Stat[];
+  };
+  tradeoffs?: {
+    eyebrow: string;
+    items: string[];
   };
   retrospective: {
     eyebrow: string;
@@ -98,105 +103,118 @@ export const projects: Project[] = [
     title: "Real-Time Chat Platform",
     slug: "real-time-chat-platform",
     description:
-      "Built a production-grade real-time chat system with WebSocket-based messaging, presence tracking, and media sharing. Designed scalable backend architecture with modular services, Redis-based rate limiting, and optimized data flows for real-time performance.",
+      "Designed and built a real-time messaging platform supporting multi-tab presence, delivery guarantees, and scalable pagination — solving consistency challenges in distributed real-time systems.",
     impact:
-      "Handles real-time messaging with delivery states, typing indicators, and O(1) pagination for large conversation datasets.",
-    image: "/assets/images/real-chat-preview.png",
-    tags: ["Socket.IO", "Redis", "PostgreSQL", "Next.js", "Node.js"],
+      "Achieved consistent real-time message delivery across multiple concurrent sessions with O(1) pagination and resilient presence tracking — ensuring no duplicate messages, accurate online status, and stable performance under growing datasets.",
+    image: "https://placehold.co/800x450/1a1a1a/e5c497?text=Real-Chat+Preview",
+    tags: ["Socket.IO", "Redis", "MongoDB", "React", "Node.js", "Express", "Clerk", "AWS S3"],
     variant: "tiltneon",
     caseStudy: {
       number: "01",
       heroDescription:
-        "Production-grade messaging system with real-time sync, presence tracking, and scalable architecture.",
-      liveUrl: "#",
-      githubUrl: "#",
+        "A real-time messaging system engineered for consistency, presence accuracy, and scalable data access — built to handle the edge cases most chat apps ignore.",
+      liveUrl: "https://real-chat.akshforge.com/",
+      githubUrl: "https://github.com/AkshayPatil96/real-chat",
       screenshots: [
-        "https://placehold.co/560x380/1a1a1a/e5c497?text=Redis+Tracker",
-        "https://placehold.co/560x380/1a1a1a/e5c497?text=Chat+Message+Analytics",
+        "https://placehold.co/560x380/1a1a1a/e5c497?text=Chat+Conversation+View",
+        "https://placehold.co/560x380/1a1a1a/e5c497?text=Presence+%26+Typing+Indicators",
       ],
       challenge: {
         eyebrow: "THE CHALLENGE",
-        title: "Scaling the Conversational Flow",
+        title: "Reliable Messaging at Concurrent Scale",
         description:
-          "The primary bottleneck in building high-concurrency chat systems isn't just delivering a message — it's ensuring absolute consistency across distributed nodes. Legacy systems often struggle with message ordering during network partitions, race conditions in presence tracking, and the \"thundering herd\" problem during peak user activity.",
+          "The core challenge wasn't just sending messages — it was guaranteeing ordering, delivery state consistency, and presence accuracy across multiple browser tabs and reconnection scenarios. Webhook signature verification required raw body preservation before Express middleware parsing. Atomic consistency between message creation and conversation metadata updates demanded careful transaction orchestration. Meanwhile, rate limiting had to be distributed across potential server instances without falling back to fragile in-memory stores.",
       },
       engineeringResponse: {
         eyebrow: "ENGINEERING RESPONSE",
-        title: "Architectural Equilibrium",
+        title: "Modular Monolith with Real-Time Backbone",
         solutions: [
           {
             icon: "wifi",
-            title: "WebSocket Chatter with Redis Pub/Sub",
+            title: "Socket.IO with Redis Presence",
             description:
-              "Enabled horizontal scaling of socket servers by using Redis as a shared message broker, ensuring cross-instance synchronization.",
+              "Enabled real-time messaging with Socket.IO, backed by Redis presence tracking using atomic INCR/DECR counters and TTL heartbeats — ensuring accurate multi-tab online/offline state without false disconnects.",
           },
           {
             icon: "view_list",
             title: "Cursor-Based Pagination",
             description:
-              "Implemented created-at and id-based pagination to prevent duplicate message rendering and heavy database offsets during scroll-back.",
+              "Replaced offset-based queries with opaque base64-encoded cursors keyed on (createdAt, _id), delivering O(1) pagination performance and preventing duplicate rendering during concurrent real-time inserts.",
           },
           {
             icon: "hub",
-            title: "Modular Presence Service",
+            title: "SOLID Modular Architecture",
             description:
-              "Decoupled presence logic into a dedicated Redis-backed micro-service to handle heartbeat signals without saturating the main API.",
+              "Decomposed the backend into 7 domain modules (Users, Conversations, Messages, Chat-Requests, Presence, Uploads, Webhooks) — each with its own model, repository, service, controller, and validator layers following interface-driven dependency injection.",
           },
         ],
       },
       architectureImage:
-        "https://placehold.co/800x300/131313/e5c497?text=System+Architecture+Abstract",
-      architectureCaption: "SYSTEM ARCHITECTURE ABSTRACT",
+        "https://placehold.co/800x300/131313/e5c497?text=Modular+Monolith+Architecture",
+      architectureCaption: "MODULAR MONOLITH — LAYERED SERVICE ARCHITECTURE", architectureNote:
+        "Chose a modular monolith over microservices to maintain deployment simplicity while preserving clear domain boundaries and scalability.",
       deepDive: {
         eyebrow: "DEEP DIVE",
         cards: [
           {
             icon: "bolt",
-            title: "Why Redis?",
+            title: "Why Redis for Presence?",
             description:
-              "To maintain sub-50ms latency for presence tracking and message delivery across global regions, an in-memory store was non-negotiable. Redis's native Pub/Sub and sorted-set handling fit high-velocity data better than any traditional RDBMS.",
+              "Presence tracking requires sub-second latency and atomic updates — Redis INCR/DECR with TTL enabled accurate multi-session tracking without race conditions.",
           },
           {
             icon: "grid_view",
-            title: "Cursor Pagination",
+            title: "Cursor Pagination Internals",
             description:
-              "Unlike offset-based systems, cursor pagination preserves performance as the message history grows into millions. It provides a stable \"snapshot\" of the list, preventing UI flickers when new messages arrive during historical fetch.",
+              "Each cursor encodes a base64 JSON of { createdAt, _id }. The query filters using a compound condition (createdAt < cursor OR createdAt = cursor AND _id < cursor._id) against a compound descending index, yielding stable reverse-chronological traversal immune to mid-scroll inserts.",
           },
           {
             icon: "cloud",
-            title: "Socket.IO Utility",
+            title: "S3 Upload State Machine",
             description:
-              "While raw WebSockets are lean, Socket.IO provides critical fallbacks (HTTP long-polling), automatic reconnection logic, and room/namespace abstractions that accelerated the development of concurrent group-chat features.",
+              "File uploads follow a temp-to-final S3 flow: presigned PUT URL → upload to temp/ prefix → on message send, backend atomically copies to final path and deletes temp. A 24-hour S3 lifecycle rule auto-cleans orphaned temp files, preventing storage leaks.",
           },
         ],
       },
       hardParts: {
         eyebrow: "THE HARD PARTS",
-        title: "Navigating Friction",
+        title: "Navigating Real-Time Friction",
         items: [
           {
-            title: "Multi-Device Presence",
+            title: "Solving Multi-Tab Presence Consistency",
             description:
-              "Syncing \"Online\" status across multiple tabs and mobile apps without triggering state-change floods. Solved using a debounced TTL (Time-To-Live) strategy in Redis.",
+              "Each browser tab opens its own socket connection, so a naive approach would toggle users offline every time a single tab closes. Solved with Redis INCR/DECR counters per userId — only emitting 'user:offline' when the count drops to zero, paired with a 120s TTL heartbeat as a safety net.",
           },
           {
-            title: "Message Deduplication",
+            title: "Atomic Message + Conversation Updates",
             description:
-              "Handling network retries from the client-side that might result in double messages. Implemented client-side UUID generation and server-side idempotency checks.",
+              "Creating a message and updating the conversation's lastMessage field must succeed or fail together. Implemented a withTransaction() helper wrapping MongoDB sessions, ensuring atomic rollback on any failure — critical for the chat-request accept flow which creates a conversation and updates request status in one transaction.",
+          },
+          {
+            title: "Webhook Body Parsing Order",
+            description:
+              "Clerk webhooks require the raw request body for Svix HMAC signature verification, but Express.json() consumes it. Solved by registering webhook routes with express.raw() before any body-parsing middleware in the middleware chain.",
           },
         ],
         stats: [
-          { value: "99.9%", label: "MESSAGE UPTIME" },
-          { value: "<40ms", label: "DELIVERY LATENCY" },
-          { value: "10k+", label: "CONCURRENT SOCKETS" },
-          { value: "Zero", label: "ORDERING DRIFTS" },
+          { value: "7", label: "DOMAIN MODULES" },
+          { value: "120s", label: "PRESENCE TTL" },
+          { value: "O(1)", label: "PAGINATION COST" },
+          { value: "3-Stage", label: "DELIVERY TRACKING" },
         ],
+      }, tradeoffs: {
+        eyebrow: "TRADE-OFFS",
+        items: [
+          "Chose Redis over in-memory state for presence to support horizontal scaling",
+          "Used modular monolith instead of microservices to reduce deployment complexity",
+          "Implemented cursor pagination to avoid offset inefficiencies at scale",
+        ]
       },
       retrospective: {
         eyebrow: "RETROSPECTIVE",
-        quote: "Design for Failure, Build for Scale.",
+        quote: "Design for Disconnection, Build for Consistency.",
         closing:
-          "The biggest takeaway was the shift from \"how do I make this work\" to \"how does this system fail gracefully.\" Real-time engineering taught me that synchronization is more about handling disconnected states and eventual consistency than just fast pipelines.",
+          "The biggest lesson was that real-time systems are fundamentally about handling the unhappy path — socket disconnects, stale presence state, partial transaction failures, and orphaned uploads. Every feature demanded thinking in terms of 'what happens when this fails mid-way?' rather than just the success flow. Building the cursor pagination and presence counter systems taught me that elegant distributed design often comes down to choosing the right data structure at the right layer.",
       },
     },
   },

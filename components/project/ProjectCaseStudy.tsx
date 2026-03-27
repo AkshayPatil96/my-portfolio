@@ -5,6 +5,7 @@ import ProjectHero from "./ProjectHero";
 import ProjectChallenge from "./ProjectChallenge";
 import ProjectDeepDive from "./ProjectDeepDive";
 import ProjectHardParts from "./ProjectHardParts";
+import ProjectTradeoffs from "./ProjectTradeoffs";
 import ProjectRetrospective from "./ProjectRetrospective";
 import ProjectFooter from "./ProjectFooter";
 
@@ -40,6 +41,7 @@ export default function ProjectCaseStudy({ project, allProjects }: ProjectCaseSt
       <ProjectChallenge caseStudy={cs} />
       <ProjectDeepDive caseStudy={cs} />
       <ProjectHardParts caseStudy={cs} />
+      <ProjectTradeoffs caseStudy={cs} />
       <ProjectRetrospective caseStudy={cs} />
       <ProjectFooter currentProject={project} allProjects={allProjects} />
     </>

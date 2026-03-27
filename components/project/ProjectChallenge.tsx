@@ -124,6 +124,11 @@ export default function ProjectChallenge({ caseStudy }: ProjectChallengeProps) {
                 {caseStudy.architectureCaption}
               </p>
             )}
+            {caseStudy.architectureNote && (
+              <p className="font-body text-on-surface-variant/50 text-sm text-center mt-3 max-w-2xl mx-auto leading-relaxed">
+                {caseStudy.architectureNote}
+              </p>
+            )}
           </div>
         )}
       </div>

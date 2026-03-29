@@ -47,8 +47,7 @@ export default function FooterSection() {
 function BackToTop() {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    const hero = document.getElementById("hero");
-    if (hero) scrollTo(hero);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (

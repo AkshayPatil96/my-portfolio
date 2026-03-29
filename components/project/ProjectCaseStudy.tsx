@@ -1,10 +1,13 @@
 "use client";
 
 import type { Project } from "@/lib/data";
+import { diagramConfigs } from "@/lib/diagram-data";
 import ProjectHero from "./ProjectHero";
 import ProjectChallenge from "./ProjectChallenge";
 import ProjectDeepDive from "./ProjectDeepDive";
 import ProjectHardParts from "./ProjectHardParts";
+import ProjectInfrastructure from "./ProjectInfrastructure";
+import InfraDiagram from "./InfraDiagram";
 import ProjectTradeoffs from "./ProjectTradeoffs";
 import ProjectRetrospective from "./ProjectRetrospective";
 import ProjectFooter from "./ProjectFooter";
@@ -16,6 +19,7 @@ interface ProjectCaseStudyProps {
 
 export default function ProjectCaseStudy({ project, allProjects }: ProjectCaseStudyProps) {
   const cs = project.caseStudy;
+  const hasDiagram = project.slug in diagramConfigs;
 
   if (!cs) {
     return (
@@ -41,6 +45,8 @@ export default function ProjectCaseStudy({ project, allProjects }: ProjectCaseSt
       <ProjectChallenge caseStudy={cs} />
       <ProjectDeepDive caseStudy={cs} />
       <ProjectHardParts caseStudy={cs} />
+      {cs.infrastructure && <ProjectInfrastructure caseStudy={cs} />}
+      {hasDiagram && <InfraDiagram slug={project.slug} />}
       <ProjectTradeoffs caseStudy={cs} />
       <ProjectRetrospective caseStudy={cs} />
       <ProjectFooter currentProject={project} allProjects={allProjects} />

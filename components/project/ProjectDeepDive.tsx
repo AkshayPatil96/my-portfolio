@@ -32,7 +32,7 @@ export default function ProjectDeepDive({ caseStudy }: ProjectDeepDiveProps) {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 px-6 md:px-12 lg:px-24 bg-[#0e0e0e]">
+    <section ref={sectionRef} className="py-12 px-6 md:px-12 lg:px-24 bg-[#0e0e0e]">
       <div className="max-w-6xl mx-auto">
         <p className="font-label text-xs uppercase tracking-[0.3em] text-primary/50 mb-12">
           {caseStudy.deepDive.eyebrow}

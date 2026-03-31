@@ -13,8 +13,6 @@ export default function ProjectChallenge({ caseStudy }: ProjectChallengeProps) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-
-
     const ctx = gsap.context(() => {
       gsap.from("[data-challenge-left] > *", {
         scrollTrigger: {
@@ -58,7 +56,10 @@ export default function ProjectChallenge({ caseStudy }: ProjectChallengeProps) {
   }, [caseStudy.architectureImage]);
 
   return (
-    <section ref={sectionRef} className="py-24 px-6 md:px-12 lg:px-24 bg-[#0B0B0B]">
+    <section
+      ref={sectionRef}
+      className="py-12 px-6 md:px-12 lg:px-24 bg-[#0B0B0B]"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
@@ -86,7 +87,10 @@ export default function ProjectChallenge({ caseStudy }: ProjectChallengeProps) {
 
             <div className="space-y-6">
               {caseStudy.engineeringResponse.solutions.map((sol, i) => (
-                <div key={i} className="flex gap-4">
+                <div
+                  key={i}
+                  className="flex gap-4"
+                >
                   <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <span className="material-symbols-outlined text-primary text-lg">
                       {sol.icon}
@@ -105,31 +109,6 @@ export default function ProjectChallenge({ caseStudy }: ProjectChallengeProps) {
             </div>
           </div>
         </div>
-
-        {/* Architecture Image */}
-        {caseStudy.architectureImage && (
-          <div data-arch-image className="mt-20">
-            <div className="relative aspect-[8/3] rounded-lg overflow-hidden border border-outline-variant/20 bg-surface-container">
-              <Image
-                src={caseStudy.architectureImage}
-                alt={caseStudy.architectureCaption || "Architecture diagram"}
-                fill
-                className="object-cover"
-                sizes="100vw"
-              />
-            </div>
-            {caseStudy.architectureCaption && (
-              <p className="font-label text-[10px] uppercase tracking-[0.3em] text-primary/30 text-center mt-4">
-                {caseStudy.architectureCaption}
-              </p>
-            )}
-            {caseStudy.architectureNote && (
-              <p className="font-body text-on-surface-variant/50 text-sm text-center mt-3 max-w-2xl mx-auto leading-relaxed">
-                {caseStudy.architectureNote}
-              </p>
-            )}
-          </div>
-        )}
       </div>
     </section>
   );

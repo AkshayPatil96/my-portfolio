@@ -93,6 +93,17 @@ export default function ProjectCard({
             </span>
           ))}
         </div>
+
+        {/* Case study CTA — always visible */}
+        {project.caseStudy && (
+          <div className="flex items-center gap-2 pt-2 text-primary/60 group-hover:text-primary transition-colors duration-300">
+            <span className="material-symbols-outlined text-[16px]">article</span>
+            <span className="font-label text-[11px] uppercase tracking-[0.15em]">
+              View Case Study
+            </span>
+            <span className="inline-block text-sm transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </div>
+        )}
       </div>
     </div>
   );

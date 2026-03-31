@@ -2,8 +2,10 @@
 
 import type { Project } from "@/lib/data";
 import { diagramConfigs } from "@/lib/diagram-data";
+import { architectureConfigs } from "@/lib/architecture-data";
 import ProjectHero from "./ProjectHero";
 import ProjectChallenge from "./ProjectChallenge";
+import ArchitectureDiagram from "./ArchitectureDiagram";
 import ProjectDeepDive from "./ProjectDeepDive";
 import ProjectHardParts from "./ProjectHardParts";
 import ProjectInfrastructure from "./ProjectInfrastructure";
@@ -20,6 +22,7 @@ interface ProjectCaseStudyProps {
 export default function ProjectCaseStudy({ project, allProjects }: ProjectCaseStudyProps) {
   const cs = project.caseStudy;
   const hasDiagram = project.slug in diagramConfigs;
+  const hasArchDiagram = project.slug in architectureConfigs;
 
   if (!cs) {
     return (
@@ -43,6 +46,7 @@ export default function ProjectCaseStudy({ project, allProjects }: ProjectCaseSt
     <>
       <ProjectHero project={project} />
       <ProjectChallenge caseStudy={cs} />
+      {hasArchDiagram && <ArchitectureDiagram slug={project.slug} caseStudy={cs} />}
       <ProjectDeepDive caseStudy={cs} />
       <ProjectHardParts caseStudy={cs} />
       {cs.infrastructure && <ProjectInfrastructure caseStudy={cs} />}

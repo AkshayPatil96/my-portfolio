@@ -32,7 +32,7 @@ export default function ProjectRetrospective({ caseStudy }: ProjectRetrospective
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-32 px-6 md:px-12 lg:px-24 bg-[#0e0e0e]">
+    <section ref={sectionRef} className="py-12 px-6 md:px-12 lg:px-24 bg-[#0e0e0e]">
       <div className="max-w-3xl mx-auto text-center">
         <p
           data-retro-label

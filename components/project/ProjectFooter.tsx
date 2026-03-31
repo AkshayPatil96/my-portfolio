@@ -21,7 +21,7 @@ export default function ProjectFooter({
       : null;
 
   return (
-    <footer className="py-16 px-6 md:px-12 lg:px-24 bg-[#0B0B0B] border-t border-outline-variant/10">
+    <footer className="py-12 px-6 md:px-12 lg:px-24 bg-[#0B0B0B] border-t border-outline-variant/10">
       <div className="max-w-6xl mx-auto">
         {/* Next project link */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">

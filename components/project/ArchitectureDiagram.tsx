@@ -17,100 +17,72 @@ import ReactFlow, {
 } from "reactflow";
 import "reactflow/dist/style.css";
 import {
-  diagramConfigs,
-  type DiagramConfig,
-  type DiagramGroup,
-  type DiagramNodeConfig,
-  type DiagramEdgeConfig,
-} from "@/lib/diagram-data";
+  architectureConfigs,
+  archColors,
+  archGroupLabels,
+  type ArchDiagramConfig,
+  type ArchGroup,
+  type ArchNodeConfig,
+  type ArchEdgeConfig,
+} from "@/lib/architecture-data";
+import { CaseStudy } from "@/lib/projects-data";
 
-// ─── Group Colors ────────────────────────────────────────────────
-const colors: Record<DiagramGroup, { bg: string; border: string; text: string; glow: string }> = {
-  infra: { bg: "#0d1b2a", border: "#1b4965", text: "#a8dadc", glow: "rgba(27,73,101,0.3)" },
-  app: { bg: "#0b2b1a", border: "#2d6a4f", text: "#95d5b2", glow: "rgba(45,106,79,0.3)" },
-  data: { bg: "#1a0b2e", border: "#5a189a", text: "#c77dff", glow: "rgba(90,24,154,0.3)" },
-  external: { bg: "#2b1a00", border: "#e76f51", text: "#f4a261", glow: "rgba(231,111,81,0.3)" },
-  cicd: { bg: "#1a1a1a", border: "#6c757d", text: "#adb5bd", glow: "rgba(108,117,125,0.3)" },
-};
+// ─── Custom Node ─────────────────────────────────────────────────
 
-const typeForGroup: Record<DiagramGroup, string> = {
-  infra: "infraNode",
-  app: "appNode",
-  data: "dataNode",
-  external: "externalNode",
-  cicd: "cicdNode",
-};
-
-const groupLabelNames: Record<DiagramGroup, string> = {
-  infra: "INFRASTRUCTURE",
-  app: "APPLICATION",
-  data: "DATA LAYER",
-  external: "EXTERNAL SERVICES",
-  cicd: "CI/CD",
-};
-
-// ─── Custom Node Component ───────────────────────────────────────
-interface DiagramNodeData {
+interface ArchNodeData {
   label: string;
-  group: DiagramGroup;
-  badge?: string;
-  dashed?: boolean;
+  group: ArchGroup;
   tooltip?: string;
+  dashed?: boolean;
 }
 
-const DiagramNode = memo(({ data }: NodeProps<DiagramNodeData>) => {
+const ArchNode = memo(({ data }: NodeProps<ArchNodeData>) => {
   const [hovered, setHovered] = useState(false);
-  const group = colors[data.group];
+  const c = archColors[data.group];
 
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: group.bg,
-        border: `1.5px ${data.dashed ? "dashed" : "solid"} ${group.border}`,
+        background: c.bg,
+        border: `1.5px ${data.dashed ? "dashed" : "solid"} ${c.border}`,
         borderRadius: 12,
         padding: "10px 18px",
-        color: group.text,
+        color: c.text,
         fontSize: 13,
         fontWeight: 600,
         textAlign: "center",
         minWidth: 150,
         whiteSpace: "pre-line",
         lineHeight: "1.45",
-        boxShadow: hovered ? `0 0 20px ${group.glow}` : `0 0 8px ${group.glow}`,
+        boxShadow: hovered ? `0 0 24px ${c.glow}` : `0 0 10px ${c.glow}`,
         transition: "box-shadow 0.2s ease",
         position: "relative",
       }}
     >
-      <Handle type="target" position={Position.Left} style={{ opacity: 0 }} />
-      <Handle type="source" position={Position.Right} style={{ opacity: 0 }} />
-      <Handle type="target" position={Position.Top} style={{ opacity: 0 }} />
-      <Handle type="source" position={Position.Bottom} style={{ opacity: 0 }} />
+      <Handle
+        type="target"
+        position={Position.Top}
+        style={{ opacity: 0 }}
+      />
+      <Handle
+        type="source"
+        position={Position.Bottom}
+        style={{ opacity: 0 }}
+      />
+      <Handle
+        type="target"
+        position={Position.Left}
+        style={{ opacity: 0 }}
+      />
+      <Handle
+        type="source"
+        position={Position.Right}
+        style={{ opacity: 0 }}
+      />
 
       {data.label}
-
-      {data.badge && (
-        <div
-          style={{
-            position: "absolute",
-            bottom: -22,
-            left: "50%",
-            transform: "translateX(-50%)",
-            background: colors.infra.border,
-            color: colors.infra.text,
-            fontSize: 9,
-            fontWeight: 700,
-            letterSpacing: "0.08em",
-            textTransform: "uppercase",
-            padding: "2px 8px",
-            borderRadius: 4,
-            whiteSpace: "nowrap",
-          }}
-        >
-          {data.badge}
-        </div>
-      )}
 
       {hovered && data.tooltip && (
         <div
@@ -120,7 +92,7 @@ const DiagramNode = memo(({ data }: NodeProps<DiagramNodeData>) => {
             left: "50%",
             transform: "translateX(-50%)",
             background: "#1a1a1a",
-            border: `1px solid ${group.border}`,
+            border: `1px solid ${c.border}`,
             borderRadius: 8,
             padding: "8px 12px",
             color: "#e0e0e0",
@@ -128,7 +100,7 @@ const DiagramNode = memo(({ data }: NodeProps<DiagramNodeData>) => {
             fontWeight: 400,
             lineHeight: "1.4",
             whiteSpace: "nowrap",
-            maxWidth: 280,
+            maxWidth: 320,
             zIndex: 50,
             pointerEvents: "none",
             boxShadow: "0 4px 16px rgba(0,0,0,0.5)",
@@ -140,18 +112,27 @@ const DiagramNode = memo(({ data }: NodeProps<DiagramNodeData>) => {
     </div>
   );
 });
-DiagramNode.displayName = "DiagramNode";
+ArchNode.displayName = "ArchNode";
 
 // ─── Node Types ──────────────────────────────────────────────────
+
 const nodeTypes: NodeTypes = {
-  infraNode: DiagramNode,
-  appNode: DiagramNode,
-  dataNode: DiagramNode,
-  externalNode: DiagramNode,
-  cicdNode: DiagramNode,
+  apiNode: ArchNode,
+  applicationNode: ArchNode,
+  domainNode: ArchNode,
+  dataAccessNode: ArchNode,
+  crossCuttingNode: ArchNode,
 };
 
-// ─── Build ReactFlow nodes / edges from config ──────────────────
+const typeForGroup: Record<ArchGroup, string> = {
+  api: "apiNode",
+  application: "applicationNode",
+  domain: "domainNode",
+  dataAccess: "dataAccessNode",
+  crossCutting: "crossCuttingNode",
+};
+
+// ─── Build helpers ───────────────────────────────────────────────
 
 const groupLabelStyle = {
   background: "transparent",
@@ -164,45 +145,68 @@ const groupLabelStyle = {
   padding: 0,
 };
 
-function buildNodes(config: DiagramConfig): Node[] {
-  // Collect unique groups used + their min-y positions for label placement
-  const groupPositions = new Map<DiagramGroup, { minY: number; minX: number }>();
+function buildNodes(config: ArchDiagramConfig): Node[] {
+  // Derive group label positions from topmost node per group
+  const groupPos = new Map<ArchGroup, { minY: number; minX: number }>();
   for (const n of config.nodes) {
-    const existing = groupPositions.get(n.group);
+    const existing = groupPos.get(n.group);
     if (!existing || n.position.y < existing.minY) {
-      groupPositions.set(n.group, { minY: n.position.y, minX: n.position.x });
+      groupPos.set(n.group, { minY: n.position.y, minX: n.position.x });
     }
   }
 
-  // Generate group label nodes
-  const labels: Node[] = Array.from(groupPositions.entries()).map(([group, pos]) => ({
+  const labels: Node[] = Array.from(groupPos.entries()).map(([group, pos]) => ({
     id: `label-${group}`,
     type: "default",
-    data: { label: groupLabelNames[group] },
-    position: { x: pos.minX, y: pos.minY - 40 },
+    data: { label: archGroupLabels[group] },
+    position: { x: pos.minX, y: pos.minY - 36 },
     selectable: false,
     draggable: false,
-    style: { ...groupLabelStyle, color: `${colors[group].text}40` },
+    style: { ...groupLabelStyle, color: `${archColors[group].text}40` },
   }));
 
-  // Convert config nodes to ReactFlow nodes
-  const rfNodes: Node<DiagramNodeData>[] = config.nodes.map((n: DiagramNodeConfig) => ({
-    id: n.id,
-    type: typeForGroup[n.group],
-    data: {
-      label: n.label,
-      group: n.group,
-      badge: n.badge,
-      dashed: n.dashed,
-      tooltip: n.tooltip,
+  const rfNodes: Node<ArchNodeData>[] = config.nodes.map(
+    (n: ArchNodeConfig) => ({
+      id: n.id,
+      type: typeForGroup[n.group],
+      data: {
+        label: n.label,
+        group: n.group,
+        tooltip: n.tooltip,
+        dashed: n.dashed,
+      },
+      position: n.position,
+    }),
+  );
+
+  // Annotation nodes
+  const annotations: Node[] = (config.annotations ?? []).map((a) => ({
+    id: a.id,
+    type: "default",
+    data: { label: a.label },
+    position: a.position,
+    selectable: false,
+    draggable: false,
+    style: {
+      background:
+        a.style === "badge" ? "rgba(229,196,151,0.08)" : "transparent",
+      border: a.style === "badge" ? "1px solid rgba(229,196,151,0.2)" : "none",
+      borderRadius: a.style === "badge" ? 6 : 0,
+      padding: a.style === "badge" ? "4px 14px" : 0,
+      fontSize: a.style === "badge" ? 10 : 9,
+      fontWeight: 700,
+      letterSpacing: "0.2em",
+      textTransform: "uppercase" as const,
+      color: a.color ?? "#ffffff20",
+      pointerEvents: "none" as const,
+      whiteSpace: "nowrap" as const,
     },
-    position: n.position,
   }));
 
-  return [...labels, ...rfNodes];
+  return [...labels, ...annotations, ...rfNodes];
 }
 
-function buildEdges(config: DiagramConfig): Edge[] {
+function buildEdges(config: ArchDiagramConfig): Edge[] {
   const edgeBase = {
     type: "smoothstep" as const,
     animated: false,
@@ -223,7 +227,7 @@ function buildEdges(config: DiagramConfig): Edge[] {
     },
   };
 
-  return config.edges.map((e: DiagramEdgeConfig) => {
+  return config.edges.map((e: ArchEdgeConfig) => {
     const isPrimary = e.variant === "primary";
     const isDashed = e.variant === "dashed";
     const base = isPrimary ? primaryBase : edgeBase;
@@ -244,13 +248,13 @@ function buildEdges(config: DiagramConfig): Edge[] {
   });
 }
 
-function buildLegend(config: DiagramConfig) {
+function buildLegend(config: ArchDiagramConfig) {
   const usedGroups = new Set(config.nodes.map((n) => n.group));
   const hasPrimary = config.edges.some((e) => e.variant === "primary");
 
   const items = Array.from(usedGroups).map((g) => ({
-    label: groupLabelNames[g],
-    color: colors[g].border,
+    label: archGroupLabels[g],
+    color: archColors[g].border,
   }));
 
   if (hasPrimary) items.push({ label: "Primary Flow", color: "#a8dadc" });
@@ -258,20 +262,18 @@ function buildLegend(config: DiagramConfig) {
   return items;
 }
 
-// ─── Diagram Flow Component ─────────────────────────────────────
+// ─── Flow Component ──────────────────────────────────────────────
 
-function DiagramFlow({ config }: { config: DiagramConfig }) {
+function ArchFlow({ config }: { config: ArchDiagramConfig }) {
   const initialNodes = useMemo(() => buildNodes(config), [config]);
   const initialEdges = useMemo(() => buildEdges(config), [config]);
 
   const [nodes, , onNodesChange] = useNodesState(initialNodes);
   const [edges, , onEdgesChange] = useEdgesState(initialEdges);
-
   const stableNodeTypes = useMemo(() => nodeTypes, []);
 
-  // Build a group lookup from config nodes for MiniMap coloring
   const nodeGroupMap = useMemo(() => {
-    const map = new Map<string, DiagramGroup>();
+    const map = new Map<string, ArchGroup>();
     for (const n of config.nodes) map.set(n.id, n.group);
     return map;
   }, [config]);
@@ -294,7 +296,11 @@ function DiagramFlow({ config }: { config: DiagramConfig }) {
       proOptions={{ hideAttribution: true }}
       style={{ background: "#060606" }}
     >
-      <Background color="#ffffff08" gap={24} size={1} />
+      <Background
+        color="#ffffff08"
+        gap={24}
+        size={1}
+      />
       <Controls
         showInteractive={false}
         style={{
@@ -305,9 +311,10 @@ function DiagramFlow({ config }: { config: DiagramConfig }) {
       />
       <MiniMap
         nodeColor={(node) => {
-          if (node.id.startsWith("label-")) return "transparent";
+          if (node.id.startsWith("label-") || node.id.startsWith("ann-"))
+            return "transparent";
           const group = nodeGroupMap.get(node.id);
-          return group ? colors[group].border : "#6c757d";
+          return group ? archColors[group].border : "#6c757d";
         }}
         maskColor="#0B0B0Bcc"
         style={{
@@ -322,12 +329,16 @@ function DiagramFlow({ config }: { config: DiagramConfig }) {
 
 // ─── Exported Wrapper ────────────────────────────────────────────
 
-interface InfraDiagramProps {
+interface ArchitectureDiagramProps {
   slug: string;
+  caseStudy: CaseStudy;
 }
 
-export default function InfraDiagram({ slug }: InfraDiagramProps) {
-  const config = diagramConfigs[slug];
+export default function ArchitectureDiagram({
+  slug,
+  caseStudy,
+}: ArchitectureDiagramProps) {
+  const config = architectureConfigs[slug];
   if (!config) return null;
 
   const legendItems = buildLegend(config);
@@ -350,7 +361,10 @@ export default function InfraDiagram({ slug }: InfraDiagramProps) {
         {/* Legend */}
         <div className="flex flex-wrap gap-4 mb-6">
           {legendItems.map((item) => (
-            <div key={item.label} className="flex items-center gap-2">
+            <div
+              key={item.label}
+              className="flex items-center gap-2"
+            >
               <span
                 className="w-3 h-3 rounded-full"
                 style={{ backgroundColor: item.color }}
@@ -365,16 +379,22 @@ export default function InfraDiagram({ slug }: InfraDiagramProps) {
         {/* Diagram */}
         <div
           className="rounded-lg overflow-hidden border border-outline-variant/20"
-          style={{ height: 580 }}
+          style={{ height: 620 }}
         >
           <ReactFlowProvider>
-            <DiagramFlow config={config} />
+            <ArchFlow config={config} />
           </ReactFlowProvider>
         </div>
 
         <p className="font-label text-[10px] uppercase tracking-[0.3em] text-primary/30 text-center mt-4">
-          INTERACTIVE INFRASTRUCTURE DIAGRAM — DRAG · ZOOM · PAN · HOVER FOR DETAILS
+          INTERACTIVE ARCHITECTURE DIAGRAM — DRAG · ZOOM · PAN · HOVER FOR
+          DETAILS
         </p>
+        {caseStudy.architectureNote && (
+          <p className="font-body text-on-surface-variant/50 text-sm text-center mt-3 max-w-2xl mx-auto leading-relaxed">
+            {caseStudy.architectureNote}
+          </p>
+        )}
       </div>
     </section>
   );

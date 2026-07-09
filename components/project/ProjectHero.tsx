@@ -2,9 +2,9 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/lib/data";
+import ScreenshotCarousel from "./ScreenshotCarousel";
 
 interface ProjectHeroProps {
   project: Project;
@@ -42,7 +42,7 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
         )
         .from(
           "[data-hero-screenshot]",
-          { y: 30, opacity: 0, duration: 0.7, stagger: 0.15 },
+          { y: 30, opacity: 0, duration: 0.7 },
           "-=0.3",
         );
     }, sectionRef);
@@ -128,22 +128,13 @@ export default function ProjectHero({ project }: ProjectHeroProps) {
 
         {/* Screenshots */}
         {cs.screenshots.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
-            {cs.screenshots.map((src, i) => (
-              <div
-                key={i}
-                data-hero-screenshot
-                className="relative aspect-[4/3] rounded-lg overflow-hidden border border-outline-variant/20 bg-surface-container"
-              >
-                <Image
-                  src={src}
-                  alt={`${project.title} screenshot ${i + 1}`}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
-            ))}
+          <div data-hero-screenshot className="mt-16">
+            <ScreenshotCarousel
+              screenshots={cs.screenshots}
+              title={project.title}
+              autoplay
+              thumbnails
+            />
           </div>
         )}
       </div>

@@ -92,7 +92,16 @@ export const projects: Project[] = [
     impact:
       "Achieved consistent real-time message delivery across multiple concurrent sessions with O(1) pagination and resilient presence tracking — ensuring no duplicate messages, accurate online status, and stable performance under growing datasets. Additionally, the system supports zero-downtime deployments, automatic failover, and self-healing infrastructure for high availability.",
     image: "https://placehold.co/800x450/1a1a1a/e5c497?text=Real-Chat+Preview",
-    tags: ["Socket.IO", "Redis", "MongoDB", "React", "Node.js", "Express", "Clerk", "AWS S3"],
+    tags: [
+      "Socket.IO",
+      "Redis",
+      "MongoDB",
+      "React",
+      "Node.js",
+      "Express",
+      "Clerk",
+      "AWS S3",
+    ],
     variant: "tiltneon",
     caseStudy: {
       number: "01",
@@ -255,534 +264,183 @@ export const projects: Project[] = [
       },
     },
   },
-  // {
-  //   id: 2,
-  //   title: "Healthcare Analytics",
-  //   slug: "healthcare-analytics",
-  //   description:
-  //     "Predictive patient data modeling with county-level geo scoring and real-time trend visualization.",
-  //   image:
-  //     "https://lh3.googleusercontent.com/aida-public/AB6AXuAX9CqJ-LuDcNVkRDHTjdopfv_KE0fGm5zq9zCkY_Pa7q-azHrc8_IyMMXbiFj5I_1ufFPtZdxmf7KKD5UTJB29gWJBf6prOKWp_UaVsLek4DwWxBXJHKhIDp4QLG6ljnvNWZ6An7Av9PoYCAlLytLXLXfOstBiTrZxUpBYmBVOiRW-TQ2IIuM2vt9m8AyQWzZz4eKIk77cbuW9TeYnqVqE_8u2iLu_EbrPlSPtCLmvCPEuz2xk366sB28s-j3wq3dRjxJqrpZM0GaC",
-  //   tags: ["React", "Node.js", "MongoDB", "AWS"],
-  //   variant: "tiltneon",
-  //   caseStudy: {
-  //     number: "02",
-  //     heroDescription:
-  //       "Predictive patient data modeling platform with county-level geo scoring, real-time trend visualization, and HIPAA-compliant data pipelines.",
-  //     liveUrl: "#",
-  //     githubUrl: "#",
-  //     screenshots: [
-  //       "https://placehold.co/560x380/1a1a1a/e5c497?text=Patient+Dashboard",
-  //       "https://placehold.co/560x380/1a1a1a/e5c497?text=Geo+Scoring+Map",
-  //     ],
-  //     challenge: {
-  //       eyebrow: "THE CHALLENGE",
-  //       title: "Modeling Health at Scale",
-  //       description:
-  //         "Healthcare data is messy, inconsistent, and highly regulated. The challenge was building a system that could ingest data from multiple EMR sources, normalize it in real time, and surface actionable insights without violating HIPAA compliance boundaries.",
-  //     },
-  //     engineeringResponse: {
-  //       eyebrow: "ENGINEERING RESPONSE",
-  //       title: "Data Pipeline Architecture",
-  //       solutions: [
-  //         {
-  //           icon: "analytics",
-  //           title: "ETL Pipeline with Stream Processing",
-  //           description:
-  //             "Built a Node.js stream processor that normalizes incoming HL7/FHIR data into a unified schema, enabling real-time dashboard updates.",
-  //         },
-  //         {
-  //           icon: "map",
-  //           title: "County-Level Geo Scoring",
-  //           description:
-  //             "Aggregated patient outcomes by geographic region using MongoDB geospatial queries and D3.js choropleth maps.",
-  //         },
-  //         {
-  //           icon: "lock",
-  //           title: "HIPAA-Compliant Storage Layer",
-  //           description:
-  //             "Encrypted data at rest with AES-256, implemented role-based access controls, and maintained full audit trails.",
-  //         },
-  //       ],
-  //     },
-  //     architectureImage:
-  //       "https://placehold.co/800x300/131313/e5c497?text=Healthcare+Data+Pipeline",
-  //     architectureCaption: "DATA PIPELINE OVERVIEW",
-  //     deepDive: {
-  //       eyebrow: "DEEP DIVE",
-  //       cards: [
-  //         {
-  //           icon: "speed",
-  //           title: "Real-Time Scoring",
-  //           description:
-  //             "Patient risk scores update within seconds of new lab results arriving, using a weighted algorithm that factors in 40+ clinical variables.",
-  //         },
-  //         {
-  //           icon: "storage",
-  //           title: "MongoDB Aggregation",
-  //           description:
-  //             "Complex aggregation pipelines handle millions of records efficiently, producing county-level summaries without pre-computation.",
-  //         },
-  //         {
-  //           icon: "security",
-  //           title: "Compliance First",
-  //           description:
-  //             "Every API endpoint enforces role-based access. PHI data never leaves encrypted boundaries, and all queries are audit-logged.",
-  //         },
-  //       ],
-  //     },
-  //     hardParts: {
-  //       eyebrow: "THE HARD PARTS",
-  //       title: "Healthcare Complexity",
-  //       items: [
-  //         {
-  //           title: "Data Normalization",
-  //           description:
-  //             "Ingesting data from 12 different EMR systems, each with its own schema and terminology. Built a mapping layer that handles inconsistencies gracefully.",
-  //         },
-  //         {
-  //           title: "Latency vs. Accuracy",
-  //           description:
-  //             "Balancing real-time dashboard updates with the need for accurate, validated data. Implemented a two-phase commit: show preliminary, then confirm.",
-  //         },
-  //       ],
-  //       stats: [
-  //         { value: "2.4M", label: "RECORDS PROCESSED" },
-  //         { value: "<2s", label: "SCORE REFRESH" },
-  //         { value: "40+", label: "CLINICAL VARIABLES" },
-  //         { value: "100%", label: "HIPAA COMPLIANT" },
-  //       ],
-  //     },
-  //     retrospective: {
-  //       eyebrow: "RETROSPECTIVE",
-  //       quote: "Data Without Context Is Just Noise.",
-  //       closing:
-  //         "This project taught me that the hardest part of analytics isn't the math — it's understanding the domain deeply enough to ask the right questions. Working with healthcare professionals reshaped how I think about user-centered data design.",
-  //     },
-  //   },
-  // },
-  // {
-  //   id: 3,
-  //   title: "Student Onboarding",
-  //   slug: "student-onboarding",
-  //   description:
-  //     "Approval-gated registration with Prisma, TypeScript, and a three-module auth/profile architecture.",
-  //   image:
-  //     "https://lh3.googleusercontent.com/aida-public/AB6AXuC5IZBXgUg26edZRHt0-5qJgCzdQDg5-6x4EFt3RSM0IXK0uIHTgsoH7X69llMoyXHtM4vk_6RwjBlO0xrcG3bqoBTND9zs8cUwmViHsJ_rBnBF8aZSjcouatazQiNf7J7v7anpJoqt2W3c9rmx4UuibbvXx04P7lTXKPozxnZ0veB4vlRQE_ApIXBP7c9zx3qrJfpBzrPos4FLxToVjXL8w4siyk89sePqohtRAfgBknlxy_Vf4VPXqaw-G_oeghtzqzEAqJE0pqTE",
-  //   tags: ["Next.js", "TypeScript", "Prisma"],
-  //   variant: "tiltneon",
-  //   caseStudy: {
-  //     number: "03",
-  //     heroDescription:
-  //       "Approval-gated student registration system with a three-module architecture for auth, profile management, and admin review workflows.",
-  //     liveUrl: "#",
-  //     githubUrl: "#",
-  //     screenshots: [
-  //       "https://placehold.co/560x380/1a1a1a/e5c497?text=Registration+Form",
-  //       "https://placehold.co/560x380/1a1a1a/e5c497?text=Admin+Dashboard",
-  //     ],
-  //     challenge: {
-  //       eyebrow: "THE CHALLENGE",
-  //       title: "Taming the Registration Maze",
-  //       description:
-  //         "Building a registration system that supports multi-step approval workflows, document uploads, and role-based dashboards — all while keeping the student experience simple and frustration-free.",
-  //     },
-  //     engineeringResponse: {
-  //       eyebrow: "ENGINEERING RESPONSE",
-  //       title: "Modular Auth Architecture",
-  //       solutions: [
-  //         {
-  //           icon: "person_add",
-  //           title: "Three-Module Auth System",
-  //           description:
-  //             "Separated registration, profile completion, and admin approval into independent modules with shared state via Prisma.",
-  //         },
-  //         {
-  //           icon: "verified_user",
-  //           title: "Role-Based Access Control",
-  //           description:
-  //             "Implemented granular RBAC using middleware guards, supporting student, reviewer, and admin roles with distinct permissions.",
-  //         },
-  //         {
-  //           icon: "fact_check",
-  //           title: "Approval Workflow Engine",
-  //           description:
-  //             "Built a state-machine-based workflow that tracks each application from submission through review to final approval or rejection.",
-  //         },
-  //       ],
-  //     },
-  //     architectureImage:
-  //       "https://placehold.co/800x300/131313/e5c497?text=Onboarding+Flow+Diagram",
-  //     architectureCaption: "ONBOARDING FLOW ARCHITECTURE",
-  //     deepDive: {
-  //       eyebrow: "DEEP DIVE",
-  //       cards: [
-  //         {
-  //           icon: "schema",
-  //           title: "Prisma Schema Design",
-  //           description:
-  //             "Designed a normalized schema with relations between Users, Applications, Documents, and ReviewLogs — enabling efficient queries across the approval pipeline.",
-  //         },
-  //         {
-  //           icon: "upload_file",
-  //           title: "Document Pipeline",
-  //           description:
-  //             "Secure file uploads with S3 presigned URLs, virus scanning middleware, and automatic thumbnail generation for review panels.",
-  //         },
-  //         {
-  //           icon: "mail",
-  //           title: "Notification System",
-  //           description:
-  //             "Event-driven emails via SES triggered at each state transition, keeping students informed without polling the dashboard.",
-  //         },
-  //       ],
-  //     },
-  //     hardParts: {
-  //       eyebrow: "THE HARD PARTS",
-  //       title: "Workflow Edge Cases",
-  //       items: [
-  //         {
-  //           title: "Partial Submissions",
-  //           description:
-  //             "Students abandoning forms mid-way required auto-save with draft state, resumable sessions, and expiration policies.",
-  //         },
-  //         {
-  //           title: "Concurrent Reviews",
-  //           description:
-  //             "Multiple admins reviewing the same application simultaneously. Solved with optimistic locking and real-time status broadcasting.",
-  //         },
-  //       ],
-  //       stats: [
-  //         { value: "3-Step", label: "APPROVAL FLOW" },
-  //         { value: "<500ms", label: "FORM RESPONSE" },
-  //         { value: "98%", label: "COMPLETION RATE" },
-  //         { value: "Zero", label: "DATA CONFLICTS" },
-  //       ],
-  //     },
-  //     retrospective: {
-  //       eyebrow: "RETROSPECTIVE",
-  //       quote: "Simplicity Is the Ultimate Sophistication.",
-  //       closing:
-  //         "The hardest part was hiding the complexity from the student. Behind a clean three-step form lies a multi-actor approval engine, but the user never sees the machinery. That's the goal of good UX engineering.",
-  //     },
-  //   },
-  // },
-  // {
-  //   id: 4,
-  //   title: "HookWriter MVP",
-  //   slug: "hookwriter-mvp",
-  //   description:
-  //     "AI copywriting tool with OTP dual-auth and LLM-powered social hooks via Auth.js custom Credentials provider.",
-  //   image:
-  //     "https://lh3.googleusercontent.com/aida-public/AB6AXuCNpbB7TRdpZ51UmIbpK3x0xq-hyF4lJm_vLSlgox3wtKZk5Vz9uHXd07SlyRDPSvNQ-G3Dn_i7JtUenXZUgcJQzXiMn0TIXae15BUrSZvtzaQTLbeHes5ejRCkKiyyjnhtckiIZcsGpYuAgYdpGqeuoB9OF2sDJEoWr5g9dMZD110LFqpeihqF9YIFcWKoVUN2pUDAHD5foRKL3_OxbP9O17ML7nYAxs8Pb6L8dyedu0FKW0qZUVIZ2J1-7bDNw-aEATgVxv8Cn7Bq",
-  //   tags: ["Next.js", "Auth.js", "Node.js"],
-  //   variant: "tiltneon",
-  //   caseStudy: {
-  //     number: "04",
-  //     heroDescription:
-  //       "AI-powered copywriting tool that generates high-converting social media hooks using LLMs, with dual OTP authentication and usage-based billing.",
-  //     liveUrl: "#",
-  //     githubUrl: "#",
-  //     screenshots: [
-  //       "https://placehold.co/560x380/1a1a1a/e5c497?text=Hook+Generator+UI",
-  //       "https://placehold.co/560x380/1a1a1a/e5c497?text=Auth+Flow",
-  //     ],
-  //     challenge: {
-  //       eyebrow: "THE CHALLENGE",
-  //       title: "Making AI Accessible for Creators",
-  //       description:
-  //         "Creators need instant, platform-specific copy — not generic AI output. The challenge was wrapping LLM capabilities in a UX that feels like a creative tool, not a tech demo, while managing token costs and preventing abuse.",
-  //     },
-  //     engineeringResponse: {
-  //       eyebrow: "ENGINEERING RESPONSE",
-  //       title: "LLM Integration Pipeline",
-  //       solutions: [
-  //         {
-  //           icon: "smart_toy",
-  //           title: "Prompt Engineering Layer",
-  //           description:
-  //             "Crafted platform-specific prompt templates (Twitter, LinkedIn, Instagram) that constrain LLM output to high-converting hook patterns.",
-  //         },
-  //         {
-  //           icon: "fingerprint",
-  //           title: "Dual OTP Authentication",
-  //           description:
-  //             "Custom Auth.js Credentials provider supporting both email OTP and phone OTP for passwordless, friction-free onboarding.",
-  //         },
-  //         {
-  //           icon: "toll",
-  //           title: "Token Usage Metering",
-  //           description:
-  //             "Real-time token counting and rate limiting per user tier, preventing cost overruns while maintaining responsive generation.",
-  //         },
-  //       ],
-  //     },
-  //     architectureImage:
-  //       "https://placehold.co/800x300/131313/e5c497?text=LLM+Pipeline+Architecture",
-  //     architectureCaption: "LLM PIPELINE ARCHITECTURE",
-  //     deepDive: {
-  //       eyebrow: "DEEP DIVE",
-  //       cards: [
-  //         {
-  //           icon: "edit_note",
-  //           title: "Prompt Templates",
-  //           description:
-  //             "Each social platform has distinct hook patterns. The system uses structured prompt templates with tone, length, and CTA constraints.",
-  //         },
-  //         {
-  //           icon: "vpn_key",
-  //           title: "Auth.js Custom Provider",
-  //           description:
-  //             "Extended Auth.js with a custom Credentials provider that handles OTP generation, verification, and session management in a single flow.",
-  //         },
-  //         {
-  //           icon: "trending_up",
-  //           title: "Usage Analytics",
-  //           description:
-  //             "Dashboard showing generation history, token usage trends, and hook performance scores based on engagement patterns.",
-  //         },
-  //       ],
-  //     },
-  //     hardParts: {
-  //       eyebrow: "THE HARD PARTS",
-  //       title: "AI Product Challenges",
-  //       items: [
-  //         {
-  //           title: "Output Consistency",
-  //           description:
-  //             "LLMs are non-deterministic. Built a scoring and retry layer that evaluates output quality before showing it to the user.",
-  //         },
-  //         {
-  //           title: "Cost Management",
-  //           description:
-  //             "Balancing generation quality with token costs. Implemented caching for similar prompts and tiered model selection based on user plan.",
-  //         },
-  //       ],
-  //       stats: [
-  //         { value: "5", label: "PLATFORMS SUPPORTED" },
-  //         { value: "<3s", label: "GENERATION TIME" },
-  //         { value: "87%", label: "USER SATISFACTION" },
-  //         { value: "40%", label: "COST REDUCTION" },
-  //       ],
-  //     },
-  //     retrospective: {
-  //       eyebrow: "RETROSPECTIVE",
-  //       quote: "Ship the MVP, Then Let Users Design the Product.",
-  //       closing:
-  //         "Starting with a minimal hook generator and iterating based on creator feedback was more valuable than any amount of upfront planning. Real users revealed use cases I never anticipated.",
-  //     },
-  //   },
-  // },
-  // {
-  //   id: 5,
-  //   title: "E-commerce Platform",
-  //   slug: "e-commerce-platform",
-  //   description:
-  //     "Scalable marketplace with wishlist folders, Stripe + Razorpay, admin panel and Redux RTK Query with HTTP-only cookie auth.",
-  //   image:
-  //     "https://lh3.googleusercontent.com/aida-public/AB6AXuC3xKDCvvKmfKkX3Qa0nparTOrHM7thJ07AmjJ33BG0AFpB01gwMs3fzomO7Xf9NwISgFX28cWKzbe2tAdc9c6kSdbGgP3Qwud1VUiupZ4QSY4hva40V1VeZlmFxqilVpXOuiqBw7GC7wKDebKt_oVtp5PLMPDfD0sGHmG6CPB1L0oEZZzC_N4UWLgCeGrQwSeGXpuLE3rvwBjIqp9tLZJUmCwXIFszBATWl1tN7vQJXOR9VZgU1peWfsB-6YIXiqEDY-yPoHKbxWLO",
-  //   tags: ["React", "Redux", "Stripe"],
-  //   variant: "tiltneon",
-  //   caseStudy: {
-  //     number: "05",
-  //     heroDescription:
-  //       "Full-featured marketplace with wishlists, dual payment gateways (Stripe + Razorpay), comprehensive admin panel, and Redux RTK Query for optimistic state management.",
-  //     liveUrl: "#",
-  //     githubUrl: "#",
-  //     screenshots: [
-  //       "https://placehold.co/560x380/1a1a1a/e5c497?text=Product+Catalog",
-  //       "https://placehold.co/560x380/1a1a1a/e5c497?text=Admin+Panel",
-  //     ],
-  //     challenge: {
-  //       eyebrow: "THE CHALLENGE",
-  //       title: "Building a Resilient Marketplace",
-  //       description:
-  //         "E-commerce demands reliability across payments, inventory, and user sessions. The challenge was unifying Stripe and Razorpay under one checkout flow, while managing complex cart state and real-time inventory locks.",
-  //     },
-  //     engineeringResponse: {
-  //       eyebrow: "ENGINEERING RESPONSE",
-  //       title: "Commerce Architecture",
-  //       solutions: [
-  //         {
-  //           icon: "payments",
-  //           title: "Dual Payment Gateway",
-  //           description:
-  //             "Unified Stripe and Razorpay under a single checkout abstraction with automatic failover and currency-based routing.",
-  //         },
-  //         {
-  //           icon: "inventory_2",
-  //           title: "Inventory Lock System",
-  //           description:
-  //             "Redis-based inventory reservations during checkout flow, preventing overselling with automatic expiry on abandoned carts.",
-  //         },
-  //         {
-  //           icon: "admin_panel_settings",
-  //           title: "Admin Dashboard",
-  //           description:
-  //             "Full CRUD admin panel with order management, analytics dashboards, and bulk product operations via CSV import.",
-  //         },
-  //       ],
-  //     },
-  //     architectureImage:
-  //       "https://placehold.co/800x300/131313/e5c497?text=Commerce+System+Architecture",
-  //     architectureCaption: "COMMERCE ARCHITECTURE DIAGRAM",
-  //     deepDive: {
-  //       eyebrow: "DEEP DIVE",
-  //       cards: [
-  //         {
-  //           icon: "favorite",
-  //           title: "Wishlist Folders",
-  //           description:
-  //             "Users organize saved products into custom folders with sharing capabilities, powered by RTK Query's optimistic cache updates.",
-  //         },
-  //         {
-  //           icon: "cookie",
-  //           title: "HTTP-Only Cookie Auth",
-  //           description:
-  //             "Secure session management using HTTP-only cookies with refresh token rotation, eliminating XSS attack vectors on auth tokens.",
-  //         },
-  //         {
-  //           icon: "sync",
-  //           title: "RTK Query Caching",
-  //           description:
-  //             "Aggressive cache invalidation strategy with tag-based refetching — cart updates reflect instantly across all open tabs.",
-  //         },
-  //       ],
-  //     },
-  //     hardParts: {
-  //       eyebrow: "THE HARD PARTS",
-  //       title: "Checkout Complexity",
-  //       items: [
-  //         {
-  //           title: "Payment Reconciliation",
-  //           description:
-  //             "Handling webhook failures and payment state mismatches between gateway responses and our order database. Built a reconciliation job that runs every 5 minutes.",
-  //         },
-  //         {
-  //           title: "Cart Abandonment Recovery",
-  //           description:
-  //             "Inventory locks expire, but user carts persist. Re-validating stock availability when users return required graceful degradation with clear messaging.",
-  //         },
-  //       ],
-  //       stats: [
-  //         { value: "2", label: "PAYMENT GATEWAYS" },
-  //         { value: "99.7%", label: "CHECKOUT SUCCESS" },
-  //         { value: "15K+", label: "PRODUCTS MANAGED" },
-  //         { value: "<200ms", label: "CART OPERATIONS" },
-  //       ],
-  //     },
-  //     retrospective: {
-  //       eyebrow: "RETROSPECTIVE",
-  //       quote: "Every Edge Case Is Someone's Main Case.",
-  //       closing:
-  //         "E-commerce humbles you. The happy path is 20% of the work — the other 80% is handling failed payments, expired sessions, out-of-stock items, and users who find every possible edge case.",
-  //     },
-  //   },
-  // },
-  // {
-  //   id: 6,
-  //   title: "Design System UI",
-  //   slug: "design-system-ui",
-  //   description:
-  //     "Component library with token-driven theming, Storybook docs, and an auto-generated Figma token pipeline.",
-  //   image:
-  //     "https://lh3.googleusercontent.com/aida-public/AB6AXuASP7oUmGCM1ERp_jq5V5M-m86kxnJJmN1JI3EkRbj5rDrUW6CbHMpMpDiINqe7GnagD9vbYGuvCgLHbrRMRrLJMCDZmv-xgkbwTR0qZAZqBHeFPkConjlQ2TN7cMSj0YGZZMpDJUVtZjNWVHRRqqdlY9TmzBePvjOTaUrjR-6uyTd-1lGFBQi5FUPezd7wk56s9OQ4qrJfPMXJGVzXL01dclMUH1-T1E9gX6D_aD2Ah9YE3e-dA7ikygGRXXijWqjpVEY24G64Rfj",
-  //   tags: ["Figma", "Storybook", "TypeScript", "GSAP"],
-  //   variant: "tiltneon",
-  //   caseStudy: {
-  //     number: "06",
-  //     heroDescription:
-  //       "Comprehensive component library with token-driven theming, interactive Storybook documentation, and an automated Figma-to-code token synchronization pipeline.",
-  //     liveUrl: "#",
-  //     githubUrl: "#",
-  //     screenshots: [
-  //       "https://placehold.co/560x380/1a1a1a/e5c497?text=Component+Library",
-  //       "https://placehold.co/560x380/1a1a1a/e5c497?text=Storybook+Docs",
-  //     ],
-  //     challenge: {
-  //       eyebrow: "THE CHALLENGE",
-  //       title: "Bridging Design and Code",
-  //       description:
-  //         "Design systems fail when designers and developers speak different languages. The challenge was building a single source of truth where Figma tokens automatically propagate to code, and every component is documented with live examples.",
-  //     },
-  //     engineeringResponse: {
-  //       eyebrow: "ENGINEERING RESPONSE",
-  //       title: "Token Pipeline Architecture",
-  //       solutions: [
-  //         {
-  //           icon: "palette",
-  //           title: "Token-Driven Theming",
-  //           description:
-  //             "CSS custom properties generated from Figma tokens via Style Dictionary, enabling runtime theme switching with zero JS overhead.",
-  //         },
-  //         {
-  //           icon: "auto_stories",
-  //           title: "Storybook Documentation",
-  //           description:
-  //             "Every component has interactive stories with controls, accessibility audits, and auto-generated prop tables.",
-  //         },
-  //         {
-  //           icon: "sync_alt",
-  //           title: "Figma Token Pipeline",
-  //           description:
-  //             "GitHub Actions workflow that syncs Figma design tokens to the codebase on every Figma publish event, keeping design and code in lock-step.",
-  //         },
-  //       ],
-  //     },
-  //     architectureImage:
-  //       "https://placehold.co/800x300/131313/e5c497?text=Design+Token+Pipeline",
-  //     architectureCaption: "TOKEN PIPELINE FLOW",
-  //     deepDive: {
-  //       eyebrow: "DEEP DIVE",
-  //       cards: [
-  //         {
-  //           icon: "brush",
-  //           title: "Style Dictionary",
-  //           description:
-  //             "Transforms Figma tokens into platform-specific outputs: CSS variables, Tailwind config, and React Native StyleSheet objects from a single source.",
-  //         },
-  //         {
-  //           icon: "animation",
-  //           title: "GSAP Micro-Interactions",
-  //           description:
-  //             "Reusable motion primitives built with GSAP — fade, slide, spring — exposed as React hooks for consistent animations across the system.",
-  //         },
-  //         {
-  //           icon: "accessibility",
-  //           title: "A11y First",
-  //           description:
-  //             "Every component passes WCAG 2.1 AA standards. Storybook's a11y addon runs automated audits on every story, catching regressions early.",
-  //         },
-  //       ],
-  //     },
-  //     hardParts: {
-  //       eyebrow: "THE HARD PARTS",
-  //       title: "Systemic Consistency",
-  //       items: [
-  //         {
-  //           title: "Token Naming Conflicts",
-  //           description:
-  //             "Figma designers and developers used different naming conventions. Built a translation layer that maps design-friendly names to code-friendly tokens.",
-  //         },
-  //         {
-  //           title: "Version Drift",
-  //           description:
-  //             "Keeping Storybook, Figma, and production code synchronized across versions. Automated CI checks flag any token mismatches on PR.",
-  //         },
-  //       ],
-  //       stats: [
-  //         { value: "60+", label: "COMPONENTS" },
-  //         { value: "200+", label: "DESIGN TOKENS" },
-  //         { value: "100%", label: "A11Y COVERAGE" },
-  //         { value: "<1min", label: "TOKEN SYNC" },
-  //       ],
-  //     },
-  //     retrospective: {
-  //       eyebrow: "RETROSPECTIVE",
-  //       quote: "A Design System Is a Product, Not a Project.",
-  //       closing:
-  //         "The most important insight was treating the design system as a living product with its own roadmap, consumers, and SLA — not a one-time deliverable that gathers dust.",
-  //     },
-  //   },
-  // },
+  {
+    id: 2,
+    title: "Warden Admin Panel",
+    slug: "warden-admin-panel",
+    description:
+      "Designed and built a production-grade internal admin panel with self-rolled session auth, permission-based RBAC, and full audit logging — a study in security judgment where the server is always the source of truth.",
+    impact:
+      "Delivered granular, permission-checked authorization enforced entirely at the API layer, with tamper-evident audit trails on every sensitive mutation. Self-rolled session auth (Argon2id, httpOnly cookies, server-side session store) replaces a third-party BaaS to demonstrate the underlying security fundamentals — timing-safe logins, account lockout, session revocation on credential change, and zero tokens ever exposed to client JavaScript.",
+    image:
+      "/assets/images/case-study-screenshots/02-dashboard.png",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Express",
+      "Prisma",
+      "PostgreSQL",
+      "Zod",
+      "TanStack Query",
+      "Tailwind",
+      "Argon2id",
+      "Docker",
+    ],
+    variant: "tiltneon",
+    caseStudy: {
+      number: "02",
+      heroDescription:
+        "An internal-tools admin panel engineered around a single principle — permissions are checked on the server, always. Self-rolled auth, granular RBAC, and audit logging built to convince a senior reviewer this is real, shippable software.",
+      liveUrl: "https://warden-admin.akshforge.com",
+      githubUrl: "https://github.com/AkshayPatil96/warden-admin",
+      screenshots: [
+        "/assets/images/case-study-screenshots/01-login.png",
+        "/assets/images/case-study-screenshots/03-customers.png",
+        "/assets/images/case-study-screenshots/04-subscriptions.png",
+        "/assets/images/case-study-screenshots/05-invoices.png",
+        "/assets/images/case-study-screenshots/06-users-roles.png",
+        "/assets/images/case-study-screenshots/07-audit-log.png",
+      ],
+      challenge: {
+        eyebrow: "THE CHALLENGE",
+        title: "Authorization You Can Actually Trust",
+        description:
+          "Most admin panels lean on a BaaS for auth and gate the UI with role strings — which looks fine until you realize the client is deciding what it's allowed to do. The real challenge was building an access-control system that a security reviewer would trust: authorization enforced on the server for every request, granular permissions rather than role checks, credential handling that resists timing and enumeration attacks, and an audit trail that proves who changed what and when — all without hiding the mechanics behind a third-party service.",
+      },
+      engineeringResponse: {
+        eyebrow: "ENGINEERING RESPONSE",
+        title: "Server-Authoritative RBAC on a Layered Monolith",
+        solutions: [
+          {
+            icon: "key",
+            title: "Self-Rolled Session Auth",
+            description:
+              "Argon2id password hashing, opaque server-side sessions stored in Postgres, and httpOnly + Secure + SameSite cookies — no tokens in localStorage, ever. Sessions are revocable server-side, so a password change or reset can invalidate stolen cookies instantly.",
+          },
+          {
+            icon: "verified_user",
+            title: "Permission-Based Authorization",
+            description:
+              "An authorize('orders:write') middleware gates every protected route against granular permission keys resolved from the user's roles — never against role strings. UI hiding/disabling is treated as UX only; the API is the single source of truth.",
+          },
+          {
+            icon: "hub",
+            title: "Shared-Schema Modular Monolith",
+            description:
+              "Eight domain modules (auth, users, roles, customers, subscriptions, invoices, analytics, audit), each layered routes → controller → service → repository. Zod schemas live in a shared package and validate on both the API and the web forms — one contract, no drift.",
+          },
+        ],
+      },
+      architectureImage:
+        "https://placehold.co/800x300/131313/e5c497?text=Layered+Modular+Monolith",
+      architectureCaption:
+        "MODULAR MONOLITH — ROUTES → CONTROLLER → SERVICE → REPOSITORY",
+      architectureNote:
+        "Chose a modular monolith with strict per-module layering over microservices — clear domain boundaries and testability without the operational tax of distributed infra for one app and one database.",
+      deepDive: {
+        eyebrow: "DEEP DIVE",
+        cards: [
+          {
+            icon: "shield",
+            title: "Permissions, Not Roles",
+            description:
+              "Roles (Admin / Manager / Viewer) are just bundles of permissions. The gate checks the atomic permission — 'invoices:delete' — so a role's capabilities can change without touching a single route. The difference is visibly enforced in both API responses and UI affordances.",
+          },
+          {
+            icon: "timer",
+            title: "Timing-Safe, Enumeration-Resistant Login",
+            description:
+              "A missing account still runs a verify against a pre-computed dummy Argon2id hash, so the response time matches the real path and attackers can't enumerate which emails exist. Password-reset requests always return 204 for the same reason.",
+          },
+          {
+            icon: "history",
+            title: "Audit Log as a First-Class Citizen",
+            description:
+              "Every sensitive mutation writes an audit entry (actor, action, entity, before/after JSON) inside the same transaction as the change itself — so the record and its proof commit or roll back together. Logins, lockouts, and session revocations are all captured.",
+          },
+          {
+            icon: "cookie",
+            title: "Cross-Origin httpOnly Sessions",
+            description:
+              "The Vercel-hosted frontend and a separate API host mean the session cookie is SameSite=None + Secure in production, falling back to Lax over http locally. A lightweight Next proxy does a cheap presence redirect — defense in depth, never the real gate.",
+          },
+        ],
+      },
+      hardParts: {
+        eyebrow: "THE HARD PARTS",
+        title: "The Details Security Reviewers Look For",
+        items: [
+          {
+            title: "Closing the Account-Enumeration Gaps",
+            description:
+              "The obvious login is a leak: real accounts run Argon2 (slow), missing ones return instantly (fast), and that gap reveals valid emails. Solved by verifying against a throwaway Argon2id hash on the no-account path, returning one generic error for every failure, and making password-reset responses indistinguishable whether or not the email exists.",
+          },
+          {
+            title: "Session Lifecycle on Credential Change",
+            description:
+              "Changing a password can't silently leave old sessions valid. A password change atomically revokes every OTHER session but keeps the current one; a reset revokes ALL sessions. Both happen in a transaction alongside the hash update and audit write, so there's no window where an old cookie still works.",
+          },
+          {
+            title: "Auditability Without Partial Writes",
+            description:
+              "An audit log that can drift from reality is worse than none. By threading the same Prisma transaction client through both the domain write and writeAudit(), a failure anywhere rolls back the audit entry too — the log can never claim something happened that didn't.",
+          },
+        ],
+        stats: [
+          { value: "8", label: "DOMAIN MODULES" },
+          { value: "4-Layer", label: "MODULE ARCHITECTURE" },
+          { value: "0", label: "TOKENS IN LOCALSTORAGE" },
+          { value: "100%", label: "SERVER-SIDE AUTHZ" },
+        ],
+      },
+      infrastructure: {
+        eyebrow: "INFRASTRUCTURE & DEPLOYMENT",
+        title: "Environment Parity and a Gated Pipeline",
+        items: [
+          {
+            title: "One-Command Local Stack",
+            description:
+              "docker-compose brings up Postgres, the API, and the web app together, so local development mirrors production — the whole point being parity, not decoration.",
+          },
+          {
+            title: "CI Gate on Every PR",
+            description:
+              "GitHub Actions runs lint → typecheck → test → build, with Prisma migrations applied against a real Postgres service container. Nothing merges red.",
+          },
+          {
+            title: "Integration Tests Against Real Postgres",
+            description:
+              "Vitest suites test the auth flow, a permission-denied case, and critical CRUD end-to-end against a throwaway Postgres — the database is never mocked, so the tests exercise real query and transaction behavior.",
+          },
+          {
+            title: "Versioned Prisma Migrations",
+            description:
+              "All schema changes ship as versioned migrations in the repo; the database is never hand-edited. A seed script provisions demo data and the three role logins.",
+          },
+          {
+            title: "Split Deploy: API on EC2, Web on Vercel",
+            description:
+              "The Express API runs on a shared EC2 host while the Next.js frontend deploys to Vercel — driving the cross-origin, SameSite=None cookie design rather than assuming same-origin convenience.",
+          },
+        ],
+      },
+      tradeoffs: {
+        eyebrow: "TRADE-OFFS",
+        items: [
+          "Self-rolled session auth over Auth0/Clerk — more responsibility, but it demonstrates the security fundamentals a BaaS hides",
+          "Server-side sessions over stateless JWTs — a DB lookup per request buys instant, reliable revocation",
+          "Granular permissions over role checks — more rows to seed, but authorization that survives changing requirements",
+          "Modular monolith over microservices — clear boundaries without distributed-systems overhead for one app",
+          "Money stored as integer cents over floats — no rounding drift in billing math",
+          "Kept the repository layer even on thin CRUD for consistency, accepting some pass-through boilerplate",
+        ],
+      },
+      retrospective: {
+        eyebrow: "RETROSPECTIVE",
+        quote: "Trust the Server, Never the Client.",
+        closing:
+          "The lesson that ran through every module was that security lives in the unhappy path — the missing account, the stolen cookie, the reset link replayed twice, the audit write that must not outlive its transaction. Building auth from primitives instead of importing a black box forced me to reason about each of those cases explicitly, and that's exactly the judgment this project exists to show.",
+      },
+    },
+  },
 ];

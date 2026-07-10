@@ -5,7 +5,7 @@ import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { skills } from "@/lib/data";
 
 /**
- * SkillBars — animated proficiency bars.
+ * SkillBars - animated proficiency bars.
  * Bars fill from 0 → target width when scrolled into view.
  * Each bar has a subtle stagger and ease-out.
  */

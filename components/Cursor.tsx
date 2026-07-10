@@ -30,7 +30,7 @@ export default function Cursor() {
     };
     gsap.ticker.add(tickFn);
 
-    // Delegated cursor-hover state — works for any elements added after navigation
+    // Delegated cursor-hover state - works for any elements added after navigation
     const INTERACTIVE = "a, button, .mag-btn, .fs-dot";
     const onDocOver = (e: MouseEvent) => {
       if ((e.target as Element).closest(INTERACTIVE))
@@ -45,7 +45,7 @@ export default function Cursor() {
     document.addEventListener("mouseover", onDocOver);
     document.addEventListener("mouseout", onDocOut);
 
-    // Delegated magnetic effect — picks up .mag-btn elements on every page
+    // Delegated magnetic effect - picks up .mag-btn elements on every page
     const onMagMove = (e: MouseEvent) => {
       const btn = (e.target as Element).closest<HTMLElement>(".mag-btn");
       if (!btn) return;

@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 
 /**
- * AboutImage — portrait photo panel with:
+ * AboutImage - portrait photo panel with:
  * - GSAP parallax scrolling
  * - Grayscale → colour on hover
  * - Golden overlay + bottom gradient

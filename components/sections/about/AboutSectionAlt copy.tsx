@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * AboutSectionAlt — alternate about section without skill bars.
+ * AboutSectionAlt - alternate about section without skill bars.
  *
  * Layout: asymmetric two-column at desktop.
  * Left: portrait with layered overlays + social links.
@@ -224,10 +224,10 @@ export default function AboutSectionAlt() {
                 I’m a full-stack developer building production-grade
                 applications with 3.5+ years of experience.
                 <br />
-                Before tech, I ran a café — where I learned how to solve
+                Before tech, I ran a café - where I learned how to solve
                 real-world problems, handle pressure, and deliver consistently.
                 That mindset still drives how I build software today.
-                <br />I don’t just build features — I design systems that hold
+                <br />I don’t just build features - I design systems that hold
                 up in production, using Node.js, Next.js, and AWS.
               </p>
             </div>

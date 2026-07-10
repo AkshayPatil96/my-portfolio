@@ -82,7 +82,7 @@ export default function ExperienceSection() {
 
         {/* Timeline */}
         <div className="relative" id="timeline-container">
-          {/* Vertical center line — desktop only */}
+          {/* Vertical center line - desktop only */}
           <svg
             id="timeline-svg"
             className="absolute pointer-events-none hidden md:block"
@@ -120,7 +120,7 @@ export default function ExperienceSection() {
                   data-delay={String(i * 0.1)}
                 >
                   {/* ── Desktop: year label ── */}
-                  {/* Left side — shown when card is on the right (isLeft=true) */}
+                  {/* Left side - shown when card is on the right (isLeft=true) */}
                   <div
                     className={`hidden md:flex w-1/2 ${
                       isLeft ? "pr-20 justify-end" : "pl-20 justify-start order-last"

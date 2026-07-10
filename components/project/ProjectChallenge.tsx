@@ -63,7 +63,7 @@ export default function ProjectChallenge({ caseStudy }: ProjectChallengeProps) {
       <div className="max-w-6xl mx-auto">
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-          {/* Left — Challenge */}
+          {/* Left - Challenge */}
           <div data-challenge-left>
             <p className="font-label text-xs uppercase tracking-[0.3em] text-primary/50 mb-4">
               {caseStudy.challenge.eyebrow}
@@ -76,7 +76,7 @@ export default function ProjectChallenge({ caseStudy }: ProjectChallengeProps) {
             </p>
           </div>
 
-          {/* Right — Engineering Response */}
+          {/* Right - Engineering Response */}
           <div data-challenge-right>
             <p className="font-label text-xs uppercase tracking-[0.3em] text-primary/50 mb-4">
               {caseStudy.engineeringResponse.eyebrow}

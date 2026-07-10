@@ -373,7 +373,7 @@ export default function InfraDiagram({ slug }: InfraDiagramProps) {
         </div>
 
         <p className="font-label text-[10px] uppercase tracking-[0.3em] text-primary/30 text-center mt-4">
-          INTERACTIVE INFRASTRUCTURE DIAGRAM — DRAG · ZOOM · PAN · HOVER FOR DETAILS
+          INTERACTIVE INFRASTRUCTURE DIAGRAM - DRAG · ZOOM · PAN · HOVER FOR DETAILS
         </p>
       </div>
     </section>

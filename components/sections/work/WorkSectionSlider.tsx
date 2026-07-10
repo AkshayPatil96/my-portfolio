@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * WorkSectionSlider — One card per scroll step.
+ * WorkSectionSlider - One card per scroll step.
  *
  * The section is pinned for (n × 100vh) of scroll. Each scroll
  * "page" transitions to the next card: outgoing card exits up,
@@ -81,7 +81,7 @@ export default function WorkSectionSlider() {
       <div className="flex-shrink-0 px-10 md:px-20 pt-16 pb-8 flex items-end justify-between">
         <div>
           <p className="font-label text-[10px] uppercase tracking-[0.35em] text-primary/50 mb-3">
-            03 — Selected Work
+            03 - Selected Work
           </p>
           <h2 className="font-headline font-bold text-on-surface text-4xl md:text-6xl tracking-tighter leading-none">
             Projects
@@ -125,7 +125,7 @@ export default function WorkSectionSlider() {
           ))}
         </div>
 
-        {/* Stacked cards — all absolute, centred */}
+        {/* Stacked cards - all absolute, centred */}
         <div className="relative h-full max-w-2xl mx-auto">
           {projects.map((project, i) => (
             <div
@@ -161,7 +161,7 @@ export default function WorkSectionSlider() {
 // "use client";
 
 // /**
-//  * WorkSectionSlider — One card per scroll step.
+//  * WorkSectionSlider - One card per scroll step.
 //  *
 //  * The section is pinned for (n × 100vh) of scroll. Each scroll
 //  * "page" transitions to the next card: outgoing card exits up,
@@ -255,7 +255,7 @@ export default function WorkSectionSlider() {
 //       <div className="flex-shrink-0 px-10 md:px-20 pt-16 pb-8 flex items-end justify-between">
 //         <div>
 //           <p className="font-label text-[10px] uppercase tracking-[0.35em] text-primary/50 mb-3">
-//             03 — Selected Work
+//             03 - Selected Work
 //           </p>
 //           <h2 className="font-headline font-bold text-on-surface text-4xl md:text-6xl tracking-tighter leading-none">
 //             Projects
@@ -287,7 +287,7 @@ export default function WorkSectionSlider() {
 //           ))}
 //         </div>
 
-//         {/* Stacked cards — all absolute, centred */}
+//         {/* Stacked cards - all absolute, centred */}
 //         <div className="relative h-full max-w-2xl mx-auto">
 //           {projects.map((project, i) => (
 //             <div

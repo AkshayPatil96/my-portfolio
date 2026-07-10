@@ -124,7 +124,7 @@ export default function HeroSection() {
         <div className="w-[0.5px] h-20 bg-outline-variant/30" />
       </div>
 
-      {/* Hero background image — Next.js Image with priority so the browser
+      {/* Hero background image - Next.js Image with priority so the browser
           preloads it with fetchpriority="high" and it becomes a fast LCP element */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.15] overflow-hidden z-0">
         <Image

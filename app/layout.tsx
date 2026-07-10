@@ -58,7 +58,7 @@ export default function RootLayout({
           {children}
           <FooterSection />
         </LenisProvider>
-        {/* Load Material Symbols asynchronously — prevents render-blocking */}
+        {/* Load Material Symbols asynchronously - prevents render-blocking */}
         <Script id="material-symbols" strategy="afterInteractive">
           {`(function(){var l=document.createElement('link');l.rel='stylesheet';l.href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap';document.head.appendChild(l);})()`}
         </Script>

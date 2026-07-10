@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { Project } from "@/lib/data";
 
 /**
- * ProjectCardTilt — 3-D perspective tilt following the mouse.
+ * ProjectCardTilt - 3-D perspective tilt following the mouse.
  * The card rotates on X/Y axes as the cursor moves over it,
  * creating a depth illusion. Springs back on mouse-leave.
  */

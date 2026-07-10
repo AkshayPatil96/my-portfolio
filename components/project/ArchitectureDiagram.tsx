@@ -387,7 +387,7 @@ export default function ArchitectureDiagram({
         </div>
 
         <p className="font-label text-[10px] uppercase tracking-[0.3em] text-primary/30 text-center mt-4">
-          INTERACTIVE ARCHITECTURE DIAGRAM — DRAG · ZOOM · PAN · HOVER FOR
+          INTERACTIVE ARCHITECTURE DIAGRAM - DRAG · ZOOM · PAN · HOVER FOR
           DETAILS
         </p>
         {caseStudy.architectureNote && (

@@ -36,7 +36,7 @@ const CAPABILITIES = [
     icon: "grid_view",
     title: "Detail Oriented",
     description:
-      "Delivering precise implementations — from UI polish to backend efficiency.",
+      "Delivering precise implementations - from UI polish to backend efficiency.",
   },
 ];
 
@@ -113,14 +113,14 @@ export default function AboutSectionAlt() {
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col gap-8 lg:gap-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-x-0 lg:gap-y-6">
-          {/* Label — mobile: 1st, desktop: right col row 1 */}
+          {/* Label - mobile: 1st, desktop: right col row 1 */}
           <div className="lg:col-start-7 lg:col-span-6 lg:row-start-1 gsap-fade">
             <span className="font-label text-primary/70 text-xs uppercase tracking-[0.3em]">
               02 / About
             </span>
           </div>
 
-          {/* Headline — mobile: 2nd, desktop: right col row 2 */}
+          {/* Headline - mobile: 2nd, desktop: right col row 2 */}
           <div className="lg:col-start-7 lg:col-span-6 lg:row-start-2">
             <h2
               id="alt-about-title"
@@ -132,12 +132,12 @@ export default function AboutSectionAlt() {
             </h2>
           </div>
 
-          {/* Profile card — mobile: 3rd, desktop: left col spanning all rows */}
+          {/* Profile card - mobile: 3rd, desktop: left col spanning all rows */}
           <div className="lg:col-start-1 lg:col-span-5 lg:row-start-1 lg:row-span-4 gsap-fade">
             <div className="relative group rounded-2xl overflow-hidden bg-surface-container h-full">
               <img
                 src="/assets/images/profile.png"
-                alt="Akshay — Production Systems Engineer"
+                alt="Akshay - Production Systems Engineer"
                 className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
               />
 
@@ -189,7 +189,7 @@ export default function AboutSectionAlt() {
             </div>
           </div>
 
-          {/* Bio — mobile: 4th, desktop: right col row 3 */}
+          {/* Bio - mobile: 4th, desktop: right col row 3 */}
           <div
             className="lg:col-start-7 lg:col-span-6 lg:row-start-3 max-w-[520px] space-y-6 gsap-fade"
             data-delay="0.1"
@@ -199,18 +199,18 @@ export default function AboutSectionAlt() {
               building production-grade applications.
             </p>
             <p className="text-neutral-300 leading-relaxed">
-              Before tech, I ran a caf&eacute; — where I learned how to solve
+              Before tech, I ran a caf&eacute; - where I learned how to solve
               real-world problems, handle pressure, and deliver consistently.
               That mindset still drives how I build software today.
             </p>
             <p className="text-neutral-300 leading-relaxed">
-              I don&apos;t just build features — I design systems that hold up
+              I don&apos;t just build features - I design systems that hold up
               in production, focusing on performance, scalability, and clean
               architecture using Node.js, Next.js, and AWS.
             </p>
           </div>
 
-          {/* Core stack — mobile: 5th, desktop: right col row 4 */}
+          {/* Core stack - mobile: 5th, desktop: right col row 4 */}
           <div
             className="lg:col-start-7 lg:col-span-6 lg:row-start-4 gsap-fade"
             data-delay="0.15"
@@ -234,7 +234,7 @@ export default function AboutSectionAlt() {
           </div>
         </div>
 
-        {/* Capability cards — mobile: 6th, desktop: right col row 5 */}
+        {/* Capability cards - mobile: 6th, desktop: right col row 5 */}
         <div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 gsap-fade"
           data-delay="0.2"

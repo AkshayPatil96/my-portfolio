@@ -304,7 +304,7 @@ export const diagramConfigs: Record<string, DiagramConfig> = {
         position: { x: 900, y: 480 },
         dashed: true,
         tooltip:
-          "New container is health-checked before Nginx switches traffic to it — zero-downtime cutover",
+          "New container is health-checked before Nginx switches traffic to it - zero-downtime cutover",
       },
     ],
     edges: [

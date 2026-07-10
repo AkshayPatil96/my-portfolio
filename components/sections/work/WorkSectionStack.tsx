@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * WorkSectionStack — Sticky card stack with parallax depth.
+ * WorkSectionStack - Sticky card stack with parallax depth.
  *
  * Each card sticks at the top and the next card slides up from beneath it
  * as you scroll. Cards subtly scale down and push back in Z to give a
@@ -68,7 +68,7 @@ export default function WorkSectionStack() {
       {/* Section header */}
       <div className="mb-20 flex items-end justify-between">
         <div>
-          <p className="text-xs font-label text-primary/60 uppercase tracking-widest">03 — Work</p>
+          <p className="text-xs font-label text-primary/60 uppercase tracking-widest">03 - Work</p>
           <h2 className="text-5xl md:text-7xl font-headline font-bold mt-4 text-on-surface">
             Projects
           </h2>

@@ -35,7 +35,7 @@ export interface Skill {
 export const experiences: Experience[] = [
   {
     id: 1,
-    period: '2022 — PRESENT',
+    period: '2022 - PRESENT',
     label: 'Current Role',
     title: 'Senior Developer Analyst',
     company: 'Value Creatives Tech Solutions LLP',
@@ -53,7 +53,7 @@ export const experiences: Experience[] = [
     progression: [
       {
         title: 'Senior Developer Analyst',
-        duration: 'Feb 2026 — Present',
+        duration: 'Feb 2026 - Present',
         points: [
           'Leading development of production applications across multiple domains',
           'Driving architectural decisions and improving code quality across projects',
@@ -62,7 +62,7 @@ export const experiences: Experience[] = [
       },
       {
         title: 'Developer Analyst',
-        duration: 'Nov 2022 — Jan 2026',
+        duration: 'Nov 2022 - Jan 2026',
         points: [
           'Developed full-stack features using MERN stack and Next.js',
           'Built REST APIs and handled MongoDB-based data modeling',
@@ -73,7 +73,7 @@ export const experiences: Experience[] = [
   },
   {
     id: 2,
-    period: '2021 — 2022',
+    period: '2021 - 2022',
     label: 'Intensive Education',
     title: 'MERN Bootcamp',
     company: 'Masai School',
@@ -113,10 +113,10 @@ export const experiences: Experience[] = [
   },
   {
     id: 3,
-    period: '2017 — 2020',
+    period: '2017 - 2020',
     label: 'Early Career',
     title: 'Café Owner',
-    company: 'Independent — Ashta, Maharashtra',
+    company: 'Independent - Ashta, Maharashtra',
     tags: ['Operations', 'Team Management', 'Business'],
     isCurrent: false,
 
@@ -161,10 +161,10 @@ export const coreStack = [
 ];
 
 export const SECTIONS = [
-  { id: 'hero', label: '01 / 06 — HERO' },
-  { id: 'expertise', label: '02 / 06 — EXPERTISE' },
-  { id: 'about', label: '03 / 06 — ABOUT' },
-  { id: 'work', label: '04 / 06 — WORK' },
-  { id: 'experience', label: '05 / 06 — EXPERIENCE' },
-  { id: 'contact', label: '06 / 06 — CONTACT' },
+  { id: 'hero', label: '01 / 06 - HERO' },
+  { id: 'expertise', label: '02 / 06 - EXPERTISE' },
+  { id: 'about', label: '03 / 06 - ABOUT' },
+  { id: 'work', label: '04 / 06 - WORK' },
+  { id: 'experience', label: '05 / 06 - EXPERIENCE' },
+  { id: 'contact', label: '06 / 06 - CONTACT' },
 ];

@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * WorkSectionCurtain — Full-viewport curtain wipe per project.
+ * WorkSectionCurtain - Full-viewport curtain wipe per project.
  *
  * Each project occupies the full viewport height. Scrolling scrubs two curtain
  * panels that pull apart (top and bottom) to reveal the project image and
@@ -55,7 +55,7 @@ export default function WorkSectionCurtain() {
           ref={(el) => { panelRefs.current[i] = el; }}
           className="relative w-full h-screen overflow-hidden bg-surface-container-low"
         >
-          {/* Background image — always visible underneath curtains */}
+          {/* Background image - always visible underneath curtains */}
           <div className="absolute inset-0">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -71,7 +71,7 @@ export default function WorkSectionCurtain() {
             {/* Section label only on first panel */}
             {i === 0 && (
               <div className="absolute top-10 left-10 md:left-20">
-              <p className="text-xs font-label text-primary/60 uppercase tracking-widest">03 — Work</p>
+              <p className="text-xs font-label text-primary/60 uppercase tracking-widest">03 - Work</p>
               </div>
             )}
             <p className="text-xs font-label text-primary/50 uppercase tracking-widest mb-3">

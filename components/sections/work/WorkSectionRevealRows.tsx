@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * WorkSectionRevealRows — Alternating left/right wipe reveal.
+ * WorkSectionRevealRows - Alternating left/right wipe reveal.
  *
  * Cards are laid out in a vertical list. As each row enters the viewport,
  * a clip-path wipe sweeps across (left→right on even rows, right→left on odd)
@@ -68,7 +68,7 @@ export default function WorkSectionRevealRows() {
       {/* Section header */}
       <div className="mb-20 max-w-5xl mx-auto flex items-end justify-between">
         <div>
-          <p className="text-xs font-label text-primary/60 uppercase tracking-widest">03 — Work</p>
+          <p className="text-xs font-label text-primary/60 uppercase tracking-widest">03 - Work</p>
           <h2 className="text-5xl md:text-7xl font-headline font-bold mt-4 text-on-surface">
             Projects
           </h2>

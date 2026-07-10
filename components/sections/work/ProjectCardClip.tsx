@@ -3,7 +3,7 @@
 import { Project } from "@/lib/data";
 
 /**
- * ProjectCardClip — default reveal style.
+ * ProjectCardClip - default reveal style.
  * The parent WorkSection drives the clip-path reveal via ScrollTrigger.
  * This card adds: grayscale→colour image transition + arrow icon on hover.
  */

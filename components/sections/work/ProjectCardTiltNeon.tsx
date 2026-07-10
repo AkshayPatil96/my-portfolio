@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { Project } from "@/lib/data";
 
 /**
- * ProjectCardTiltNeon — Tilt + Neon merged card.
+ * ProjectCardTiltNeon - Tilt + Neon merged card.
  *
  * Combines:
  * - 3-D perspective rotateX/Y tilt that follows the mouse (from Tilt)
@@ -135,7 +135,7 @@ export default function ProjectCardTiltNeon({ project }: { project: Project }) {
         </div>
       </div>
 
-      {/* Info panel — slightly lifted in 3-D space */}
+      {/* Info panel - slightly lifted in 3-D space */}
       <div
         className="p-7 md:p-8 space-y-5 relative z-10"
         style={{ transform: "translateZ(18px)" }}

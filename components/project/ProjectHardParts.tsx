@@ -54,7 +54,7 @@ export default function ProjectHardParts({ caseStudy }: ProjectHardPartsProps) {
         </h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-          {/* Left — Items */}
+          {/* Left - Items */}
           <div data-hard-items className="space-y-10">
             {caseStudy.hardParts.items.map((item, i) => (
               <div key={i} data-hard-item>
@@ -68,7 +68,7 @@ export default function ProjectHardParts({ caseStudy }: ProjectHardPartsProps) {
             ))}
           </div>
 
-          {/* Right — Stats */}
+          {/* Right - Stats */}
           <div data-stats-grid className="grid grid-cols-2 gap-6 content-start">
             {caseStudy.hardParts.stats.map((stat, i) => (
               <div

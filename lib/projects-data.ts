@@ -88,9 +88,9 @@ export const projects: Project[] = [
     title: "Real-Time Chat Platform",
     slug: "real-time-chat-platform",
     description:
-      "Designed and built a real-time messaging platform supporting multi-tab presence, delivery guarantees, and scalable pagination — solving consistency challenges in distributed real-time systems.",
+      "Designed and built a real-time messaging platform supporting multi-tab presence, delivery guarantees, and scalable pagination - solving consistency challenges in distributed real-time systems.",
     impact:
-      "Achieved consistent real-time message delivery across multiple concurrent sessions with O(1) pagination and resilient presence tracking — ensuring no duplicate messages, accurate online status, and stable performance under growing datasets. Additionally, the system supports zero-downtime deployments, automatic failover, and self-healing infrastructure for high availability.",
+      "Achieved consistent real-time message delivery across multiple concurrent sessions with O(1) pagination and resilient presence tracking - ensuring no duplicate messages, accurate online status, and stable performance under growing datasets. Additionally, the system supports zero-downtime deployments, automatic failover, and self-healing infrastructure for high availability.",
     image: "https://placehold.co/800x450/1a1a1a/e5c497?text=Real-Chat+Preview",
     tags: [
       "Socket.IO",
@@ -106,7 +106,7 @@ export const projects: Project[] = [
     caseStudy: {
       number: "01",
       heroDescription:
-        "A real-time messaging system engineered for consistency, presence accuracy, and scalable data access — built to handle the edge cases most chat apps ignore.",
+        "A real-time messaging system engineered for consistency, presence accuracy, and scalable data access - built to handle the edge cases most chat apps ignore.",
       liveUrl: "https://real-chat.akshforge.com/",
       githubUrl: "https://github.com/AkshayPatil96/real-chat",
       screenshots: [
@@ -117,7 +117,7 @@ export const projects: Project[] = [
         eyebrow: "THE CHALLENGE",
         title: "Reliable Messaging at Concurrent Scale",
         description:
-          "The core challenge wasn't just sending messages — it was guaranteeing ordering, delivery state consistency, and presence accuracy across multiple browser tabs and reconnection scenarios. Webhook signature verification required raw body preservation before Express middleware parsing. Atomic consistency between message creation and conversation metadata updates demanded careful transaction orchestration. Meanwhile, rate limiting had to be distributed across potential server instances without falling back to fragile in-memory stores.",
+          "The core challenge wasn't just sending messages - it was guaranteeing ordering, delivery state consistency, and presence accuracy across multiple browser tabs and reconnection scenarios. Webhook signature verification required raw body preservation before Express middleware parsing. Atomic consistency between message creation and conversation metadata updates demanded careful transaction orchestration. Meanwhile, rate limiting had to be distributed across potential server instances without falling back to fragile in-memory stores.",
       },
       engineeringResponse: {
         eyebrow: "ENGINEERING RESPONSE",
@@ -127,7 +127,7 @@ export const projects: Project[] = [
             icon: "wifi",
             title: "Socket.IO with Redis Presence",
             description:
-              "Enabled real-time messaging with Socket.IO, backed by Redis presence tracking using atomic INCR/DECR counters and TTL heartbeats — ensuring accurate multi-tab online/offline state without false disconnects.",
+              "Enabled real-time messaging with Socket.IO, backed by Redis presence tracking using atomic INCR/DECR counters and TTL heartbeats - ensuring accurate multi-tab online/offline state without false disconnects.",
           },
           {
             icon: "view_list",
@@ -139,13 +139,13 @@ export const projects: Project[] = [
             icon: "hub",
             title: "SOLID Modular Architecture",
             description:
-              "Decomposed the backend into 7 domain modules (Users, Conversations, Messages, Chat-Requests, Presence, Uploads, Webhooks) — each with its own model, repository, service, controller, and validator layers following interface-driven dependency injection.",
+              "Decomposed the backend into 7 domain modules (Users, Conversations, Messages, Chat-Requests, Presence, Uploads, Webhooks) - each with its own model, repository, service, controller, and validator layers following interface-driven dependency injection.",
           },
         ],
       },
       architectureImage:
         "https://placehold.co/800x300/131313/e5c497?text=Modular+Monolith+Architecture",
-      architectureCaption: "MODULAR MONOLITH — LAYERED SERVICE ARCHITECTURE",
+      architectureCaption: "MODULAR MONOLITH - LAYERED SERVICE ARCHITECTURE",
       architectureNote:
         "Chose a modular monolith over microservices to maintain deployment simplicity while preserving clear domain boundaries and scalability.",
       deepDive: {
@@ -155,7 +155,7 @@ export const projects: Project[] = [
             icon: "bolt",
             title: "Why Redis for Presence?",
             description:
-              "Presence tracking requires sub-second latency and atomic updates — Redis INCR/DECR with TTL enabled accurate multi-session tracking without race conditions.",
+              "Presence tracking requires sub-second latency and atomic updates - Redis INCR/DECR with TTL enabled accurate multi-session tracking without race conditions.",
           },
           {
             icon: "grid_view",
@@ -184,12 +184,12 @@ export const projects: Project[] = [
           {
             title: "Solving Multi-Tab Presence Consistency",
             description:
-              "Each browser tab opens its own socket connection, so a naive approach would toggle users offline every time a single tab closes. Solved with Redis INCR/DECR counters per userId — only emitting 'user:offline' when the count drops to zero, paired with a 120s TTL heartbeat as a safety net.",
+              "Each browser tab opens its own socket connection, so a naive approach would toggle users offline every time a single tab closes. Solved with Redis INCR/DECR counters per userId - only emitting 'user:offline' when the count drops to zero, paired with a 120s TTL heartbeat as a safety net.",
           },
           {
             title: "Atomic Message + Conversation Updates",
             description:
-              "Creating a message and updating the conversation's lastMessage field must succeed or fail together. Implemented a withTransaction() helper wrapping MongoDB sessions, ensuring atomic rollback on any failure — critical for the chat-request accept flow which creates a conversation and updates request status in one transaction.",
+              "Creating a message and updating the conversation's lastMessage field must succeed or fail together. Implemented a withTransaction() helper wrapping MongoDB sessions, ensuring atomic rollback on any failure - critical for the chat-request accept flow which creates a conversation and updates request status in one transaction.",
           },
           {
             title: "Webhook Body Parsing Order",
@@ -260,7 +260,7 @@ export const projects: Project[] = [
         eyebrow: "RETROSPECTIVE",
         quote: "Design for Disconnection, Build for Consistency.",
         closing:
-          "The biggest lesson was that real-time systems are fundamentally about handling the unhappy path — socket disconnects, stale presence state, partial transaction failures, and orphaned uploads. Every feature demanded thinking in terms of 'what happens when this fails mid-way?' rather than just the success flow. Building the cursor pagination and presence counter systems taught me that elegant distributed design often comes down to choosing the right data structure at the right layer.",
+          "The biggest lesson was that real-time systems are fundamentally about handling the unhappy path - socket disconnects, stale presence state, partial transaction failures, and orphaned uploads. Every feature demanded thinking in terms of 'what happens when this fails mid-way?' rather than just the success flow. Building the cursor pagination and presence counter systems taught me that elegant distributed design often comes down to choosing the right data structure at the right layer.",
       },
     },
   },
@@ -269,9 +269,9 @@ export const projects: Project[] = [
     title: "Warden Admin Panel",
     slug: "warden-admin-panel",
     description:
-      "Designed and built a production-grade internal admin panel with self-rolled session auth, permission-based RBAC, and full audit logging — a study in security judgment where the server is always the source of truth.",
+      "Designed and built a production-grade internal admin panel with self-rolled session auth, permission-based RBAC, and full audit logging - a study in security judgment where the server is always the source of truth.",
     impact:
-      "Delivered granular, permission-checked authorization enforced entirely at the API layer, with tamper-evident audit trails on every sensitive mutation. Self-rolled session auth (Argon2id, httpOnly cookies, server-side session store) replaces a third-party BaaS to demonstrate the underlying security fundamentals — timing-safe logins, account lockout, session revocation on credential change, and zero tokens ever exposed to client JavaScript.",
+      "Delivered granular, permission-checked authorization enforced entirely at the API layer, with tamper-evident audit trails on every sensitive mutation. Self-rolled session auth (Argon2id, httpOnly cookies, server-side session store) replaces a third-party BaaS to demonstrate the underlying security fundamentals - timing-safe logins, account lockout, session revocation on credential change, and zero tokens ever exposed to client JavaScript.",
     image:
       "/assets/images/case-study-screenshots/02-dashboard.png",
     tags: [
@@ -290,7 +290,7 @@ export const projects: Project[] = [
     caseStudy: {
       number: "02",
       heroDescription:
-        "An internal-tools admin panel engineered around a single principle — permissions are checked on the server, always. Self-rolled auth, granular RBAC, and audit logging built to convince a senior reviewer this is real, shippable software.",
+        "An internal-tools admin panel engineered around a single principle - permissions are checked on the server, always. Self-rolled auth, granular RBAC, and audit logging built to convince a senior reviewer this is real, shippable software.",
       liveUrl: "https://warden-admin.akshforge.com",
       githubUrl: "https://github.com/AkshayPatil96/warden-admin",
       screenshots: [
@@ -305,7 +305,7 @@ export const projects: Project[] = [
         eyebrow: "THE CHALLENGE",
         title: "Authorization You Can Actually Trust",
         description:
-          "Most admin panels lean on a BaaS for auth and gate the UI with role strings — which looks fine until you realize the client is deciding what it's allowed to do. The real challenge was building an access-control system that a security reviewer would trust: authorization enforced on the server for every request, granular permissions rather than role checks, credential handling that resists timing and enumeration attacks, and an audit trail that proves who changed what and when — all without hiding the mechanics behind a third-party service.",
+          "Most admin panels lean on a BaaS for auth and gate the UI with role strings - which looks fine until you realize the client is deciding what it's allowed to do. The real challenge was building an access-control system that a security reviewer would trust: authorization enforced on the server for every request, granular permissions rather than role checks, credential handling that resists timing and enumeration attacks, and an audit trail that proves who changed what and when - all without hiding the mechanics behind a third-party service.",
       },
       engineeringResponse: {
         eyebrow: "ENGINEERING RESPONSE",
@@ -315,28 +315,28 @@ export const projects: Project[] = [
             icon: "key",
             title: "Self-Rolled Session Auth",
             description:
-              "Argon2id password hashing, opaque server-side sessions stored in Postgres, and httpOnly + Secure + SameSite cookies — no tokens in localStorage, ever. Sessions are revocable server-side, so a password change or reset can invalidate stolen cookies instantly.",
+              "Argon2id password hashing, opaque server-side sessions stored in Postgres, and httpOnly + Secure + SameSite cookies - no tokens in localStorage, ever. Sessions are revocable server-side, so a password change or reset can invalidate stolen cookies instantly.",
           },
           {
             icon: "verified_user",
             title: "Permission-Based Authorization",
             description:
-              "An authorize('orders:write') middleware gates every protected route against granular permission keys resolved from the user's roles — never against role strings. UI hiding/disabling is treated as UX only; the API is the single source of truth.",
+              "An authorize('orders:write') middleware gates every protected route against granular permission keys resolved from the user's roles - never against role strings. UI hiding/disabling is treated as UX only; the API is the single source of truth.",
           },
           {
             icon: "hub",
             title: "Shared-Schema Modular Monolith",
             description:
-              "Eight domain modules (auth, users, roles, customers, subscriptions, invoices, analytics, audit), each layered routes → controller → service → repository. Zod schemas live in a shared package and validate on both the API and the web forms — one contract, no drift.",
+              "Eight domain modules (auth, users, roles, customers, subscriptions, invoices, analytics, audit), each layered routes → controller → service → repository. Zod schemas live in a shared package and validate on both the API and the web forms - one contract, no drift.",
           },
         ],
       },
       architectureImage:
         "https://placehold.co/800x300/131313/e5c497?text=Layered+Modular+Monolith",
       architectureCaption:
-        "MODULAR MONOLITH — ROUTES → CONTROLLER → SERVICE → REPOSITORY",
+        "MODULAR MONOLITH - ROUTES → CONTROLLER → SERVICE → REPOSITORY",
       architectureNote:
-        "Chose a modular monolith with strict per-module layering over microservices — clear domain boundaries and testability without the operational tax of distributed infra for one app and one database.",
+        "Chose a modular monolith with strict per-module layering over microservices - clear domain boundaries and testability without the operational tax of distributed infra for one app and one database.",
       deepDive: {
         eyebrow: "DEEP DIVE",
         cards: [
@@ -344,7 +344,7 @@ export const projects: Project[] = [
             icon: "shield",
             title: "Permissions, Not Roles",
             description:
-              "Roles (Admin / Manager / Viewer) are just bundles of permissions. The gate checks the atomic permission — 'invoices:delete' — so a role's capabilities can change without touching a single route. The difference is visibly enforced in both API responses and UI affordances.",
+              "Roles (Admin / Manager / Viewer) are just bundles of permissions. The gate checks the atomic permission - 'invoices:delete' - so a role's capabilities can change without touching a single route. The difference is visibly enforced in both API responses and UI affordances.",
           },
           {
             icon: "timer",
@@ -356,13 +356,13 @@ export const projects: Project[] = [
             icon: "history",
             title: "Audit Log as a First-Class Citizen",
             description:
-              "Every sensitive mutation writes an audit entry (actor, action, entity, before/after JSON) inside the same transaction as the change itself — so the record and its proof commit or roll back together. Logins, lockouts, and session revocations are all captured.",
+              "Every sensitive mutation writes an audit entry (actor, action, entity, before/after JSON) inside the same transaction as the change itself - so the record and its proof commit or roll back together. Logins, lockouts, and session revocations are all captured.",
           },
           {
             icon: "cookie",
             title: "Cross-Origin httpOnly Sessions",
             description:
-              "The Vercel-hosted frontend and a separate API host mean the session cookie is SameSite=None + Secure in production, falling back to Lax over http locally. A lightweight Next proxy does a cheap presence redirect — defense in depth, never the real gate.",
+              "The Vercel-hosted frontend and a separate API host mean the session cookie is SameSite=None + Secure in production, falling back to Lax over http locally. A lightweight Next proxy does a cheap presence redirect - defense in depth, never the real gate.",
           },
         ],
       },
@@ -383,7 +383,7 @@ export const projects: Project[] = [
           {
             title: "Auditability Without Partial Writes",
             description:
-              "An audit log that can drift from reality is worse than none. By threading the same Prisma transaction client through both the domain write and writeAudit(), a failure anywhere rolls back the audit entry too — the log can never claim something happened that didn't.",
+              "An audit log that can drift from reality is worse than none. By threading the same Prisma transaction client through both the domain write and writeAudit(), a failure anywhere rolls back the audit entry too - the log can never claim something happened that didn't.",
           },
         ],
         stats: [
@@ -400,7 +400,7 @@ export const projects: Project[] = [
           {
             title: "One-Command Local Stack",
             description:
-              "docker-compose brings up Postgres, the API, and the web app together, so local development mirrors production — the whole point being parity, not decoration.",
+              "docker-compose brings up Postgres, the API, and the web app together, so local development mirrors production - the whole point being parity, not decoration.",
           },
           {
             title: "CI Gate on Every PR",
@@ -410,7 +410,7 @@ export const projects: Project[] = [
           {
             title: "Integration Tests Against Real Postgres",
             description:
-              "Vitest suites test the auth flow, a permission-denied case, and critical CRUD end-to-end against a throwaway Postgres — the database is never mocked, so the tests exercise real query and transaction behavior.",
+              "Vitest suites test the auth flow, a permission-denied case, and critical CRUD end-to-end against a throwaway Postgres - the database is never mocked, so the tests exercise real query and transaction behavior.",
           },
           {
             title: "Versioned Prisma Migrations",
@@ -420,18 +420,18 @@ export const projects: Project[] = [
           {
             title: "Split Deploy: API on EC2, Web on Vercel",
             description:
-              "The Express API runs on a shared EC2 host while the Next.js frontend deploys to Vercel — driving the cross-origin, SameSite=None cookie design rather than assuming same-origin convenience.",
+              "The Express API runs on a shared EC2 host while the Next.js frontend deploys to Vercel - driving the cross-origin, SameSite=None cookie design rather than assuming same-origin convenience.",
           },
         ],
       },
       tradeoffs: {
         eyebrow: "TRADE-OFFS",
         items: [
-          "Self-rolled session auth over Auth0/Clerk — more responsibility, but it demonstrates the security fundamentals a BaaS hides",
-          "Server-side sessions over stateless JWTs — a DB lookup per request buys instant, reliable revocation",
-          "Granular permissions over role checks — more rows to seed, but authorization that survives changing requirements",
-          "Modular monolith over microservices — clear boundaries without distributed-systems overhead for one app",
-          "Money stored as integer cents over floats — no rounding drift in billing math",
+          "Self-rolled session auth over Auth0/Clerk - more responsibility, but it demonstrates the security fundamentals a BaaS hides",
+          "Server-side sessions over stateless JWTs - a DB lookup per request buys instant, reliable revocation",
+          "Granular permissions over role checks - more rows to seed, but authorization that survives changing requirements",
+          "Modular monolith over microservices - clear boundaries without distributed-systems overhead for one app",
+          "Money stored as integer cents over floats - no rounding drift in billing math",
           "Kept the repository layer even on thin CRUD for consistency, accepting some pass-through boilerplate",
         ],
       },
@@ -439,7 +439,7 @@ export const projects: Project[] = [
         eyebrow: "RETROSPECTIVE",
         quote: "Trust the Server, Never the Client.",
         closing:
-          "The lesson that ran through every module was that security lives in the unhappy path — the missing account, the stolen cookie, the reset link replayed twice, the audit write that must not outlive its transaction. Building auth from primitives instead of importing a black box forced me to reason about each of those cases explicitly, and that's exactly the judgment this project exists to show.",
+          "The lesson that ran through every module was that security lives in the unhappy path - the missing account, the stolen cookie, the reset link replayed twice, the audit write that must not outlive its transaction. Building auth from primitives instead of importing a black box forced me to reason about each of those cases explicitly, and that's exactly the judgment this project exists to show.",
       },
     },
   },

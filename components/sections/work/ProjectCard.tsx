@@ -40,7 +40,7 @@ export default function ProjectCard({
           className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.08]"
         />
 
-        {/* Gradient overlay — fades in on hover */}
+        {/* Gradient overlay - fades in on hover */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
         {/* CTA overlay */}
@@ -94,7 +94,7 @@ export default function ProjectCard({
           ))}
         </div>
 
-        {/* Case study CTA — always visible */}
+        {/* Case study CTA - always visible */}
         {project.caseStudy && (
           <div className="flex items-center gap-2 pt-2 text-primary/60 group-hover:text-primary transition-colors duration-300">
             <span className="material-symbols-outlined text-[16px]">article</span>

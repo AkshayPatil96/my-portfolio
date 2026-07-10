@@ -47,7 +47,7 @@ export default function ContactSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
-          {/* Left — info */}
+          {/* Left - info */}
           <div className="space-y-10 flex flex-col">
             <div className="space-y-6">
               <h2 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-on-surface leading-[1.05]">
@@ -83,7 +83,7 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right — form */}
+          {/* Right - form */}
           <div className="glass-card p-8 md:p-12 rounded-xl ghost-border relative overflow-hidden">
             <div
               className="absolute -top-24 -right-24 w-64 h-64 rounded-full pointer-events-none"

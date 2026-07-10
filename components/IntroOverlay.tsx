@@ -219,7 +219,7 @@ export default function IntroOverlay() {
       id="intro-overlay"
       ref={overlayRef}
     >
-      {/* div with no text — cannot be LCP candidate, unlike a text span */}
+      {/* div with no text - cannot be LCP candidate, unlike a text span */}
       <div id="intro-bar-track">
         <div
           id="intro-bar-fill"

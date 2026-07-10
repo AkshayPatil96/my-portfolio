@@ -56,7 +56,7 @@ export default function TerminalBlock() {
       return () => clearTimeout(timer);
     }
 
-    // Line finished — commit it and move to the next after a pause
+    // Line finished - commit it and move to the next after a pause
     const pause = setTimeout(() => {
       setDisplayed((prev) => [...prev, fullText]);
       setCurrentLine((l) => l + 1);

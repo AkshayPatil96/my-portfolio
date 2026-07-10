@@ -7,7 +7,7 @@ import { coreStack } from "@/lib/data";
 import SkillBars from "./SkillBars";
 
 /**
- * AboutBio — text content column with:
+ * AboutBio - text content column with:
  * - SplitType line-by-line title reveal
  * - Staggered paragraph fade-ups
  * - Core stack badge cloud with staggered entrance
@@ -95,14 +95,14 @@ export default function AboutBio() {
         <p className="gsap-fade text-on-surface-variant text-base md:text-lg leading-relaxed font-light">
           Full-stack developer with 3.5+ years building production-grade
           applications. Currently at Value Creatives Tech Solutions LLP.
-          Non-traditional path — left engineering, ran a café, then entered tech
+          Non-traditional path - left engineering, ran a café, then entered tech
           via MERN bootcamp.
         </p>
         <p
           className="gsap-fade text-on-surface-variant text-base md:text-lg leading-relaxed font-light"
           data-delay="0.12"
         >
-          I approach every project as a curator — selecting the right
+          I approach every project as a curator - selecting the right
           technologies to build scalable, resilient architectures. Specialising
           in Node.js backends, React frontends, and everything AWS in between.
         </p>

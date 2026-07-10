@@ -17,11 +17,11 @@ export default function Navbar() {
     const hash = href.includes("#") ? `#${href.split("#")[1]}` : href;
 
     if (pathname === "/") {
-      // On home page — smooth scroll to the section
+      // On home page - smooth scroll to the section
       const target = document.querySelector(hash);
       if (target) scrollTo(target as HTMLElement, { offset: -80 });
     } else {
-      // On another page — navigate home, browser will scroll to hash
+      // On another page - navigate home, browser will scroll to hash
       router.push(`/${hash}`);
     }
   };

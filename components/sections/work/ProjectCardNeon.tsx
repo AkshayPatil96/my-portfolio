@@ -5,7 +5,7 @@ import gsap from "gsap";
 import { Project } from "@/lib/data";
 
 /**
- * ProjectCardNeon — spotlight / neon-glow card.
+ * ProjectCardNeon - spotlight / neon-glow card.
  * A radial spotlight follows the cursor across the card surface,
  * creating a living light-source effect. On hover the border pulses
  * with a warm golden glow.

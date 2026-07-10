@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Project } from "@/lib/data";
 
 /**
- * ProjectCardGlitch — RGB-split glitch effect on the title when hovered.
+ * ProjectCardGlitch - RGB-split glitch effect on the title when hovered.
  * Two colour-shifted copies of the title animate in random clip-path slices
  * to create a CRT / signal-corruption look. The image also flickers slightly.
  */

@@ -96,7 +96,7 @@ export const architectureConfigs: Record<string, ArchDiagramConfig> = {
   // ── Real-Time Chat Platform ────────────────────────────────────
   "real-time-chat-platform": {
     eyebrow: "INTERNAL ARCHITECTURE",
-    title: "Modular Monolith — Layered Service Architecture",
+    title: "Modular Monolith - Layered Service Architecture",
     subtitle: "Single Deployable Unit",
     nodes: [
       // ── API Layer ──────────────────────────────────────────────
@@ -413,7 +413,7 @@ export const architectureConfigs: Record<string, ArchDiagramConfig> = {
   
   "warden-admin-panel": {
     eyebrow: "INTERNAL ARCHITECTURE",
-    title: "Modular Monolith — Layered per Module",
+    title: "Modular Monolith - Layered per Module",
     subtitle: "routes → controller → service → repository",
     nodes: [
       // ── API Layer ──────────────────────────────────────────────
@@ -431,7 +431,7 @@ export const architectureConfigs: Record<string, ArchDiagramConfig> = {
         group: "api",
         position: { x: 540, y: 30 },
         tooltip:
-          "Parse and validate the request, call a service, shape the response — no business logic",
+          "Parse and validate the request, call a service, shape the response - no business logic",
       },
 
       // ── Application Layer (services) ───────────────────────────
@@ -520,7 +520,7 @@ export const architectureConfigs: Record<string, ArchDiagramConfig> = {
         group: "crossCutting",
         position: { x: 950, y: 250 },
         tooltip:
-          "One Zod schema per entity, imported by both API validation and the web forms — no drift",
+          "One Zod schema per entity, imported by both API validation and the web forms - no drift",
       },
       {
         id: "audit",

@@ -1,5 +1,5 @@
 /**
- * Central GSAP setup — import gsap and ScrollTrigger from here everywhere.
+ * Central GSAP setup - import gsap and ScrollTrigger from here everywhere.
  * The plugin is registered exactly once at module-load time.
  */
 import gsap from "gsap";

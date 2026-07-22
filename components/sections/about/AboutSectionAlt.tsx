@@ -159,7 +159,7 @@ export default function AboutSectionAlt() {
                 {/* Social links */}
                 <div className="flex items-center gap-5 mt-5 pt-4 border-t border-white/10">
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/aksh2706/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5 text-neutral-400 hover:text-primary transition-colors duration-300"
@@ -172,7 +172,7 @@ export default function AboutSectionAlt() {
                     </span>
                   </a>
                   <a
-                    href="https://github.com"
+                    href="https://github.com/AkshayPatil96"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5 text-neutral-400 hover:text-primary transition-colors duration-300"

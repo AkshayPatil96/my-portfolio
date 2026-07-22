@@ -57,7 +57,7 @@ export default function HeroSection() {
           className="font-label text-xs md:text-sm uppercase tracking-[0.08em] text-primary mb-5 md:mb-10 block"
           style={{ opacity: 0 }}
         >
-          Product-focused Full Stack Developer
+          Full Stack Developer · Open to Full-Time Roles
         </span>
 
         <h1
@@ -107,9 +107,14 @@ export default function HeroSection() {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
         </div>
-        <span className="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">
-          Available for work
-        </span>
+        <div className="flex flex-col gap-1">
+          <span className="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant">
+            Available for work
+          </span>
+          <span className="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface-variant/50">
+            Open to Relocation · Remote · Full-Time Roles
+          </span>
+        </div>
       </div>
 
       {/* Scroll indicator */}

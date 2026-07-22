@@ -16,7 +16,7 @@ import { coreStack } from "@/lib/data";
 import { calculateExperience } from "@/lib/utils";
 
 const STATS = [
-  { value: 3.5, suffix: "+", label: "Years in Production" },
+  { value: parseFloat(calculateExperience()), suffix: "+", label: "Years in Production" },
   { value: 20, suffix: "+", label: "Projects Shipped" },
   { value: 8, suffix: "", label: "Core Technologies" },
 ];
@@ -222,7 +222,7 @@ export default function AboutSectionAlt() {
             <div className="mb-14">
               <p className="gsap-fade text-on-surface-variant text-base md:text-lg leading-relaxed font-light">
                 I’m a full-stack developer building production-grade
-                applications with 3.5+ years of experience.
+                applications with {calculateExperience()} years of experience.
                 <br />
                 Before tech, I ran a café - where I learned how to solve
                 real-world problems, handle pressure, and deliver consistently.

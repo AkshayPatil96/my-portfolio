@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import SplitType from "split-type";
 import { coreStack } from "@/lib/data";
+import { calculateExperience } from "@/lib/utils";
 import SkillBars from "./SkillBars";
 
 /**
@@ -93,7 +94,7 @@ export default function AboutBio() {
       {/* Bio paragraphs */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-14">
         <p className="gsap-fade text-on-surface-variant text-base md:text-lg leading-relaxed font-light">
-          Full-stack developer with 3.5+ years building production-grade
+          Full-stack developer with {calculateExperience()} years building production-grade
           applications. Currently at Value Creatives Tech Solutions LLP.
           Non-traditional path - left engineering, ran a café, then entered tech
           via MERN bootcamp.

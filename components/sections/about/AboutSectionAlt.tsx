@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "@/lib/gsap";
 import SplitType from "split-type";
+import { calculateExperience } from "@/lib/utils";
 
 const CORE_STACK = [
   "Next.js",
@@ -195,7 +196,7 @@ export default function AboutSectionAlt() {
             data-delay="0.1"
           >
             <p className="text-neutral-300 leading-relaxed">
-              I&apos;m a full-stack developer with 3.5+ years of experience
+              I&apos;m a full-stack developer with {calculateExperience()} years of experience
               building production-grade applications.
             </p>
             <p className="text-neutral-300 leading-relaxed">

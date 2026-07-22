@@ -59,9 +59,13 @@ export default function Navbar() {
           ))}
         </div>
 
-        <button className="mag-btn bg-primary text-on-primary px-6 md:px-8 py-2.5 md:py-3 rounded-full font-label text-xs uppercase tracking-widest">
+        <a
+          href="/#contact"
+          onClick={(e) => handleNavClick(e, "/#contact")}
+          className="mag-btn bg-primary text-on-primary px-6 md:px-8 py-2.5 md:py-3 rounded-full font-label text-xs uppercase tracking-widest"
+        >
           Hire Me
-        </button>
+        </a>
       </div>
     </nav>
   );

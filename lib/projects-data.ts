@@ -234,17 +234,17 @@ export const projects: Project[] = [
           {
             title: "One-Command Local Stack",
             description:
-              "docker-compose brings up Postgres, the API, and the web app together, so local development mirrors production - the whole point being parity, not decoration.",
+              "docker-compose brings up the API and web app together, both connecting to an external managed Postgres instance via Prisma - local development mirrors production without running the database itself in a container.",
           },
           {
             title: "CI Gate on Every PR",
             description:
-              "GitHub Actions runs lint → typecheck → test → build, with Prisma migrations applied against a real Postgres service container. Nothing merges red.",
+              "GitHub Actions runs lint → typecheck → test → build, with Prisma migrations applied against the external Postgres database. Nothing merges red.",
           },
           {
-            title: "Integration Tests Against Real Postgres",
+            title: "Integration Tests Against a Real Postgres Database",
             description:
-              "Vitest suites test the auth flow, a permission-denied case, and critical CRUD end-to-end against a throwaway Postgres - the database is never mocked, so the tests exercise real query and transaction behavior.",
+              "Vitest suites test the auth flow, a permission-denied case, and critical CRUD end-to-end against the external Postgres instance - the database is never mocked, so the tests exercise real query and transaction behavior.",
           },
           {
             title: "Versioned Prisma Migrations",

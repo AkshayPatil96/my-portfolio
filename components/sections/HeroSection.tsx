@@ -91,9 +91,14 @@ export default function HeroSection() {
           >
             View Work →
           </a>
-          <button className="mag-btn px-10 py-4 bg-primary text-on-primary font-label text-sm uppercase tracking-widest rounded-full">
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mag-btn px-10 py-4 bg-primary text-on-primary font-label text-sm uppercase tracking-widest rounded-full"
+          >
             Resume
-          </button>
+          </a>
         </div>
       </div>
 

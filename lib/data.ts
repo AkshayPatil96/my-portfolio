@@ -44,7 +44,7 @@ export const experiences: Experience[] = [
 
     details: [
       'Built and maintained full-stack applications using MERN and Next.js across multiple domains',
-      'Designed REST APIs and backend services for healthcare, HR, property listing, and legal platforms',
+      'Owned backend APIs, frontend interfaces, and architectural and deployment decisions across healthcare, HR, property listing, legal, and education platforms',
       'Integrated payment workflows using Stripe and Razorpay including order creation, verification, and webhooks',
       'Worked with AWS services (S3, SES, EC2) for file handling, email workflows, and deployments',
       'Handled end-to-end feature development from frontend UI to backend logic and deployment',

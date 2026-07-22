@@ -3,9 +3,16 @@
 import { useEffect, useState } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
 import { toast } from "sonner";
+import { sendContactMessage } from "@/lib/actions/contact";
 
 export default function ContactSection() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    message: "",
+    company: "",
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
 
@@ -26,9 +33,20 @@ export default function ContactSection() {
     return () => ctx.revert();
   }, []);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission placeholder
+    setIsSubmitting(true);
+
+    const result = await sendContactMessage(form);
+
+    if (result.success) {
+      toast.success(result.message);
+      setForm({ name: "", email: "", message: "", company: "" });
+    } else {
+      toast.error(result.message);
+    }
+
+    setIsSubmitting(false);
   };
 
   return (
@@ -96,6 +114,20 @@ export default function ContactSection() {
               className="space-y-9 relative z-10"
               onSubmit={handleSubmit}
             >
+              {/* Honeypot - hidden from real users, bots tend to fill it in */}
+              <input
+                type="text"
+                name="company"
+                value={form.company}
+                onChange={(e) =>
+                  setForm((p) => ({ ...p, company: e.target.value }))
+                }
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] w-px h-px opacity-0 pointer-events-none"
+              />
+
               {[
                 {
                   id: "name",
@@ -157,9 +189,10 @@ export default function ContactSection() {
               <div className="pt-4">
                 <button
                   type="submit"
-                  className="mag-btn w-full bg-primary text-on-primary py-5 rounded-full font-label uppercase tracking-[0.2em] text-sm font-bold flex items-center justify-center gap-3 group"
+                  disabled={isSubmitting}
+                  className="mag-btn w-full bg-primary text-on-primary py-5 rounded-full font-label uppercase tracking-[0.2em] text-sm font-bold flex items-center justify-center gap-3 group disabled:opacity-60 disabled:cursor-not-allowed"
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                   <span className="material-symbols-outlined group-hover:translate-x-2 transition-transform duration-300">
                     arrow_right_alt
                   </span>

@@ -17,6 +17,19 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async headers() {
+    return [
+      {
+        source: "/resume.pdf",
+        headers: [
+          {
+            key: "Content-Disposition",
+            value: 'inline; filename="Akshay_Patil_Resume.pdf"',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

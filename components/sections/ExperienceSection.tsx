@@ -176,9 +176,14 @@ export default function ExperienceSection() {
             Looking for the full architectural blueprint?
           </p>
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6">
-            <button className="mag-btn bg-primary text-on-primary font-label uppercase tracking-widest px-8 md:px-10 py-4 rounded-full text-xs font-bold">
-              Download Resume
-            </button>
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mag-btn bg-primary text-on-primary font-label uppercase tracking-widest px-8 md:px-10 py-4 rounded-full text-xs font-bold"
+            >
+              View Resume
+            </a>
             <button className="mag-btn ghost-border text-on-surface font-label uppercase tracking-widest px-8 md:px-10 py-4 rounded-full text-xs font-bold hover:bg-surface-container transition-all">
               View LinkedIn
             </button>

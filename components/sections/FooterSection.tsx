@@ -17,13 +17,15 @@ export default function FooterSection() {
               href: "https://www.linkedin.com/in/aksh2706/",
             },
             { label: "GitHub", href: "https://github.com/AkshayPatil96" },
-            { label: "Resume", href: "https://read.cv/AkshayPatil96" },
+            { label: "Resume", href: "/resume.pdf" },
             { label: "Email", href: "mailto:aksh.patil2706@gmail.com" },
           ].map(({ label, href }) => (
             <a
               key={label}
               href={href}
               className="font-label tracking-[0.2em] text-[12px] text-on-surface-variant hover:text-primary hover:scale-105 transition-all duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {label}
             </a>
@@ -32,7 +34,7 @@ export default function FooterSection() {
 
         {/* Credit */}
         <div className="font-label uppercase tracking-[0.2em] text-[10px] text-on-surface-variant text-center order-1 md:order-2">
-          Designed &amp; built by Akshay · 2026
+          Designed &amp; built by Akshay · {new Date().getFullYear()}
         </div>
 
         {/* Back to top */}

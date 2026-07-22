@@ -19,6 +19,7 @@ export default function ProjectDeepDive({ caseStudy }: ProjectDeepDiveProps) {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 75%",
+          toggleActions: "play none none reverse",
         },
         y: 40,
         opacity: 0,

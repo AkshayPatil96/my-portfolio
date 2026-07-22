@@ -19,6 +19,7 @@ export default function ProjectTradeoffs({ caseStudy }: ProjectTradeoffsProps) {
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 80%",
+          toggleActions: "play none none reverse",
         },
         y: 30,
         opacity: 0,

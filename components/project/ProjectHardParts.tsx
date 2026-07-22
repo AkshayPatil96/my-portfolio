@@ -19,6 +19,7 @@ export default function ProjectHardParts({ caseStudy }: ProjectHardPartsProps) {
         scrollTrigger: {
           trigger: "[data-hard-items]",
           start: "top 80%",
+          toggleActions: "play none none reverse",
         },
         y: 30,
         opacity: 0,
@@ -31,6 +32,7 @@ export default function ProjectHardParts({ caseStudy }: ProjectHardPartsProps) {
         scrollTrigger: {
           trigger: "[data-stats-grid]",
           start: "top 80%",
+          toggleActions: "play none none reverse",
         },
         y: 20,
         opacity: 0,

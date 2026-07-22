@@ -19,6 +19,7 @@ export default function ProjectRetrospective({ caseStudy }: ProjectRetrospective
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top 75%",
+          toggleActions: "play none none reverse",
         },
         defaults: { ease: "power3.out" },
       });

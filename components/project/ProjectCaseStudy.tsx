@@ -11,6 +11,7 @@ import ProjectHardParts from "./ProjectHardParts";
 import ProjectInfrastructure from "./ProjectInfrastructure";
 import InfraDiagram from "./InfraDiagram";
 import ProjectTradeoffs from "./ProjectTradeoffs";
+import ProjectKnownLimitations from "./ProjectKnownLimitations";
 import ProjectRetrospective from "./ProjectRetrospective";
 import ProjectFooter from "./ProjectFooter";
 
@@ -52,6 +53,7 @@ export default function ProjectCaseStudy({ project, allProjects }: ProjectCaseSt
       {cs.infrastructure && <ProjectInfrastructure caseStudy={cs} />}
       {hasDiagram && <InfraDiagram slug={project.slug} />}
       <ProjectTradeoffs caseStudy={cs} />
+      <ProjectKnownLimitations caseStudy={cs} />
       <ProjectRetrospective caseStudy={cs} />
       <ProjectFooter currentProject={project} allProjects={allProjects} />
     </>

@@ -1,140 +1,140 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+/**
+ * ExperienceSection - Left-rail timeline.
+ *
+ * One vertical rail on every breakpoint (no alternating sides):
+ * mobile/tablet get the rail on the left edge, desktop adds a
+ * dedicated period column before the rail. The gold line draws
+ * itself in as you scroll; rows fade up staggered. Cards expand
+ * on click/tap only. Motion is skipped under
+ * prefers-reduced-motion.
+ */
+
+import { useEffect, useRef, useState } from "react";
+import { gsap } from "@/lib/gsap";
 import { experiences } from "@/lib/data";
 import ExperienceCard from "./ExperienceCard";
 
 export default function ExperienceSection() {
+  const sectionRef = useRef<HTMLElement>(null);
   const [expandedId, setExpandedId] = useState<number | null>(null);
 
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Timeline SVG line draw via scrub
-      const tlLine = document.getElementById("tl-line");
-      const tlContainer = document.getElementById("timeline-container");
-      if (tlLine && tlContainer) {
-        ScrollTrigger.create({
-          trigger: tlContainer,
-          start: "top 65%",
-          end: "bottom 35%",
-          scrub: 2,
-          onUpdate(self) {
-            const h = tlContainer.offsetHeight;
-            const svg = document.getElementById("timeline-svg");
-            if (svg) svg.style.height = h + "px";
-            tlLine.setAttribute("y2", String(h));
-            const len = h + 20;
-            tlLine.setAttribute("stroke-dasharray", String(len));
-            tlLine.setAttribute(
-              "stroke-dashoffset",
-              String(len * (1 - self.progress))
-            );
-          },
-        });
-      }
+  const toggle = (id: number) =>
+    setExpandedId((prev) => (prev === id ? null : id));
 
-      // Fade-up for section header + timeline rows
-      document
-        .querySelectorAll<HTMLElement>("#experience .gsap-fade")
-        .forEach((el) => {
-          gsap.from(el, {
+  useEffect(() => {
+    const mm = gsap.matchMedia(sectionRef);
+
+    mm.add("(prefers-reduced-motion: no-preference)", () => {
+      const ctx = gsap.context(() => {
+        gsap.from(".xp-header > *", {
+          scrollTrigger: {
+            trigger: ".xp-header",
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
+          y: 40,
+          opacity: 0,
+          duration: 0.9,
+          stagger: 0.12,
+          ease: "power3.out",
+        });
+
+        // Gold rail draws in while the timeline scrolls through view
+        gsap.fromTo(
+          ".xp-line-fill",
+          { scaleY: 0 },
+          {
+            scaleY: 1,
+            ease: "none",
+            transformOrigin: "top center",
             scrollTrigger: {
-              trigger: el,
-              start: "top 88%",
-              toggleActions: "play none none none",
+              trigger: ".xp-rows",
+              start: "top 70%",
+              end: "bottom 55%",
+              scrub: 1,
+            },
+          },
+        );
+
+        gsap.utils.toArray<HTMLElement>(".xp-row").forEach((row) => {
+          gsap.from(row, {
+            scrollTrigger: {
+              trigger: row,
+              start: "top 85%",
+              toggleActions: "play none none reverse",
             },
             y: 44,
             opacity: 0,
             duration: 0.9,
-            delay: parseFloat(el.dataset.delay ?? "0"),
             ease: "power3.out",
           });
         });
+
+        gsap.from(".xp-cta > *", {
+          scrollTrigger: {
+            trigger: ".xp-cta",
+            start: "top 90%",
+            toggleActions: "play none none reverse",
+          },
+          y: 30,
+          opacity: 0,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "power3.out",
+        });
+      }, sectionRef);
+
+      return () => ctx.revert();
     });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
-
-  const handleExpand = (id: number) => setExpandedId(id);
-  const handleCollapse = (id: number) =>
-    setExpandedId((prev) => (prev === id ? null : prev));
 
   return (
     <section
+      ref={sectionRef}
       id="experience"
-      className="py-24 md:py-32 overflow-hidden"
+      className="py-24 md:py-32 px-6 sm:px-8 lg:px-12 overflow-hidden"
       style={{
         background:
           "radial-gradient(circle at top right, rgba(200,169,126,0.04) 0%, transparent 60%)",
       }}
     >
-      <div className="max-w-[1440px] mx-auto px-8 md:px-12 lg:px-24">
+      <div className="max-w-[1400px] mx-auto">
         {/* Header */}
-        <div className="mb-20 gsap-fade">
-          <span className="font-label text-primary tracking-[0.4em] uppercase text-sm block mb-4">
-            04 / experience
+        <div className="xp-header mb-16 md:mb-24">
+          <span className="font-label text-xs uppercase tracking-widest text-primary mb-6 block">
+            05 // Experience
           </span>
-          <h2 className="font-headline text-5xl md:text-6xl lg:text-7xl font-bold tracking-tighter max-w-2xl leading-tight">
+          <h2 className="font-headline text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter max-w-2xl leading-tight">
             Professional <em className="italic font-normal">Chapters</em>
           </h2>
         </div>
 
         {/* Timeline */}
-        <div className="relative" id="timeline-container">
-          {/* Vertical center line - desktop only */}
-          <svg
-            id="timeline-svg"
-            className="absolute pointer-events-none hidden md:block"
-            style={{
-              left: "50%",
-              top: 0,
-              transform: "translateX(-50%)",
-              width: "2px",
-              zIndex: 0,
-              overflow: "visible",
-            }}
-          >
-            <line
-              id="tl-line"
-              x1="1"
-              y1="0"
-              x2="1"
-              y2="100"
-              stroke="rgba(229,196,151,0.25)"
-              strokeWidth="1.5"
-              strokeDasharray="2000"
-              strokeDashoffset="2000"
-            />
-          </svg>
+        <div className="xp-rows relative">
+          {/* Base rail + animated gold fill */}
+          <div className="absolute left-[7px] md:left-[11.5rem] top-2 bottom-2 w-px bg-outline-variant/30" />
+          <div
+            className="xp-line-fill absolute left-[7px] md:left-[11.5rem] top-2 bottom-2 w-px bg-gradient-to-b from-primary/70 via-primary/40 to-primary/10"
+            style={{ transformOrigin: "top center" }}
+          />
 
-          <div className="space-y-20 md:space-y-28">
-            {experiences.map((exp, i) => {
-              const isLeft = i % 2 === 0;
+          <div className="space-y-12 md:space-y-16">
+            {experiences.map((exp) => {
               const isExpanded = expandedId === exp.id;
 
               return (
                 <div
                   key={exp.id}
-                  className="relative flex flex-col md:flex-row items-start md:items-center gsap-fade"
-                  data-delay={String(i * 0.1)}
+                  className="xp-row relative pl-10 md:pl-0 md:grid md:grid-cols-[10rem_3rem_1fr] md:items-start"
                 >
-                  {/* ── Desktop: year label ── */}
-                  {/* Left side - shown when card is on the right (isLeft=true) */}
-                  <div
-                    className={`hidden md:flex w-1/2 ${
-                      isLeft ? "pr-20 justify-end" : "pl-20 justify-start order-last"
-                    }`}
-                  >
-                    <span className="font-label text-3xl lg:text-4xl font-light text-on-surface-variant/85 tracking-tighter">
-                      {exp.period}
-                    </span>
-                  </div>
-
                   {/* Timeline dot */}
                   <div
-                    className={`absolute left-0 md:left-1/2 w-4 h-4 rounded-full border-4 border-background md:-translate-x-1/2 z-10 top-5 md:top-auto flex-shrink-0 transition-all duration-300 ${
-                      exp.isCurrent ? "" : "bg-outline-variant"
+                    className={`absolute top-9 left-0 md:left-[calc(11.5rem-7px)] w-[15px] h-[15px] rounded-full border-4 border-background z-10 transition-all duration-300 ${
+                      exp.isCurrent || isExpanded ? "" : "bg-outline-variant"
                     }`}
                     style={
                       exp.isCurrent || isExpanded
@@ -148,19 +148,22 @@ export default function ExperienceSection() {
                     }
                   />
 
-                  {/* Card column */}
-                  <div
-                    className={`w-full md:w-1/2 pl-8 ${
-                      isLeft ? "md:pl-20 md:pr-0" : "md:pr-20 md:pl-0"
-                    }`}
-                  >
-                    <ExperienceCard
-                      experience={exp}
-                      isExpanded={isExpanded}
-                      onExpand={() => handleExpand(exp.id)}
-                      onCollapse={() => handleCollapse(exp.id)}
-                    />
+                  {/* Period - desktop column */}
+                  <div className="hidden md:block text-right pt-7 pr-2">
+                    <span className="font-label text-lg lg:text-xl font-light text-on-surface-variant/85 tracking-tight whitespace-nowrap">
+                      {exp.period}
+                    </span>
                   </div>
+
+                  {/* Rail gutter (desktop) */}
+                  <div className="hidden md:block" />
+
+                  {/* Card */}
+                  <ExperienceCard
+                    experience={exp}
+                    isExpanded={isExpanded}
+                    onToggle={() => toggle(exp.id)}
+                  />
                 </div>
               );
             })}
@@ -168,11 +171,11 @@ export default function ExperienceSection() {
         </div>
 
         {/* CTA */}
-        <div className="mt-32 text-center gsap-fade">
+        <div className="xp-cta mt-24 md:mt-32 text-center">
           <p className="text-on-surface-variant text-lg italic mb-8">
             Looking for the full architectural blueprint?
           </p>
-          <div className="flex justify-center gap-4 md:gap-6">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6">
             <button className="mag-btn bg-primary text-on-primary font-label uppercase tracking-widest px-8 md:px-10 py-4 rounded-full text-xs font-bold">
               Download Resume
             </button>

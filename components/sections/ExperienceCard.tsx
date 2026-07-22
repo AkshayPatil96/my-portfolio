@@ -7,29 +7,23 @@ import type { Experience } from "@/lib/data";
 interface ExperienceCardProps {
   experience: Experience;
   isExpanded: boolean;
-  onExpand: () => void;
-  onCollapse: () => void;
+  onToggle: () => void;
 }
 
 export default function ExperienceCard({
   experience: exp,
   isExpanded,
-  onExpand,
-  onCollapse,
+  onToggle,
 }: ExperienceCardProps) {
-  const toggle = useCallback(() => {
-    isExpanded ? onCollapse() : onExpand();
-  }, [isExpanded, onExpand, onCollapse]);
-
   const handleKeyDown = useCallback(
     (e: React.KeyboardEvent) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
-        toggle();
+        onToggle();
       }
-      if (e.key === "Escape" && isExpanded) onCollapse();
+      if (e.key === "Escape" && isExpanded) onToggle();
     },
-    [toggle, isExpanded, onCollapse],
+    [onToggle, isExpanded],
   );
 
   return (
@@ -44,19 +38,13 @@ export default function ExperienceCard({
           : "0.5px solid rgba(78,69,59,0.25)",
       }}
       animate={{
-        scale: isExpanded ? 1.02 : 1,
         boxShadow: isExpanded
           ? "0 0 48px rgba(229,196,151,0.1), 0 24px 48px rgba(0,0,0,0.7)"
           : "0 2px 16px rgba(0,0,0,0.4)",
       }}
+      whileHover={{ y: -3 }}
       transition={{ duration: 0.3, ease: "easeOut" }}
-      // Desktop: hover
-      onHoverStart={onExpand}
-      onHoverEnd={onCollapse}
-      // Mobile + keyboard
-      onClick={toggle}
-      onFocus={onExpand}
-      onBlur={onCollapse}
+      onClick={onToggle}
       onKeyDown={handleKeyDown}
       tabIndex={0}
       role="button"
@@ -107,9 +95,10 @@ export default function ExperienceCard({
           {exp.company}
         </p>
 
-        {/* <p className="font-label text-[10px] text-on-surface-variant/85 uppercase tracking-widest mb-5">
+        {/* Period - mobile/tablet only; desktop shows it in the timeline column */}
+        <p className="md:hidden font-label text-[10px] text-primary/60 uppercase tracking-widest mt-1">
           {exp.period}
-        </p> */}
+        </p>
 
         {/* Stack pills */}
         <div className="flex flex-wrap gap-2 mt-2">
@@ -217,6 +206,7 @@ export default function ExperienceCard({
         </AnimatePresence>
 
         {/* ── Key Contributions (expanded) ── */}
+        <AnimatePresence>
         {isExpanded && exp.details && exp.details.length > 0 && (
           <motion.div
             key="details"
@@ -258,6 +248,7 @@ export default function ExperienceCard({
             </div>
           </motion.div>
         )}
+        </AnimatePresence>
       </div>
     </motion.div>
   );

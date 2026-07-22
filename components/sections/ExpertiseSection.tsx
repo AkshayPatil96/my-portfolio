@@ -17,7 +17,7 @@ export default function ExpertiseSection() {
             scrollTrigger: {
               trigger: el,
               start: "top 88%",
-              toggleActions: "play none none none",
+              toggleActions: "play none none reverse",
             },
             y: 44,
             opacity: 0,

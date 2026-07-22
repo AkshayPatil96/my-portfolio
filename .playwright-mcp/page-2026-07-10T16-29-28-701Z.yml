@@ -1,0 +1,241 @@
+- generic [active] [ref=e1]:
+  - navigation [ref=e2]:
+    - generic [ref=e3]:
+      - link "akshay.dev" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - generic [ref=e5]:
+        - link "About" [ref=e6] [cursor=pointer]:
+          - /url: /#about
+        - link "Work" [ref=e7] [cursor=pointer]:
+          - /url: /#work
+        - link "Experience" [ref=e8] [cursor=pointer]:
+          - /url: /#experience
+        - link "Contact" [ref=e9] [cursor=pointer]:
+          - /url: /#contact
+      - button "Hire Me" [ref=e10] [cursor=pointer]
+  - main [ref=e13]:
+    - generic [ref=e14]:
+      - generic [ref=e15]:
+        - generic [ref=e16]: Product-focused Full Stack Developer
+        - heading "Building products that scale reliably." [level=1] [ref=e17]:
+          - generic [ref=e18]: Building products
+          - generic [ref=e19]: that scale reliably.
+        - paragraph [ref=e20]: 3.9+ years experience • Built production-grade applications
+        - generic [ref=e21]:
+          - link "View Work →" [ref=e22] [cursor=pointer]:
+            - /url: "#work"
+          - button "Resume" [ref=e23] [cursor=pointer]
+      - generic [ref=e24]: Available for work
+      - generic [ref=e29]: scroll
+    - generic [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]: 01 // Expertise
+        - heading "Engineering production-grade systems built for scale and reliability." [level=2] [ref=e36]
+        - list [ref=e37]:
+          - listitem [ref=e38]: Building scalable APIs and backend architectures
+          - listitem [ref=e39]: Designing performant frontend applications with Next.js, Vue.js
+          - listitem [ref=e40]: Optimizing systems for real-world traffic and usage
+          - listitem [ref=e41]: Implementing caching, rate limiting, and efficient data flows
+      - generic [ref=e42]: akshay.dev - bash
+    - generic [ref=e53]:
+      - generic [ref=e54]:
+        - generic [ref=e55]: 02 / About
+        - heading [level=2] [ref=e57]:
+          - text: Code, Café &
+          - emphasis [ref=e58]: Beyond.
+        - generic [ref=e60]:
+          - img "Akshay - Production Systems Engineer" [ref=e61]
+          - generic [ref=e63]:
+            - paragraph [ref=e64]: PRODUCTION SYSTEMS ENGINEER
+            - paragraph [ref=e65]: Node.js · Next.js · AWS
+            - paragraph [ref=e66]: Based in Pune, India · Open to Relocation / Remote
+            - generic [ref=e67]:
+              - link "link LinkedIn" [ref=e68] [cursor=pointer]:
+                - /url: https://linkedin.com
+                - generic [ref=e69]: link
+                - generic [ref=e70]: LinkedIn
+              - link "terminal GitHub" [ref=e71] [cursor=pointer]:
+                - /url: https://github.com
+                - generic [ref=e72]: terminal
+                - generic [ref=e73]: GitHub
+        - generic [ref=e74]:
+          - paragraph [ref=e75]: I'm a full-stack developer with 3.5+ years of experience building production-grade applications.
+          - paragraph [ref=e76]: Before tech, I ran a café - where I learned how to solve real-world problems, handle pressure, and deliver consistently. That mindset still drives how I build software today.
+          - paragraph [ref=e77]: I don't just build features - I design systems that hold up in production, focusing on performance, scalability, and clean architecture using Node.js, Next.js, and AWS.
+        - generic [ref=e78]:
+          - heading "Core Stack" [level=3] [ref=e79]
+          - generic [ref=e80]:
+            - generic [ref=e81]: Next.js
+            - generic [ref=e82]: Node.js
+            - generic [ref=e83]: PostgreSQL
+            - generic [ref=e84]: Redis
+            - generic [ref=e85]: AWS
+            - generic [ref=e86]: Prisma
+      - generic [ref=e87]:
+        - generic [ref=e88]:
+          - generic [ref=e89]: architecture
+          - heading "Clean Architecture" [level=4] [ref=e90]
+          - paragraph [ref=e91]: Designing modular and maintainable systems built for long-term scalability.
+        - generic [ref=e92]:
+          - generic [ref=e93]: bolt
+          - heading "Performance First" [level=4] [ref=e94]
+          - paragraph [ref=e95]: Optimizing critical paths to ensure fast, reliable user experiences at scale.
+        - generic [ref=e96]:
+          - generic [ref=e97]: hub
+          - heading "System Thinking" [level=4] [ref=e98]
+          - paragraph [ref=e99]: Building systems with a focus on scalability, reliability, and failure handling.
+        - generic [ref=e100]:
+          - generic [ref=e101]: grid_view
+          - heading "Detail Oriented" [level=4] [ref=e102]
+          - paragraph [ref=e103]: Delivering precise implementations - from UI polish to backend efficiency.
+    - generic [ref=e105]:
+      - generic [ref=e106]:
+        - generic [ref=e107]: 04 // Selected Work
+        - heading "Projects engineered for production." [level=2] [ref=e108]
+        - paragraph [ref=e109]: Deep-dive case studies - architecture decisions, hard problems, and the trade-offs behind each system.
+      - generic [ref=e110]:
+        - link "Real-Time Chat Platform View Case Study → 01 — Case Study Real-Time Chat Platform Designed and built a real-time messaging platform supporting multi-tab presence, delivery guarantees, and scalable pagination - solving consistency challenges in distributed real-time systems. Socket.IO Redis MongoDB React Node.js +3 more Read the full breakdown →" [ref=e111] [cursor=pointer]:
+          - /url: /projects/real-time-chat-platform
+          - generic [ref=e113]:
+            - img "Real-Time Chat Platform" [ref=e115]
+            - generic [ref=e117]:
+              - text: View Case Study
+              - generic [ref=e118]: →
+          - generic [ref=e120]:
+            - generic [ref=e121]: 01 — Case Study
+            - heading "Real-Time Chat Platform" [level=3] [ref=e124]
+            - paragraph [ref=e125]: Designed and built a real-time messaging platform supporting multi-tab presence, delivery guarantees, and scalable pagination - solving consistency challenges in distributed real-time systems.
+            - generic [ref=e126]:
+              - generic [ref=e127]: Socket.IO
+              - generic [ref=e128]: Redis
+              - generic [ref=e129]: MongoDB
+              - generic [ref=e130]: React
+              - generic [ref=e131]: Node.js
+              - generic [ref=e132]: +3 more
+            - generic [ref=e133]:
+              - generic [ref=e134]: Read the full breakdown
+              - generic [ref=e135]: →
+        - link "Warden Admin Panel View Case Study → 02 — Case Study Warden Admin Panel Designed and built a production-grade internal admin panel with self-rolled session auth, permission-based RBAC, and full audit logging - a study in security judgment where the server is always the source of truth. Next.js TypeScript Express Prisma PostgreSQL +5 more Read the full breakdown →" [ref=e136] [cursor=pointer]:
+          - /url: /projects/warden-admin-panel
+          - generic [ref=e138]:
+            - img "Warden Admin Panel" [ref=e140]
+            - generic [ref=e142]:
+              - text: View Case Study
+              - generic [ref=e143]: →
+          - generic [ref=e145]:
+            - generic [ref=e146]: 02 — Case Study
+            - heading "Warden Admin Panel" [level=3] [ref=e149]
+            - paragraph [ref=e150]: Designed and built a production-grade internal admin panel with self-rolled session auth, permission-based RBAC, and full audit logging - a study in security judgment where the server is always the source of truth.
+            - generic [ref=e151]:
+              - generic [ref=e152]: Next.js
+              - generic [ref=e153]: TypeScript
+              - generic [ref=e154]: Express
+              - generic [ref=e155]: Prisma
+              - generic [ref=e156]: PostgreSQL
+              - generic [ref=e157]: +5 more
+            - generic [ref=e158]:
+              - generic [ref=e159]: Read the full breakdown
+              - generic [ref=e160]: →
+    - generic [ref=e162]:
+      - generic [ref=e163]:
+        - generic [ref=e164]: 05 // Experience
+        - heading [level=2] [ref=e165]:
+          - text: Professional
+          - emphasis [ref=e166]: Chapters
+      - generic [ref=e170]:
+        - generic [ref=e171]:
+          - generic [ref=e173]: 2022 - PRESENT
+          - button "Current Role keyboard_arrow_down Senior Developer Analyst Value Creatives Tech Solutions LLP Next.js Node.js MongoDB AWS Stripe" [ref=e174] [cursor=pointer]:
+            - generic [ref=e176]:
+              - generic [ref=e177]:
+                - generic [ref=e178]: Current Role
+                - generic [ref=e179]: keyboard_arrow_down
+              - heading "Senior Developer Analyst" [level=3] [ref=e180]
+              - paragraph [ref=e181]: Value Creatives Tech Solutions LLP
+              - generic [ref=e182]:
+                - generic [ref=e183]: Next.js
+                - generic [ref=e184]: Node.js
+                - generic [ref=e185]: MongoDB
+                - generic [ref=e186]: AWS
+                - generic [ref=e187]: Stripe
+        - generic [ref=e188]:
+          - generic [ref=e190]: 2021 - 2022
+          - button "Intensive Education keyboard_arrow_down MERN Bootcamp Masai School MongoDB Express.js React Node.js DSA" [ref=e191] [cursor=pointer]:
+            - generic [ref=e193]:
+              - generic [ref=e194]:
+                - generic [ref=e195]: Intensive Education
+                - generic [ref=e196]: keyboard_arrow_down
+              - heading "MERN Bootcamp" [level=3] [ref=e197]
+              - paragraph [ref=e198]: Masai School
+              - generic [ref=e199]:
+                - generic [ref=e200]: MongoDB
+                - generic [ref=e201]: Express.js
+                - generic [ref=e202]: React
+                - generic [ref=e203]: Node.js
+                - generic [ref=e204]: DSA
+        - generic [ref=e205]:
+          - generic [ref=e207]: 2017 - 2020
+          - button "Early Career keyboard_arrow_down Café Owner Independent - Ashta, Maharashtra Operations Team Management Business" [ref=e208] [cursor=pointer]:
+            - generic [ref=e210]:
+              - generic [ref=e211]:
+                - generic [ref=e212]: Early Career
+                - generic [ref=e213]: keyboard_arrow_down
+              - heading "Café Owner" [level=3] [ref=e214]
+              - paragraph [ref=e215]: Independent - Ashta, Maharashtra
+              - generic [ref=e216]:
+                - generic [ref=e217]: Operations
+                - generic [ref=e218]: Team Management
+                - generic [ref=e219]: Business
+      - generic [ref=e220]:
+        - paragraph [ref=e221]: Looking for the full architectural blueprint?
+        - generic [ref=e222]:
+          - button "Download Resume" [ref=e223] [cursor=pointer]
+          - button "View LinkedIn" [ref=e224] [cursor=pointer]
+    - generic [ref=e226]:
+      - generic [ref=e227]: 05 / let's talk
+      - generic [ref=e228]:
+        - generic [ref=e229]:
+          - generic [ref=e230]:
+            - heading "Let’s build systems that scale reliably." [level=2] [ref=e231]
+            - paragraph [ref=e232]: I design and build production-grade systems that handle real-world scale, performance, and reliability.
+            - list [ref=e233]:
+              - listitem [ref=e234]: Open to full-time product engineering roles
+              - listitem [ref=e235]: Experience building scalable systems across domains
+              - listitem [ref=e236]: Comfortable owning features end-to-end (frontend → backend → deployment)
+            - paragraph [ref=e237]:
+              - text: Based in Pune
+              - generic [ref=e238]: • Open to relocation / remote
+          - generic [ref=e239]: Open to Full-Time Roles
+        - generic [ref=e245]:
+          - generic [ref=e246]:
+            - generic [ref=e247]: Full Name
+            - textbox "Full Name" [ref=e248]:
+              - /placeholder: John Doe
+          - generic [ref=e249]:
+            - generic [ref=e250]: Email Address
+            - textbox "Email Address" [ref=e251]:
+              - /placeholder: john@example.com
+          - generic [ref=e252]:
+            - generic [ref=e253]: Your Message
+            - textbox "Your Message" [ref=e254]:
+              - /placeholder: Briefly describe your project...
+          - button "Send Message arrow_right_alt" [ref=e256] [cursor=pointer]:
+            - text: Send Message
+            - generic [ref=e257]: arrow_right_alt
+  - contentinfo [ref=e258]:
+    - generic [ref=e259]:
+      - generic [ref=e260]:
+        - link "LinkedIn" [ref=e261] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/aksh2706/
+        - link "GitHub" [ref=e262] [cursor=pointer]:
+          - /url: https://github.com/AkshayPatil96
+        - link "Resume" [ref=e263] [cursor=pointer]:
+          - /url: https://read.cv/AkshayPatil96
+        - link "Email" [ref=e264] [cursor=pointer]:
+          - /url: mailto:aksh.patil2706@gmail.com
+      - generic [ref=e265]: Designed & built by Akshay · 2026
+      - link "Back to top north" [ref=e267] [cursor=pointer]:
+        - /url: "#hero"
+        - text: Back to top
+        - generic [ref=e268]: north
+  - region "Notifications alt+T"

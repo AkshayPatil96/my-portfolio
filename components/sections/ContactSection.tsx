@@ -15,7 +15,7 @@ export default function ContactSection() {
         scrollTrigger: {
           trigger: "#contact",
           start: "top 78%",
-          toggleActions: "play none none none",
+          toggleActions: "play none none reverse",
         },
         clipPath: "inset(0% 0 0 0)",
         duration: 1.2,

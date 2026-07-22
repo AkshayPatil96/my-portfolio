@@ -18,6 +18,7 @@ export default function ProjectChallenge({ caseStudy }: ProjectChallengeProps) {
         scrollTrigger: {
           trigger: "[data-challenge-left]",
           start: "top 80%",
+          toggleActions: "play none none reverse",
         },
         y: 30,
         opacity: 0,
@@ -30,6 +31,7 @@ export default function ProjectChallenge({ caseStudy }: ProjectChallengeProps) {
         scrollTrigger: {
           trigger: "[data-challenge-right]",
           start: "top 80%",
+          toggleActions: "play none none reverse",
         },
         y: 30,
         opacity: 0,
@@ -43,6 +45,7 @@ export default function ProjectChallenge({ caseStudy }: ProjectChallengeProps) {
           scrollTrigger: {
             trigger: "[data-arch-image]",
             start: "top 85%",
+            toggleActions: "play none none reverse",
           },
           y: 40,
           opacity: 0,

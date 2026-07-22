@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger } from "@/lib/gsap";
+import { gsap } from "@/lib/gsap";
 import SplitType from "split-type";
 
 const CORE_STACK = [
@@ -46,24 +46,23 @@ export default function AboutSectionAlt() {
   useEffect(() => {
 
 
+    const split = new SplitType("#alt-about-title", { types: "lines" });
+    gsap.set("#alt-about-title", { opacity: 1 });
+
     const ctx = gsap.context(() => {
-      // Title reveal
-      ScrollTrigger.create({
-        trigger: "#alt-about-title",
-        start: "top 82%",
-        once: true,
-        onEnter() {
-          const split = new SplitType("#alt-about-title", { types: "lines" });
-          gsap.set("#alt-about-title", { opacity: 1 });
-          gsap.from(split.lines, {
-            y: 70,
-            opacity: 0,
-            clipPath: "inset(0 0 100% 0)",
-            stagger: 0.14,
-            duration: 1,
-            ease: "power3.out",
-          });
+      // Title reveal - replays every time it scrolls back into view
+      gsap.from(split.lines, {
+        scrollTrigger: {
+          trigger: "#alt-about-title",
+          start: "top 82%",
+          toggleActions: "play none none reverse",
         },
+        y: 70,
+        opacity: 0,
+        clipPath: "inset(0 0 100% 0)",
+        stagger: 0.14,
+        duration: 1,
+        ease: "power3.out",
       });
 
       // Generic fade-ups
@@ -74,7 +73,7 @@ export default function AboutSectionAlt() {
             scrollTrigger: {
               trigger: el,
               start: "top 88%",
-              toggleActions: "play none none none",
+              toggleActions: "play none none reverse",
             },
             y: 36,
             opacity: 0,
@@ -85,24 +84,25 @@ export default function AboutSectionAlt() {
         });
 
       // Stack badge stagger
-      ScrollTrigger.create({
-        trigger: "#alt-core-stack",
-        start: "top 88%",
-        once: true,
-        onEnter() {
-          gsap.from("#alt-core-stack .stack-badge", {
-            y: 16,
-            opacity: 0,
-            scale: 0.85,
-            stagger: 0.07,
-            duration: 0.55,
-            ease: "back.out(1.6)",
-          });
+      gsap.from("#alt-core-stack .stack-badge", {
+        scrollTrigger: {
+          trigger: "#alt-core-stack",
+          start: "top 88%",
+          toggleActions: "play none none reverse",
         },
+        y: 16,
+        opacity: 0,
+        scale: 0.85,
+        stagger: 0.07,
+        duration: 0.55,
+        ease: "back.out(1.6)",
       });
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      split.revert();
+    };
   }, []);
 
   return (

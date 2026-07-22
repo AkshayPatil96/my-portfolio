@@ -1,0 +1,231 @@
+- generic [active] [ref=f1e1]:
+  - navigation [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link "akshay.dev" [ref=f1e4] [cursor=pointer]:
+        - /url: /
+      - generic [ref=f1e5]:
+        - link "About" [ref=f1e6] [cursor=pointer]:
+          - /url: /#about
+        - link "Work" [ref=f1e7] [cursor=pointer]:
+          - /url: /#work
+        - link "Experience" [ref=f1e8] [cursor=pointer]:
+          - /url: /#experience
+        - link "Contact" [ref=f1e9] [cursor=pointer]:
+          - /url: /#contact
+      - button "Hire Me" [ref=f1e10] [cursor=pointer]
+  - main [ref=f1e13]:
+    - generic [ref=f1e14]:
+      - generic: "01"
+      - generic [ref=f1e15]:
+        - generic [ref=f1e16]:
+          - paragraph [ref=f1e17]: CASE STUDY // 01
+          - heading "Real-Time Chat Platform" [level=1] [ref=f1e18]
+          - paragraph [ref=f1e19]: A real-time messaging system engineered for consistency, presence accuracy, and scalable data access - built to handle the edge cases most chat apps ignore.
+          - generic [ref=f1e20]:
+            - generic [ref=f1e21]: Socket.IO
+            - generic [ref=f1e22]: Redis
+            - generic [ref=f1e23]: MongoDB
+            - generic [ref=f1e24]: React
+            - generic [ref=f1e25]: Node.js
+            - generic [ref=f1e26]: Express
+            - generic [ref=f1e27]: Clerk
+            - generic [ref=f1e28]: AWS S3
+          - generic [ref=f1e29]:
+            - link "Live arrow_outward" [ref=f1e30] [cursor=pointer]:
+              - /url: https://real-chat.akshforge.com/
+              - text: Live
+              - generic [ref=f1e31]: arrow_outward
+            - link "GitHub code" [ref=f1e32] [cursor=pointer]:
+              - /url: https://github.com/AkshayPatil96/real-chat
+              - text: GitHub
+              - generic [ref=f1e33]: code
+        - region "Real-Time Chat Platform screenshots" [ref=f1e35]:
+          - generic [ref=f1e36]:
+            - generic [ref=f1e37]:
+              - img "Real-Time Chat Platform screenshot 1 of 2"
+            - button "Previous screenshot" [ref=f1e38] [cursor=pointer]:
+              - generic [ref=f1e39]: chevron_left
+            - button "Next screenshot" [ref=f1e40] [cursor=pointer]:
+              - generic [ref=f1e41]: chevron_right
+            - generic [ref=f1e42]:
+              - button "Pause slideshow" [ref=f1e43] [cursor=pointer]:
+                - generic [ref=f1e44]: pause
+              - generic [ref=f1e45]: 1 / 2
+              - button "View fullscreen" [ref=f1e46] [cursor=pointer]:
+                - generic [ref=f1e47]: fullscreen
+          - tablist "Screenshot thumbnails" [ref=f1e48]:
+            - tab "Go to screenshot 1" [selected] [ref=f1e49] [cursor=pointer]
+            - tab "Go to screenshot 2" [ref=f1e50] [cursor=pointer]
+    - generic [ref=f1e54]:
+      - generic [ref=f1e55]:
+        - paragraph [ref=f1e56]: THE CHALLENGE
+        - heading "Reliable Messaging at Concurrent Scale" [level=2] [ref=f1e57]
+        - paragraph [ref=f1e58]: The core challenge wasn't just sending messages - it was guaranteeing ordering, delivery state consistency, and presence accuracy across multiple browser tabs and reconnection scenarios. Webhook signature verification required raw body preservation before Express middleware parsing. Atomic consistency between message creation and conversation metadata updates demanded careful transaction orchestration. Meanwhile, rate limiting had to be distributed across potential server instances without falling back to fragile in-memory stores.
+      - generic [ref=f1e59]:
+        - paragraph [ref=f1e60]: ENGINEERING RESPONSE
+        - heading "Modular Monolith with Real-Time Backbone" [level=2] [ref=f1e61]
+        - generic [ref=f1e62]:
+          - generic [ref=f1e63]:
+            - generic [ref=f1e64]: wifi
+            - generic [ref=f1e66]:
+              - heading "Socket.IO with Redis Presence" [level=3] [ref=f1e67]
+              - paragraph [ref=f1e68]: Enabled real-time messaging with Socket.IO, backed by Redis presence tracking using atomic INCR/DECR counters and TTL heartbeats - ensuring accurate multi-tab online/offline state without false disconnects.
+          - generic [ref=f1e69]:
+            - generic [ref=f1e70]: view_list
+            - generic [ref=f1e72]:
+              - heading "Cursor-Based Pagination" [level=3] [ref=f1e73]
+              - paragraph [ref=f1e74]: Replaced offset-based queries with opaque base64-encoded cursors keyed on (createdAt, _id), delivering O(1) pagination performance and preventing duplicate rendering during concurrent real-time inserts.
+          - generic [ref=f1e75]:
+            - generic [ref=f1e76]: hub
+            - generic [ref=f1e78]:
+              - heading "SOLID Modular Architecture" [level=3] [ref=f1e79]
+              - paragraph [ref=f1e80]: Decomposed the backend into 7 domain modules (Users, Conversations, Messages, Chat-Requests, Presence, Uploads, Webhooks) - each with its own model, repository, service, controller, and validator layers following interface-driven dependency injection.
+    - generic [ref=f1e82]:
+      - paragraph [ref=f1e83]: INTERNAL ARCHITECTURE
+      - heading "Modular Monolith - Layered Service Architecture Single Deployable Unit" [level=2] [ref=f1e84]:
+        - text: Modular Monolith - Layered Service Architecture
+        - generic [ref=f1e85]: Single Deployable Unit
+      - generic [ref=f1e86]:
+        - generic [ref=f1e87]: API LAYER
+        - generic [ref=f1e90]: APPLICATION LAYER
+        - generic [ref=f1e93]: DOMAIN LAYER
+        - generic [ref=f1e96]: DATA ACCESS LAYER
+        - generic [ref=f1e99]: CROSS-CUTTING
+        - generic [ref=f1e102]: Primary Flow
+      - img "React Flow mini map" [ref=f1e112]
+      - paragraph [ref=f1e114]: INTERACTIVE ARCHITECTURE DIAGRAM - DRAG · ZOOM · PAN · HOVER FOR DETAILS
+      - paragraph [ref=f1e115]: Chose a modular monolith over microservices to maintain deployment simplicity while preserving clear domain boundaries and scalability.
+    - generic [ref=f1e117]:
+      - paragraph [ref=f1e118]: DEEP DIVE
+      - generic [ref=f1e119]:
+        - generic [ref=f1e120]:
+          - generic [ref=f1e121]: bolt
+          - heading "Why Redis for Presence?" [level=3] [ref=f1e123]
+          - paragraph [ref=f1e124]: Presence tracking requires sub-second latency and atomic updates - Redis INCR/DECR with TTL enabled accurate multi-session tracking without race conditions.
+        - generic [ref=f1e125]:
+          - generic [ref=f1e126]: grid_view
+          - heading "Cursor Pagination Internals" [level=3] [ref=f1e128]
+          - paragraph [ref=f1e129]: "Each cursor encodes a base64 JSON of { createdAt, _id }. The query filters using a compound condition (createdAt < cursor OR createdAt = cursor AND _id < cursor._id) against a compound descending index, yielding stable reverse-chronological traversal immune to mid-scroll inserts."
+        - generic [ref=f1e130]:
+          - generic [ref=f1e131]: cloud
+          - heading "S3 Upload State Machine" [level=3] [ref=f1e133]
+          - paragraph [ref=f1e134]: "File uploads follow a temp-to-final S3 flow: presigned PUT URL → upload to temp/ prefix → on message send, backend atomically copies to final path and deletes temp. A 24-hour S3 lifecycle rule auto-cleans orphaned temp files, preventing storage leaks."
+        - generic [ref=f1e135]:
+          - generic [ref=f1e136]: sync
+          - heading "Zero-Downtime Deployment Strategy" [level=3] [ref=f1e138]
+          - paragraph [ref=f1e139]: Implemented blue-green deployment with health checks and traffic switching using Nginx to ensure seamless releases without downtime.
+    - generic [ref=f1e141]:
+      - paragraph [ref=f1e142]: THE HARD PARTS
+      - heading "Navigating Real-Time Friction" [level=2] [ref=f1e143]
+      - generic [ref=f1e144]:
+        - generic [ref=f1e145]:
+          - generic [ref=f1e146]:
+            - heading "Solving Multi-Tab Presence Consistency" [level=3] [ref=f1e147]
+            - paragraph [ref=f1e148]: Each browser tab opens its own socket connection, so a naive approach would toggle users offline every time a single tab closes. Solved with Redis INCR/DECR counters per userId - only emitting 'user:offline' when the count drops to zero, paired with a 120s TTL heartbeat as a safety net.
+          - generic [ref=f1e149]:
+            - heading "Atomic Message + Conversation Updates" [level=3] [ref=f1e150]
+            - paragraph [ref=f1e151]: Creating a message and updating the conversation's lastMessage field must succeed or fail together. Implemented a withTransaction() helper wrapping MongoDB sessions, ensuring atomic rollback on any failure - critical for the chat-request accept flow which creates a conversation and updates request status in one transaction.
+          - generic [ref=f1e152]:
+            - heading "Webhook Body Parsing Order" [level=3] [ref=f1e153]
+            - paragraph [ref=f1e154]: Clerk webhooks require the raw request body for Svix HMAC signature verification, but Express.json() consumes it. Solved by registering webhook routes with express.raw() before any body-parsing middleware in the middleware chain.
+        - generic [ref=f1e155]:
+          - generic [ref=f1e156]:
+            - paragraph [ref=f1e157]: "7"
+            - paragraph [ref=f1e158]: DOMAIN MODULES
+          - generic [ref=f1e159]:
+            - paragraph [ref=f1e160]: 120s
+            - paragraph [ref=f1e161]: PRESENCE TTL
+          - generic [ref=f1e162]:
+            - paragraph [ref=f1e163]: O(1)
+            - paragraph [ref=f1e164]: PAGINATION COST
+          - generic [ref=f1e165]:
+            - paragraph [ref=f1e166]: 3-Stage
+            - paragraph [ref=f1e167]: DELIVERY TRACKING
+    - generic [ref=f1e169]:
+      - paragraph [ref=f1e170]: INFRASTRUCTURE & DEPLOYMENT
+      - heading "Production-Grade Deployment & Reliability" [level=2] [ref=f1e171]
+      - generic [ref=f1e172]:
+        - generic [ref=f1e173]:
+          - heading "Dockerized Multi-Service Architecture" [level=3] [ref=f1e174]
+          - paragraph [ref=f1e175]: Containerized backend services using Docker, isolating API and reverse proxy layers while ensuring consistent environments across development and production.
+        - generic [ref=f1e176]:
+          - heading "Nginx Reverse Proxy with SSL" [level=3] [ref=f1e177]
+          - paragraph [ref=f1e178]: Configured Nginx with Let's Encrypt for HTTPS, handling TLS termination, routing, and failover between backend instances.
+        - generic [ref=f1e179]:
+          - heading "CI/CD with GitHub Actions" [level=3] [ref=f1e180]
+          - paragraph [ref=f1e181]: Implemented automated deployments via GitHub Actions using SSH workflows to pull, build, and deploy containers without manual intervention.
+        - generic [ref=f1e182]:
+          - heading "Zero-Downtime Blue-Green Deployment" [level=3] [ref=f1e183]
+          - paragraph [ref=f1e184]: Designed blue-green deployment where new containers are started, health-checked, and switched into traffic only after validation.
+        - generic [ref=f1e185]:
+          - heading "Automatic Failover with Nginx Load Balancing" [level=3] [ref=f1e186]
+          - paragraph [ref=f1e187]: Configured Nginx upstream failover across multiple containers with retry logic to ensure uninterrupted service.
+        - generic [ref=f1e188]:
+          - heading "Self-Healing Infrastructure" [level=3] [ref=f1e189]
+          - paragraph [ref=f1e190]: Implemented a watchdog system using systemd to monitor container health and automatically restart unhealthy services.
+        - generic [ref=f1e191]:
+          - heading "Auto-Recovery on Server Restart" [level=3] [ref=f1e192]
+          - paragraph [ref=f1e193]: Built systemd-based recovery to automatically restart Docker services and reload Nginx after server reboot.
+    - generic [ref=f1e195]:
+      - paragraph [ref=f1e196]: SYSTEM ARCHITECTURE
+      - heading "Real-Time Chat Infrastructure Zero-Downtime + Failover" [level=2] [ref=f1e197]:
+        - text: Real-Time Chat Infrastructure
+        - generic [ref=f1e198]: Zero-Downtime + Failover
+      - generic [ref=f1e199]:
+        - generic [ref=f1e200]: INFRASTRUCTURE
+        - generic [ref=f1e203]: APPLICATION
+        - generic [ref=f1e206]: DATA LAYER
+        - generic [ref=f1e209]: EXTERNAL SERVICES
+        - generic [ref=f1e212]: CI/CD
+        - generic [ref=f1e215]: Primary Flow
+      - img "React Flow mini map" [ref=f1e225]
+      - paragraph [ref=f1e227]: INTERACTIVE INFRASTRUCTURE DIAGRAM - DRAG · ZOOM · PAN · HOVER FOR DETAILS
+    - generic [ref=f1e229]:
+      - paragraph [ref=f1e230]: TRADE-OFFS
+      - generic [ref=f1e231]:
+        - generic [ref=f1e232]:
+          - generic [ref=f1e233]: swap_horiz
+          - paragraph [ref=f1e234]: Chose Redis over in-memory state for presence to support horizontal scaling
+        - generic [ref=f1e235]:
+          - generic [ref=f1e236]: swap_horiz
+          - paragraph [ref=f1e237]: Used modular monolith instead of microservices to reduce deployment complexity
+        - generic [ref=f1e238]:
+          - generic [ref=f1e239]: swap_horiz
+          - paragraph [ref=f1e240]: Implemented cursor pagination to avoid offset inefficiencies at scale
+        - generic [ref=f1e241]:
+          - generic [ref=f1e242]: swap_horiz
+          - paragraph [ref=f1e243]: Chose VPS + Docker over managed services to gain full control over infrastructure and deployment behavior
+        - generic [ref=f1e244]:
+          - generic [ref=f1e245]: swap_horiz
+          - paragraph [ref=f1e246]: Implemented blue-green deployment to eliminate downtime at the cost of added system complexity
+        - generic [ref=f1e247]:
+          - generic [ref=f1e248]: swap_horiz
+          - paragraph [ref=f1e249]: Used Nginx load balancing instead of external load balancers to keep the system lightweight and cost-efficient
+    - generic [ref=f1e251]:
+      - paragraph [ref=f1e252]: RETROSPECTIVE
+      - blockquote [ref=f1e253]: “Design for Disconnection, Build for Consistency.”
+      - paragraph [ref=f1e254]: The biggest lesson was that real-time systems are fundamentally about handling the unhappy path - socket disconnects, stale presence state, partial transaction failures, and orphaned uploads. Every feature demanded thinking in terms of 'what happens when this fails mid-way?' rather than just the success flow. Building the cursor pagination and presence counter systems taught me that elegant distributed design often comes down to choosing the right data structure at the right layer.
+    - generic [ref=f1e257]:
+      - generic [ref=f1e258]:
+        - paragraph [ref=f1e259]: Next Case Study
+        - link "Warden Admin Panelarrow_forward" [ref=f1e260] [cursor=pointer]:
+          - /url: /projects/warden-admin-panel
+      - link "View All Projects" [ref=f1e261] [cursor=pointer]:
+        - /url: /#work
+  - contentinfo [ref=f1e262]:
+    - generic [ref=f1e263]:
+      - generic [ref=f1e264]:
+        - link "LinkedIn" [ref=f1e265] [cursor=pointer]:
+          - /url: https://www.linkedin.com/in/aksh2706/
+        - link "GitHub" [ref=f1e266] [cursor=pointer]:
+          - /url: https://github.com/AkshayPatil96
+        - link "Resume" [ref=f1e267] [cursor=pointer]:
+          - /url: https://read.cv/AkshayPatil96
+        - link "Email" [ref=f1e268] [cursor=pointer]:
+          - /url: mailto:aksh.patil2706@gmail.com
+      - generic [ref=f1e269]: Designed & built by Akshay · 2026
+      - link "Back to top north" [ref=f1e271] [cursor=pointer]:
+        - /url: "#hero"
+        - text: Back to top
+        - generic [ref=f1e272]: north
+  - region "Notifications alt+T"

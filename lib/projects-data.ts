@@ -107,7 +107,7 @@ export const projects: Project[] = [
       "Designed and built a production-grade internal admin panel with self-rolled session auth, permission-based RBAC, and full audit logging - a study in security judgment where the server is always the source of truth.",
     impact:
       "Delivered granular, permission-checked authorization enforced entirely at the API layer, with tamper-evident audit trails on every sensitive mutation. Self-rolled session auth (Argon2id, httpOnly cookies, server-side session store) replaces a third-party BaaS to demonstrate the underlying security fundamentals - timing-safe logins, account lockout, session revocation on credential change, and zero tokens ever exposed to client JavaScript.",
-    image: "/assets/images/case-study-screenshots/02-dashboard.png",
+    image: "/assets/images/case-study-screenshots/warden/02-dashboard.png",
     tags: [
       "Next.js",
       "TypeScript",
@@ -128,12 +128,12 @@ export const projects: Project[] = [
       liveUrl: "https://warden-admin.akshforge.com",
       githubUrl: "https://github.com/AkshayPatil96/warden-admin",
       screenshots: [
-        "/assets/images/case-study-screenshots/01-login.png",
-        "/assets/images/case-study-screenshots/03-customers.png",
-        "/assets/images/case-study-screenshots/04-subscriptions.png",
-        "/assets/images/case-study-screenshots/05-invoices.png",
-        "/assets/images/case-study-screenshots/06-users-roles.png",
-        "/assets/images/case-study-screenshots/07-audit-log.png",
+        "/assets/images/case-study-screenshots/warden/01-login.png",
+        "/assets/images/case-study-screenshots/warden/03-customers.png",
+        "/assets/images/case-study-screenshots/warden/04-subscriptions.png",
+        "/assets/images/case-study-screenshots/warden/05-invoices.png",
+        "/assets/images/case-study-screenshots/warden/06-users-roles.png",
+        "/assets/images/case-study-screenshots/warden/07-audit-log.png",
       ],
       challenge: {
         eyebrow: "THE CHALLENGE",
@@ -311,7 +311,7 @@ export const projects: Project[] = [
       "Designed and built a real-time messaging platform supporting multi-tab presence, delivery guarantees, and scalable pagination - solving consistency challenges in distributed real-time systems.",
     impact:
       "Achieved consistent real-time message delivery across multiple concurrent sessions with O(1) pagination and resilient presence tracking - ensuring no duplicate messages, accurate online status, and stable performance under growing datasets. Additionally, the system supports zero-downtime deployments, automatic failover, and self-healing infrastructure for high availability.",
-    image: "https://placehold.co/800x450/1a1a1a/e5c497?text=Real-Chat+Preview",
+    image: "/assets/images/case-study-screenshots/real-chat/03-chat-conversation.png",
     tags: [
       "Socket.IO",
       "Redis",
@@ -330,8 +330,12 @@ export const projects: Project[] = [
       liveUrl: "https://real-chat.akshforge.com/",
       githubUrl: "https://github.com/AkshayPatil96/real-chat",
       screenshots: [
-        "https://placehold.co/560x380/1a1a1a/e5c497?text=Chat+Conversation+View",
-        "https://placehold.co/560x380/1a1a1a/e5c497?text=Presence+%26+Typing+Indicators",
+        "/assets/images/case-study-screenshots/real-chat/01-sign-in.png",
+        "/assets/images/case-study-screenshots/real-chat/02-dashboard-empty.png",
+        "/assets/images/case-study-screenshots/real-chat/03-chat-conversation.png",
+        "/assets/images/case-study-screenshots/real-chat/04-group-chat.png",
+        "/assets/images/case-study-screenshots/real-chat/05-dark-mode.png",
+        "/assets/images/case-study-screenshots/real-chat/06-dashboard-dark.png",
       ],
       challenge: {
         eyebrow: "THE CHALLENGE",
